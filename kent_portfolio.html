@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kent Brought - MIT Computer Science Student & Entrepreneur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0b0c1a;
+            --bg-secondary: #1a1b2e;
+            --text-primary: #f4f4f4;
+            --text-secondary: #b0b3c5;
+            --accent: #ffd95c;
+            --accent-hover: #f4b400;
+            --card-bg: rgba(26, 27, 46, 0.8);
+            --glow: rgba(255, 217, 92, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .hero-name {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(4rem, 12vw, 10rem);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-align: center;
+            color: var(--text-primary);
+            text-shadow: 
+                0 0 20px var(--glow),
+                0 5px 10px rgba(0, 0, 0, 0.5),
+                0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: heroFadeIn 2s ease-out;
+            position: relative;
+        }
+
+        .hero-name::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0 4rem;
+            position: relative;
+            margin-top: -15vh;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .profile-photo {
+            position: relative;
+            z-index: 10;
+        }
+
+        .photo-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), var(--accent-hover));
+            padding: 4px;
+            position: relative;
+            animation: photoRotate 20s linear infinite;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes photoRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .about-text {
+            padding-top: 2rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        /* Education Section */
+        .education {
+            background: var(--bg-secondary);
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 217, 92, 0.1);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-header h3 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-header .date {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .education-details p {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        /* Experience & Projects */
+        .experience-item, .project-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 217, 92, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 217, 92, 0.1);
+        }
+
+        .experience-item:nth-child(even), .project-item:nth-child(even) {
+            grid-template-columns: 1fr 200px;
+        }
+
+        .experience-item:nth-child(even) .item-content, .project-item:nth-child(even) .item-content {
+            order: -1;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 150px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .item-content h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .item-content ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .item-content li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .item-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .project-links {
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .project-links a:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 217, 92, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: var(--bg-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .award-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .award-item:hover {
+            transform: translateX(5px);
+        }
+
+        .award-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .award-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-secondary);
+            padding: 4rem 0 6rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 217, 92, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--bg-primary);
+        }
+
+        .contact-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .photo-container {
+                margin: 0 auto;
+            }
+
+            .experience-item, .project-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .experience-item:nth-child(even), .project-item:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-item:nth-child(even) .item-content, .project-item:nth-child(even) .item-content {
+                order: 0;
+            }
+
+            .education-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-name {
+                font-size: clamp(3rem, 15vw, 6rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 60vh;
+            }
+
+            .about {
+                margin-top: -10vh;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-name">KENT</h1>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="profile-photo">
+                    <div class="photo-container">
+                        <div class="photo-placeholder">
+                            <!-- Replace with actual photo: <img src="your-photo.jpg" alt="Kent Brought" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"> -->
+                            Your Photo Here
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>
+                        I'm a Computer Science and Engineering student at MIT with a minor in Comparative Media Studies, 
+                        expected to graduate in May 2026. As the founder of KayBer Inc., I'm passionate about creating 
+                        innovative social platforms that connect people instantly through real-time technology.
+                    </p>
+                    <p>
+                        My experience spans from developing educational machine learning tools for elementary students 
+                        to leading robotics teams and creating engaging digital experiences. I thrive at the intersection 
+                        of technology, education, and entrepreneurship.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+                <div class="education-header">
+                    <div>
+                        <h3>Massachusetts Institute of Technology</h3>
+                        <div class="education-details">
+                            <p><strong>Bachelor of Science in Computer Science and Engineering</strong></p>
+                            <p>Minor in Comparative Media Studies</p>
+                            <p>Cambridge, Massachusetts</p>
+                        </div>
+                    </div>
+                    <div class="date">
+                        Expected: May 2026
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-item">
+                <div class="item-image">
+                    <!-- Add KayBer logo: <img src="kayber-logo.png" alt="KayBer Logo"> -->
+                    KayBer Logo
+                </div>
+                <div class="item-content">
+                    <h3>Founder – KayBer, Inc.</h3>
+                    <div class="item-meta">May 2024 – Present</div>
+                    <ul>
+                        <li>Leading the development of KayBer, a real-time social platform designed to connect people instantly</li>
+                        <li>Developed multiple iterations of Edge AI model that proactively detects and bans inappropriate content</li>
+                        <li>Accepted into the MIT Sandbox Innovation Fund Program</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://kayber.com/" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-image">
+                    <!-- Add MIT logo: <img src="mit-logo.png" alt="MIT Logo"> -->
+                    MIT Logo
+                </div>
+                <div class="item-content">
+                    <h3>Undergraduate Research – Educational ML Tool</h3>
+                    <div class="item-meta">May 2023 – May 2024</div>
+                    <ul>
+                        <li>Created MacLea – an educational tool designed to teach students about machine learning</li>
+                        <li>Managing the MacLea Development Team with Professor Vincent Monardo</li>
+                        <li>Used Tensorflow, React, OpenAI's API, Pinecone, Langchain, Express, and Angular</li>
+                        <li>Featured in The Tech, MIT's newspaper</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://maclea.mit.edu/about/" target="_blank">Visit MacLea</a>
+                        <a href="https://thetech.com/2024/05/09/ml-education-in-schools" target="_blank">News Article</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-image">
+                    <!-- Add robotics image: <img src="robotics-team.jpg" alt="MIT Robotics"> -->
+                    Robotics Team
+                </div>
+                <div class="item-content">
+                    <h3>MIT Robotics Team – Computer Science Subteam</h3>
+                    <div class="item-meta">Sep 2022 – Mar 2024</div>
+                    <ul>
+                        <li>Designing algorithms and pathfinding bot strategies for Harvard Pacbot competition</li>
+                        <li>Worked with OpenCV library for object recognition and foreground identification</li>
+                        <li>Wrote compass sensor documentation and indirect location tracking methods</li>
+                        <li>Using Python with Visual Studio Code, Github Enterprise, and Git</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-image">
+                    <!-- Add research image: <img src="computer-vision.jpg" alt="Computer Vision Research"> -->
+                    CV Research
+                </div>
+                <div class="item-content">
+                    <h3>Undergraduate Research – Computer Vision</h3>
+                    <div class="item-meta">Oct 2022 – May 2023</div>
+                    <ul>
+                        <li>Researching statistical efficiency of image processing algorithm designs</li>
+                        <li>Collaborating with Professor Monardo on task-oriented image reconstruction</li>
+                        <li>Developing image reconstruction scripts using Pytorch, NumPy, and OpenCV</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-item">
+                <div class="item-image">
+                    <!-- Add Mole Maker screenshot: <img src="mole-maker.png" alt="Mole Maker Game"> -->
+                    Mole Maker Game
+                </div>
+                <div class="item-content">
+                    <h3>Mole Maker – 2D Chemistry Education Game</h3>
+                    <div class="item-meta">Mar 2025 – May 2025 | Godot, Game Design</div>
+                    <ul>
+                        <li>Developing a 2D educational game to teach chemistry concepts through interactive play</li>
+                        <li>Designed game flow, level progression, and synthesis mechanics</li>
+                        <li>Aligned with Next Generation Science Standards (NGSS) for chemistry education</li>
+                        <li>Created in collaboration with MIT's Educational Game Design course</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://kbrought.itch.io/mole-maker" target="_blank">Play Game</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-image">
+                    <!-- Add Minecraft server image: <img src="zenith-server.png" alt="ZenithServer"> -->
+                    ZenithServer
+                </div>
+                <div class="item-content">
+                    <h3>Minecraft Server – ZenithServer.net</h3>
+                    <div class="item-meta">Aug 2019 – Sep 2024 | Java, Server Management</div>
+                    <ul>
+                        <li>Worked with advertising agencies for online public listing and marketing</li>
+                        <li>Organized staff team into startup-style management structure</li>
+                        <li>Led website creation and game level design</li>
+                        <li>Programmed addons using Java and Eclipse; managed server using Filezilla FTP</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://www.zenithserver.net/" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-image">
+                    <!-- Add scissor lift image: <img src="scissor-lift.jpg" alt="Scissor Lift"> -->
+                    Scissor Lift
+                </div>
+                <div class="item-content">
+                    <h3>Scissor Lift</h3>
+                    <div class="item-meta">Jan 2020 – Mar 2020 | Mechanical Engineering, Robotics</div>
+                    <ul>
+                        <li>Designed and created scissor lift compatible with pneumatics</li>
+                        <li>Built from fully recycled parts: steel auger guides and belt doctor blade</li>
+                        <li>Collaborated with robotics team members on design and testing</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://www.youtube.com/watch?v=fcwOXB0jkIo" target="_blank">Watch Testing</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-image">
+                    <!-- Add FBLA video thumbnail: <img src="fbla-video.jpg" alt="FBLA Video"> -->
+                    FBLA Video
+                </div>
+                <div class="item-content">
+                    <h3>FBLA – Digital Video Production</h3>
+                    <div class="item-meta">Aug 2018 – Oct 2019 | Video Production, Leadership</div>
+                    <ul>
+                        <li>Competed in Digital Video Production competition through national level</li>
+                        <li>Became Vice President after recruiting new members</li>
+                        <li>Created award-winning digital video content</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://www.youtube.com/watch?v=Yk1BabtOIU8" target="_blank">Watch Video</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">XML</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">Langchain</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Ansible</span>
+                        <span class="skill-tag">Pinecone</span>
+                        <span class="skill-tag">OpenAI API</span>
+                        <span class="skill-tag">Android Studio</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Game Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Godot</span>
+                        <span class="skill-tag">Game Design</span>
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">Educational Games</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards">
+        <div class="container">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <div class="awards-grid">
+                <div class="award-item">
+                    <h3>AMC 10 First Place</h3>
+                    <p>Ranked #1 at high school for American Mathematics Competitions</p>
+                </div>
+                <div class="award-item">
+                    <h3>Governor's Honors Program</h3>
+                    <p>Finalist and attendee with major in mathematics and minor in science</p>
+                </div>
+                <div class="award-item">
+                    <h3>Georgia Certificate of Merit Award</h3>
+                    <p>Recognition for academic excellence and achievement</p>
+                </div>
+                <div class="award-item">
+                    <h3>NOCTI Certification</h3>
+                    <p>Workforce Competency Credential Job Certification in Computer Programming</p>
+                </div>
+                <div class="award-item">
+                    <h3>Microsoft Office Master Specialist</h3>
+                    <p>Certified in Word, Excel, PowerPoint, Access, and Outlook</p>
+                </div>
+                <div class="award-item">
+                    <h3>MIT Sandbox Innovation Fund</h3>
+                    <p>Accepted for KayBer Inc. development and entrepreneurship</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:kbrought@mit.edu">kbrought@mit.edu</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+19122278149">+1 (912) 227-8149</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/128912891289" target="_blank">View Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
