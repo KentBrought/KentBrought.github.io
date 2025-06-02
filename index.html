@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kent Brought - MIT Computer Science Student & Entrepreneur</title>
+    <title>Kent Brought - Portfolio Website 🤯</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -204,6 +205,32 @@
             margin-bottom: 1.5rem;
         }
 
+        .education-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .education-logo {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+        }
+
+        .logo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
         .education-header h3 {
             font-size: 1.8rem;
             color: var(--accent);
@@ -257,7 +284,18 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
             text-align: center;
+            object-fit: contain;
+            padding: 5px;
         }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+            background-color: var(--bg-secondary); 
+        }
+
 
         .item-content h3 {
             color: var(--accent);
@@ -473,6 +511,12 @@
                 align-items: flex-start;
             }
 
+            .education-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
             .hero-name {
                 font-size: clamp(3rem, 15vw, 6rem);
             }
@@ -510,8 +554,7 @@
                 <div class="profile-photo">
                     <div class="photo-container">
                         <div class="photo-placeholder">
-                            <!-- Replace with actual photo: <img src="your-photo.jpg" alt="Kent Brought" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"> -->
-                            Your Photo Here
+                            <img src="kent_photo.png" alt="Kent Brought" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -538,12 +581,17 @@
             <h2 class="section-title">Education</h2>
             <div class="education-card">
                 <div class="education-header">
-                    <div>
-                        <h3>Massachusetts Institute of Technology</h3>
-                        <div class="education-details">
-                            <p><strong>Bachelor of Science in Computer Science and Engineering</strong></p>
-                            <p>Minor in Comparative Media Studies</p>
-                            <p>Cambridge, Massachusetts</p>
+                    <div class="education-content">
+                        <div class="education-logo">
+                            <img src="mit_logo.png" alt="MIT Logo" style="width: 80px; height: 80px; object-fit: contain;">
+                        </div>
+                        <div class="education-info">
+                            <h3>Massachusetts Institute of Technology</h3>
+                            <div class="education-details">
+                                <p><strong>Bachelor of Science in Computer Science and Engineering</strong></p>
+                                <p>Minor in Comparative Media Studies</p>
+                                <p>Cambridge, Massachusetts</p>
+                            </div>
                         </div>
                     </div>
                     <div class="date">
@@ -561,8 +609,7 @@
             
             <div class="experience-item">
                 <div class="item-image">
-                    <!-- Add KayBer logo: <img src="kayber-logo.png" alt="KayBer Logo"> -->
-                    KayBer Logo
+                    <img src="kayber_logo.png" alt="KayBer Logo">
                 </div>
                 <div class="item-content">
                     <h3>Founder – KayBer, Inc.</h3>
@@ -580,8 +627,7 @@
 
             <div class="experience-item">
                 <div class="item-image">
-                    <!-- Add MIT logo: <img src="mit-logo.png" alt="MIT Logo"> -->
-                    MIT Logo
+                    <img src="maclea_logo.png" alt="MacLea Logo">
                 </div>
                 <div class="item-content">
                     <h3>Undergraduate Research – Educational ML Tool</h3>
@@ -601,8 +647,7 @@
 
             <div class="experience-item">
                 <div class="item-image">
-                    <!-- Add robotics image: <img src="robotics-team.jpg" alt="MIT Robotics"> -->
-                    Robotics Team
+                    <img src="robotics_logo.png" alt="MIT Robotics">
                 </div>
                 <div class="item-content">
                     <h3>MIT Robotics Team – Computer Science Subteam</h3>
@@ -618,8 +663,7 @@
 
             <div class="experience-item">
                 <div class="item-image">
-                    <!-- Add research image: <img src="computer-vision.jpg" alt="Computer Vision Research"> -->
-                    CV Research
+                    <img src="urop_logo.png" alt="Computer Vision Research">
                 </div>
                 <div class="item-content">
                     <h3>Undergraduate Research – Computer Vision</h3>
@@ -641,8 +685,7 @@
             
             <div class="project-item">
                 <div class="item-image">
-                    <!-- Add Mole Maker screenshot: <img src="mole-maker.png" alt="Mole Maker Game"> -->
-                    Mole Maker Game
+                    <img src="mole_maker_logo.png" alt="Mole Maker Game">
                 </div>
                 <div class="item-content">
                     <h3>Mole Maker – 2D Chemistry Education Game</h3>
@@ -661,8 +704,7 @@
 
             <div class="project-item">
                 <div class="item-image">
-                    <!-- Add Minecraft server image: <img src="zenith-server.png" alt="ZenithServer"> -->
-                    ZenithServer
+                    <img src="zenith_logo.png" alt="ZenithServer">
                 </div>
                 <div class="item-content">
                     <h3>Minecraft Server – ZenithServer.net</h3>
@@ -681,8 +723,17 @@
 
             <div class="project-item">
                 <div class="item-image">
-                    <!-- Add scissor lift image: <img src="scissor-lift.jpg" alt="Scissor Lift"> -->
-                    Scissor Lift
+                    <!-- YouTube embed for Scissor Lift testing video -->
+                    <iframe 
+                        width="100%" 
+                        height="150" 
+                        src="https://www.youtube.com/embed/fcwOXB0jkIo" 
+                        title="Scissor Lift Testing" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="border-radius: 10px;">
+                    </iframe>
                 </div>
                 <div class="item-content">
                     <h3>Scissor Lift</h3>
@@ -693,15 +744,24 @@
                         <li>Collaborated with robotics team members on design and testing</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://www.youtube.com/watch?v=fcwOXB0jkIo" target="_blank">Watch Testing</a>
+                        <a href="https://www.youtube.com/watch?v=fcwOXB0jkIo" target="_blank">Watch on YouTube</a>
                     </div>
                 </div>
             </div>
 
             <div class="project-item">
                 <div class="item-image">
-                    <!-- Add FBLA video thumbnail: <img src="fbla-video.jpg" alt="FBLA Video"> -->
-                    FBLA Video
+                    <!-- YouTube embed for FBLA Digital Video Production -->
+                    <iframe 
+                        width="100%" 
+                        height="150" 
+                        src="https://www.youtube.com/embed/Yk1BabtOIU8" 
+                        title="FBLA Digital Video Production" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="border-radius: 10px;">
+                    </iframe>
                 </div>
                 <div class="item-content">
                     <h3>FBLA – Digital Video Production</h3>
@@ -712,7 +772,7 @@
                         <li>Created award-winning digital video content</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://www.youtube.com/watch?v=Yk1BabtOIU8" target="_blank">Watch Video</a>
+                        <a href="https://www.youtube.com/watch?v=Yk1BabtOIU8" target="_blank">Watch on YouTube</a>
                     </div>
                 </div>
             </div>
