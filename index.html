@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kent Brought - Portfolio Website 🤯</title>
+    <title>Kent Brought - Software Developer & Entrepreneur</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -570,6 +570,26 @@
             display: flex;
             gap: 0.5rem;
         }
+
+        .project-item.video1 {
+            grid-template-columns: 50% 1fr;
+        }
+
+        .project-item.video2 {
+            grid-template-columns: 1fr 50%;
+        }
+
+        .project-item.video .item-image {
+            width: 100%;
+            height: auto; 
+        }
+
+        .project-item.video iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            height: auto;
+        }
+
 
 
         .visual-grid {
@@ -1320,12 +1340,12 @@
                 </div>
             </div>
 
-            <div class="project-item">
+            <div class="project-item video1">
                 <div class="item-image">
                     <!-- YouTube embed for Scissor Lift testing video -->
                     <iframe 
                         width="100%" 
-                        height="150" 
+                        height="100%" 
                         src="https://www.youtube.com/embed/fcwOXB0jkIo" 
                         title="Scissor Lift Testing" 
                         frameborder="0" 
@@ -1355,12 +1375,12 @@
                 </div>
             </div>
 
-            <div class="project-item">
+            <div class="project-item video2">
                 <div class="item-image">
                     <!-- YouTube embed for FBLA Digital Video Production -->
                     <iframe 
                         width="100%" 
-                        height="150" 
+                        height="100%" 
                         src="https://www.youtube.com/embed/Yk1BabtOIU8" 
                         title="FBLA Digital Video Production" 
                         frameborder="0" 
