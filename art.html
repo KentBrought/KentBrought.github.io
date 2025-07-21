@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kent Brought - Art & Assets</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0b0c1a;
+            --bg-secondary: #1a1b2e;
+            --text-primary: #f4f4f4;
+            --text-secondary: #b0b3c5;
+            --accent: #ffd95c;
+            --accent-hover: #f4b400;
+            --card-bg: rgba(26, 27, 46, 0.8);
+            --glow: rgba(255, 217, 92, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        /* Art Catalog */
+        .art-catalog {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        /* Search Bar */
+        .search-bar {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 50%;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            border: 2px solid var(--accent);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 15px var(--glow);
+        }
+
+        /* Art Grid */
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .art-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .art-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 217, 92, 0.1);
+        }
+
+        .art-item-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            background: var(--bg-secondary);
+        }
+
+        .art-item-content {
+            padding: 1.5rem;
+        }
+
+        .art-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .art-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-label {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Modal (Popup) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 80vw;
+            max-height: 80vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: var(--text-primary);
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .modal h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            color: var(--text-secondary);
+        }
+
+        footer {
+            background: var(--bg-primary);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 217, 92, 0.1);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-hover);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </header>
+
+    <section class="art-catalog">
+        <div class="container">
+            <h2 class="section-title">Art & Assets Catalog</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-top: -2rem; margin-bottom: 3rem; font-size: 1.1rem;">
+                These are just some of my favorites.
+            </p>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" class="search-input" onkeyup="filterArt()" placeholder="Search by character or keyword...">
+            </div>
+
+            <div class="art-grid" id="artGrid">
+
+                <div class="art-item" data-title="Mole Maker Logo" data-description="Logo design for the educational chemistry game, Mole Maker." data-category="UI/UX" data-image="art/molemakerlogo.png">
+                    <img src="art/molemakerlogo.png" alt="Mole Maker Logo" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Mole Maker Logo</h3>
+                        <p>Logo design for the educational chemistry game, Mole Maker.</p>
+                        <span class="category-label">UI/UX</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Mole Maker Synthesis Station" data-description="The main crafting interface for combining atoms in Mole Maker." data-category="UI/UX" data-image="art/synthesisstationbg.png">
+                    <img src="art/synthesisstationbg.png" alt="Mole Maker Synthesis Station" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Mole Maker Synthesis Station</h3>
+                        <p>The main crafting interface for combining atoms in Mole Maker.</p>
+                        <span class="category-label">UI/UX</span>
+                    </div>
+                </div>
+                
+                <div class="art-item" data-title="Mole Maker Atom Assembler Wireframe" data-description="Early wireframe for the atom assembly UI." data-category="Wireframe" data-image="art/atomassemblerwireframe.png">
+                    <img src="art/atomassemblerwireframe.png" alt="Mole Maker Wireframe" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Atom Assembler Wireframe</h3>
+                        <p>Early wireframe for the atom assembly UI.</p>
+                        <span class="category-label">Wireframe</span>
+                    </div>
+                </div>
+                
+                <div class="art-item" data-title="Lab Level Background" data-description="Background art for one of the main lab levels in Mole Maker." data-category="Asset" data-image="art/lablevelbackground.png">
+                    <img src="art/lablevelbackground.png" alt="Lab Level Background" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Lab Level Background</h3>
+                        <p>Background art for one of the main lab levels in Mole Maker.</p>
+                        <span class="category-label">Asset</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Mole NPC 1" data-description="A friendly mole non-player character." data-category="Character" data-image="art/molenpc1.png">
+                    <img src="art/molenpc1.png" alt="Mole NPC 1" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Mole NPC 1</h3>
+                        <p>A friendly mole non-player character.</p>
+                        <span class="category-label">Character</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Mole NPC with Soap" data-description="A mole NPC holding a bar of soap, for a special quest." data-category="Character" data-image="art/molenpcsoap.png">
+                    <img src="art/molenpcsoap.png" alt="Mole NPC with Soap" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Mole NPC with Soap</h3>
+                        <p>A mole NPC holding a bar of soap, for a special quest.</p>
+                        <span class="category-label">Character</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Mole NPC with Firework" data-description="A mole NPC celebrating with a firework." data-category="Character" data-image="art/molenpcfirework.png">
+                    <img src="art/molenpcfirework.png" alt="Mole NPC with Firework" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Mole NPC with Firework</h3>
+                        <p>A mole NPC celebrating with a firework.</p>
+                        <span class="category-label">Character</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Bond Busters Logo" data-description="Logo for the 'Bond Busters' card game, inspired by Bomb Busters." data-category="UI/UX" data-image="art/bondbusterslogo.png">
+                    <img src="art/bondbusterslogo.png" alt="Bond Busters Logo" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters Logo</h3>
+                        <p>Logo for the 'Bond Busters' card game, inspired by Bomb Busters.</p>
+                        <span class="category-label">UI/UX</span>
+                    </div>
+                </div>
+                
+                <div class="art-item" data-title="Bond Buster Card - Back" data-description="The reverse side of a Bond Busters card." data-category="Asset" data-image="art/bbback.png">
+                    <img src="art/bbback.png" alt="Bond Buster Card - Back" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Buster Card - Back</h3>
+                        <p>The reverse side of a Bond Busters card.</p>
+                        <span class="category-label">Asset</span>
+                    </div>
+                </div>
+                
+                <div class="art-item" data-title="Bond Busters: Captain Card" data-description="A captain card design for the Bond Busters game, featuring a confident Shiba character with lab gear." data-category="Character" data-image="art/bb1.png">
+                    <img src="art/bb1.png" alt="Bond Busters: Captain Card" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Captain Card</h3>
+                        <p>A captain card design for the Bond Busters game, featuring a confident Shiba character with lab gear.</p>
+                        <span class="category-label">Character</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Bond Busters: Captain Card (No Frame)" data-description="Frameless asset version of the Bond Busters captain card for in-game use." data-category="Asset" data-image="art/bb1asset.png">
+                    <img src="art/bb1asset.png" alt="Bond Busters: Captain Card (No Frame)" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Captain Card (No Frame)</h3>
+                        <p>Frameless asset version of the Bond Busters captain card for in-game use.</p>
+                        <span class="category-label">Asset</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="Bond Busters: Explosive Bear Card" data-description="A character card featuring a bear chemist mid-experiment, surrounded by bubbling equipment." data-category="Character" data-image="art/bb2.png">
+                    <img src="art/bb2.png" alt="Bond Busters: Explosive Bear Card" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Explosive Bear Card</h3>
+                        <p>A character card featuring a bear chemist mid-experiment, surrounded by bubbling equipment.</p>
+                        <span class="category-label">Character</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Bond Busters: Explosive Bear (No Frame)" data-description="Frameless version of the Bond Busters bear character card." data-category="Asset" data-image="art/bb2asset.png">
+                    <img src="art/bb2asset.png" alt="Bond Busters: Explosive Bear (No Frame)" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Explosive Bear (No Frame)</h3>
+                        <p>Frameless version of the Bond Busters bear character card.</p>
+                        <span class="category-label">Asset</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="Bond Busters: Dual-Wielder Card" data-description="A character card showing a fast-moving cat with a chemistry pipette, ready to react." data-category="Character" data-image="art/bb3.png">
+                    <img src="art/bb3.png" alt="Bond Busters: Dual-Wielder Card" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Dual-Wielder Card</h3>
+                        <p>A character card showing a fast-moving cat with a chemistry pipette, ready to react.</p>
+                        <span class="category-label">Character</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Bond Busters: Dual-Wielder (No Frame)" data-description="Frameless version of the cat character from Bond Busters." data-category="Asset" data-image="art/bb3asset.png">
+                    <img src="art/bb3asset.png" alt="Bond Busters: Dual-Wielder (No Frame)" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Dual-Wielder (No Frame)</h3>
+                        <p>Frameless version of the cat character from Bond Busters.</p>
+                        <span class="category-label">Asset</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="Bond Busters: Cool Bunny Card" data-description="A bunny scientist character card for Bond Busters, with stylish goggles and a confident pose." data-category="Character" data-image="art/bb4.png">
+                    <img src="art/bb4.png" alt="Bond Busters: Cool Bunny Card" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Cool Bunny Card</h3>
+                        <p>A bunny scientist character card for Bond Busters, with stylish goggles and a confident pose.</p>
+                        <span class="category-label">Character</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Bond Busters: Cool Bunny (No Frame)" data-description="Frameless asset of the bunny scientist character." data-category="Asset" data-image="art/bb4asset.png">
+                    <img src="art/bb4asset.png" alt="Bond Busters: Cool Bunny (No Frame)" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Cool Bunny (No Frame)</h3>
+                        <p>Frameless asset of the bunny scientist character.</p>
+                        <span class="category-label">Asset</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="Bond Busters: Investigator Bunny Card" data-description="Detective-style bunny card with sunglasses and magnifying glass for Bond Busters." data-category="Character" data-image="art/bb5.png">
+                    <img src="art/bb5.png" alt="Bond Busters: Investigator Bunny Card" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Investigator Bunny Card</h3>
+                        <p>Detective-style bunny card with sunglasses and magnifying glass for Bond Busters.</p>
+                        <span class="category-label">Character</span>
+                    </div>
+                </div>
+
+                <div class="art-item" data-title="Bond Busters: Investigator Bunny (No Frame)" data-description="Frameless asset of the detective bunny character from Bond Busters." data-category="Asset" data-image="art/bb5asset.png">
+                    <img src="art/bb5asset.png" alt="Bond Busters: Investigator Bunny (No Frame)" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Bond Busters: Investigator Bunny (No Frame)</h3>
+                        <p>Frameless asset of the detective bunny character from Bond Busters.</p>
+                        <span class="category-label">Asset</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="KayBer Badge – Millionaire" data-description="Earned by users who accumulate 1 million KayBits through platform activity." data-category="Badge" data-image="art/millionaire.png">
+                    <img src="art/millionaire.png" alt="Badge – Millionaire" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>KayBer Badge – Millionaire</h3>
+                        <p>Given to users who earn 1M+ KayBits through posts, activity, and engagement.</p>
+                        <span class="category-label">Badge</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="KayBer Badge – Pioneer" data-description="Given to early users and testers of the KayBer platform." data-category="Badge" data-image="art/pioneer.png">
+                    <img src="art/pioneer.png" alt="Badge – Pioneer" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>KayBer Badge – Pioneer</h3>
+                        <p>Special badge to honor early adopters and contributors during the beta phase.</p>
+                        <span class="category-label">Badge</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="KayBer Badge – Well-Liked" data-description="Awarded to users who receive high engagement on their posts in KayBer." data-category="Badge" data-image="art/well-liked.png">
+                    <img src="art/well-liked.png" alt="Badge – Well-Liked" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>KayBer Badge – Well-Liked</h3>
+                        <p>Awarded to users whose posts receive a high number of likes and positive feedback.</p>
+                        <span class="category-label">Badge</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="KayBer Empty State – 404 Not Found" data-description="A playful 404 error page illustration featuring a bear explorer with a lantern and signpost." data-category="Empty State" data-image="art/404.png">
+                    <img src="art/404.png" alt="404 Not Found" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>KayBer Empty State – 404 Not Found</h3>
+                        <p>Used for unknown or broken routes in the app or website with a bear explorer design.</p>
+                        <span class="category-label">Empty State</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="KayBer Empty State – History" data-description="Empty state for the 'History' page when a user has not interacted with anyone yet." data-category="Empty State" data-image="art/history.png">
+                    <img src="art/history.png" alt="Empty State – History" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>KayBer Empty State – History</h3>
+                        <p>Appears when the history page has no call records or message logs yet.</p>
+                        <span class="category-label">Empty State</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="KayBer Empty State – Home" data-description="Art used when the Home feed has no content to show yet, often for new users." data-category="Empty State" data-image="art/home.png">
+                    <img src="art/home.png" alt="Empty State – Home" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>KayBer Empty State – Home</h3>
+                        <p>Displayed when the user's Home feed is empty, typically during onboarding.</p>
+                        <span class="category-label">Empty State</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="KayBer Empty State – Friends" data-description="Empty state image used when a user has no added friends yet in the app." data-category="Empty State" data-image="art/friends.png">
+                    <img src="art/friends.png" alt="Empty State – Friends" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>KayBer Empty State – Friends</h3>
+                        <p>Used when the friends list is empty to encourage users to connect with others.</p>
+                        <span class="category-label">Empty State</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="KayBer Badge – Team Member" data-description="A badge given to official KayBer contributors and team members." data-category="Badge" data-image="art/teammember.png">
+                    <img src="art/teammember.png" alt="Badge – Team Member" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>KayBer Badge – Team Member</h3>
+                        <p>A badge given to official KayBer contributors and team members.</p>
+                        <span class="category-label">Badge</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="MacLea Poster – Teach Kids ML" data-description="Promotional poster created to showcase MacLea’s mission of teaching machine learning to elementary school students." data-category="Poster" data-image="art/Poster1.png">
+                    <img src="art/Poster1.png" alt="MacLea Poster – Teach Kids ML" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>MacLea Poster – Teach Kids ML</h3>
+                        <p>Promotional poster created to showcase MacLea’s mission of teaching machine learning to elementary school students.</p>
+                        <span class="category-label">Poster</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="MacLea Poster – AI Made Easy" data-description="Poster encouraging viewers to explore how MacLea makes artificial intelligence accessible for everyone." data-category="Poster" data-image="art/Poster2.png">
+                    <img src="art/Poster2.png" alt="MacLea Poster – AI Made Easy" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>MacLea Poster – AI Made Easy</h3>
+                        <p>Poster encouraging viewers to explore how MacLea makes artificial intelligence accessible for everyone.</p>
+                        <span class="category-label">Poster</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="MacLea Poster – Learning by Doing" data-description="Poster designed to promote hands-on learning in machine learning through the MacLea tool." data-category="Poster" data-image="art/Poster3.png">
+                    <img src="art/Poster3.png" alt="MacLea Poster – Learning by Doing" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>MacLea Poster – Learning by Doing</h3>
+                        <p>Poster designed to promote hands-on learning in machine learning through the MacLea tool.</p>
+                        <span class="category-label">Poster</span>
+                    </div>
+                </div>
+                <div class="art-item" data-title="Mole Maker – Blueprint Lab Background" data-description="Background art for Mole Maker’s lab interface where players assemble molecules using chemistry tools." data-category="Asset" data-image="art/moleculemakerbg.png">
+                    <img src="art/moleculemakerbg.png" alt="Mole Maker Lab Background" class="art-item-image">
+                    <div class="art-item-content">
+                        <h3>Mole Maker – Blueprint Lab Background</h3>
+                        <p>Background art for Mole Maker’s lab interface where players assemble molecules using chemistry tools.</p>
+                        <span class="category-label">Asset</span>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Kent Brought. <a href="https://github.com/KentBrought/KentBrought.github.io" target="_blank">View Source Code</a></p>
+        </div>
+    </footer>
+
+    <div id="artModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img id="modalImage" src="" alt="Enlarged Art" class="modal-image">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        // Filter art items based on search input
+        function filterArt() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const grid = document.getElementById('artGrid');
+            const items = grid.getElementsByClassName('art-item');
+
+            for (let i = 0; i < items.length; i++) {
+                const title = items[i].getAttribute('data-title');
+                const description = items[i].getAttribute('data-description');
+                const category = items[i].getAttribute('data-category');
+                const text = title + description + category;
+                
+                if (text.toUpperCase().indexOf(filter) > -1) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+
+        // Modal functionality
+        const modal = document.getElementById('artModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const closeBtn = document.querySelector('.close-btn');
+
+        document.querySelectorAll('.art-item').forEach(item => {
+            item.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImage.src = item.getAttribute('data-image');
+                modalTitle.textContent = item.getAttribute('data-title');
+                modalDescription.textContent = item.getAttribute('data-description');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

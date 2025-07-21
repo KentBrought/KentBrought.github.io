@@ -576,7 +576,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
         }
 
         .visual-item {
@@ -593,13 +593,14 @@
 
         .visual-item img {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            height: 150px;
+            object-fit: contain;
             background: var(--bg-secondary);
         }
 
         .visual-caption {
             padding: 1.5rem;
+            padding-bottom: 0;
         }
 
         .visual-caption h3 {
@@ -1154,6 +1155,13 @@
                     <div class="project-links">
                         <a href="https://maclea.mit.edu/about/" target="_blank">
                             Visit Hyades
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="experience-item">
@@ -1175,9 +1183,28 @@
         </div>
     </section>
 
+    <!-- Visual Work Section --> 
+    <section class="visual-work">
+        <div class="container">
+            <h2 class="section-title">Visual Work</h2>
+            <div class="visual-card">
+                <div class="visual-grid">
+                    <div class="visual-item">
+                        <img src="art/molemakerlogo.png" alt="Game UI & Branding">
                         <div class="visual-caption">
-                            <h3>Project Title Three</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>
+                            <h3>Game Assets & UI</h3>
+                        </div>
+                    </div>
+                    <div class="visual-item">
+                        <img src="art/bb1.png" alt="Character & Card Art">
+                        <div class="visual-caption">
+                            <h3>Characters & Cards</h3>
+                        </div>
+                    </div>
+                    <div class="visual-item">
+                        <img src="art/404.png" alt="Empty States & Micro-UI">
+                        <div class="visual-caption">
+                            <h3>KayBer Icons</h3>
                         </div>
                     </div>
                 </div>
@@ -1188,6 +1215,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Projects Section -->
     <section class="projects">
