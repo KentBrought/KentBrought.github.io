@@ -7,7 +7,7 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -42,10 +42,25 @@
             justify-content: center;
             position: relative;
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            overflow: hidden;
+        }
+
+        /* Background placeholder image */
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url('hero-background-placeholder.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
         }
 
         .hero-name {
-            font-family: 'Anton', sans-serif;
+            font-family: 'Archivo Black', sans-serif;
             font-size: clamp(4rem, 12vw, 10rem);
             font-weight: 400;
             letter-spacing: 0.1em;
@@ -55,20 +70,86 @@
                 0 0 20px var(--glow),
                 0 5px 10px rgba(0, 0, 0, 0.5),
                 0 10px 20px rgba(0, 0, 0, 0.3);
-            animation: heroFadeIn 2s ease-out;
+            animation: heroFadeIn 2s ease-out, textStyleCycle 10s infinite;
             position: relative;
+            z-index: 2;
         }
 
-        .hero-name::after {
-            content: '';
+        @keyframes textStyleCycle {
+            0%, 100% { 
+                font-weight: 400; 
+                text-decoration: none;
+                font-style: normal;
+                text-transform: none;
+            }
+            16% { 
+                font-weight: 900;
+                text-decoration: none;
+                font-style: normal;
+                text-transform: none;
+            }
+            33% { 
+                font-weight: 400;
+                text-decoration: underline;
+                font-style: normal;
+                text-transform: none;
+            }
+            50% { 
+                font-weight: 400;
+                text-decoration: none;
+                font-style: italic;
+                text-transform: none;
+            }
+            66% { 
+                font-weight: 400;
+                text-decoration: none;
+                font-style: normal;
+                text-transform: uppercase;
+            }
+            83% { 
+                font-weight: 400;
+                text-decoration: none;
+                font-style: normal;
+                text-transform: lowercase;
+            }
+        }
+
+        /* Social Media Icons */
+        .social-links {
             position: absolute;
-            bottom: -20px;
+            bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            animation: glowPulse 3s ease-in-out infinite;
+            display: flex;
+            gap: 1.5rem;
+            z-index: 2;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 217, 92, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 217, 92, 0.3);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         @keyframes heroFadeIn {
@@ -120,8 +201,22 @@
             background: linear-gradient(45deg, var(--accent), var(--accent-hover));
             padding: 4px;
             position: relative;
-            animation: photoRotate 20s linear infinite;
+            animation: photoRotate 50s linear infinite;
+            transition: animation-play-state 0.3s ease;
         }
+
+        .photo-container {
+            animation: photoRotate 50s linear infinite;
+            transform-origin: center center;
+            transition: transform 0.5s ease;
+        }
+
+        .about:hover .photo-container {
+            animation: none;       /* kill the spin instantly */
+            transform: rotate(0deg);
+        }
+
+
 
         .photo-placeholder {
             width: 100%;
@@ -188,6 +283,27 @@
         /* Education Section */
         .education {
             background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('education-background.jpeg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .education .container {
+            position: relative;
+            z-index: 2;
         }
 
         .education-card {
@@ -258,6 +374,7 @@
             padding: 2rem;
             border: 1px solid rgba(255, 217, 92, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
 
         .experience-item:hover, .project-item:hover {
@@ -275,7 +392,7 @@
 
         .item-image {
             width: 100%;
-            height: 150px;
+            height: 100%;
             background: var(--bg-secondary);
             border-radius: 10px;
             display: flex;
@@ -286,6 +403,8 @@
             text-align: center;
             object-fit: contain;
             padding: 5px;
+            position: relative;
+            overflow: hidden;
         }
 
         .item-image img {
@@ -293,9 +412,32 @@
             height: 100%;
             object-fit: contain;
             border-radius: 10px;
-            background-color: var(--bg-secondary); 
+            background-color: var(--bg-secondary);
+            transition: opacity 0.3s ease;
         }
 
+        .item-image .hover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+        }
+
+        .experience-item:hover .item-image img:not(.hover-image),
+        .project-item:hover .item-image img:not(.hover-image) {
+            opacity: 0;
+        }
+
+        .experience-item:hover .item-image .hover-image,
+        .project-item:hover .item-image .hover-image {
+            opacity: 1;
+        }
 
         .item-content h3 {
             color: var(--accent);
@@ -330,7 +472,19 @@
 
         .project-links {
             margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+
+        .external-link-icon {
+            width: 1em;
+            height: 1em;
+            margin-left: 0.25em;
+            vertical-align: text-bottom;
+            fill: currentColor;
+        }
+
 
         .project-links a {
             display: inline-block;
@@ -339,7 +493,6 @@
             color: var(--bg-primary);
             text-decoration: none;
             border-radius: 5px;
-            margin-right: 1rem;
             font-weight: 500;
             transition: background 0.3s ease;
         }
@@ -348,15 +501,165 @@
             background: var(--accent-hover);
         }
 
-        /* Skills Section */
-        .skills {
-            background: var(--bg-secondary);
+        .project-links .social-btn {
+            width: 35px;
+            height: 35px;
+            padding: 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .skills-grid {
+        .project-links .social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--bg-primary);
+        }
+
+        /* Show More Button */
+        .show-more-btn {
+            display: inline-block;
+            margin: 2rem auto;
+            padding: 0.75rem 2rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 200px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .show-more-btn:hover {
+            background: var(--accent-hover);
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        .show-more-btn.hidden {
+            display: none;
+        }
+
+        .hidden-experiences {
+            display: none;
+        }
+
+        .hidden-experiences.show {
+            display: block;
+        }
+
+        /* Visual Work Section */
+        .visual-work {
+            background: var(--bg-primary);
+        }
+
+        .project-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            /* push the entire icon‑group to the right */
+        .project-links .social-wrapper {
+            margin-left: auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+
+        .visual-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .visual-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .visual-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 217, 92, 0.1);
+        }
+
+        .visual-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: var(--bg-secondary);
+        }
+
+        .visual-caption {
+            padding: 1.5rem;
+        }
+
+        .visual-caption h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .visual-caption p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .view-more-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .view-more-visual:hover {
+            background: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        /* Skills Section with Carousel */
+        .skills {
+            background: var(--bg-secondary);
+            overflow: hidden;
+        }
+
+        .skills-carousel {
+            position: relative;
+            height: 400px;
+            margin: 2rem 0;
+        }
+
+        .skills-track {
+            display: flex;
+            gap: 2rem;
+            animation: carouselScroll 30s linear infinite;
+        }
+
+        @keyframes carouselScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .skill-category {
@@ -364,6 +667,12 @@
             border-radius: 15px;
             padding: 2rem;
             border: 1px solid rgba(255, 217, 92, 0.1);
+            min-width: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: scale(1.05);
         }
 
         .skill-category h3 {
@@ -392,7 +701,12 @@
             transform: scale(1.05);
         }
 
-        /* Awards Section */
+        /* Awards Section with Confetti */
+        .awards {
+            position: relative;
+            overflow: hidden;
+        }
+
         .awards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -405,10 +719,30 @@
             border-radius: 10px;
             border-left: 4px solid var(--accent);
             transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .award-item:hover {
             transform: translateX(5px);
+        }
+
+        .award-item:hover::before {
+            content: '🎉';
+            position: absolute;
+            animation: confetti 1s ease-out;
+            font-size: 2rem;
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         .award-item h3 {
@@ -422,65 +756,40 @@
             font-size: 0.9rem;
         }
 
-        /* Contact Section */
-        .contact {
-            background: var(--bg-secondary);
-            padding: 4rem 0 6rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-item {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
+        /* Footer */
+        footer {
+            background: var(--bg-primary);
+            padding: 2rem 0;
             text-align: center;
-            border: 1px solid rgba(255, 217, 92, 0.1);
-            transition: transform 0.3s ease;
+            border-top: 1px solid rgba(255, 217, 92, 0.1);
         }
 
-        .contact-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: var(--bg-primary);
-        }
-
-        .contact-item h3 {
+        footer a {
             color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item a {
-            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .contact-item a:hover {
-            color: var(--accent);
+        footer a:hover {
+            color: var(--accent-hover);
         }
+
+        .visual-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,217,92,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 padding: 0 1rem;
+            }
+
+            .hero-name::after {
+                bottom: -60px;
             }
 
             .about-content {
@@ -520,6 +829,19 @@
             .hero-name {
                 font-size: clamp(3rem, 15vw, 6rem);
             }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 35px;
+                height: 35px;
+            }
+
+            .skill-category {
+                min-width: 300px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -538,13 +860,50 @@
             .section-title {
                 font-size: 2rem;
             }
+
+            .hero-name::after {
+                bottom: -80px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-background"></div>
         <h1 class="hero-name">KENT</h1>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@KentBrought?sub_confirmation=1" class="social-link" title="YouTube">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                </svg>
+            </a>
+            <a href="https://www.tiktok.com/@kentbrought0" class="social-link" title="TikTok">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/kent-brought/" class="social-link" title="LinkedIn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+            </a>
+            <a href="https://www.reddit.com/user/128912891289/" class="social-link" title="Reddit">
+                <svg viewBox="0 0 24 24">
+                    <path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-.797.793-2.048 1.179-3.824 1.179l-.013-.003-.013.003c-1.777 0-3.028-.386-3.824-1.179-.145-.144-.145-.379 0-.523.145-.145.381-.145.526 0 .65.647 1.729.961 3.298.961l.013.003.013-.003c1.569 0 2.648-.315 3.298-.962.145-.145.381-.144.526 0 .145.145.145.379 0 .524zm-.189-3.095c-.872 0-1.581-.706-1.581-1.574 0-.868.709-1.575 1.581-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/KentBrought" class="social-link" title="X">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/KentBrought" class="social-link" title="GitHub">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+        </div>
     </section>
 
     <!-- About Section -->
@@ -562,13 +921,14 @@
                     <h2>About Me</h2>
                     <p>
                         I'm a Computer Science and Engineering student at MIT with a minor in Comparative Media Studies, 
-                        expected to graduate in May 2026. As the founder of KayBer Inc., I'm passionate about creating 
-                        innovative social platforms that connect people instantly through real-time technology.
+                        expected to graduate in May 2026. I'm passionate about building innovative technologies that 
+                        create meaningful connections between people and enhance educational experiences.
                     </p>
                     <p>
-                        My experience spans from developing educational machine learning tools for elementary students 
-                        to leading robotics teams and creating engaging digital experiences. I thrive at the intersection 
-                        of technology, education, and entrepreneurship.
+                        My work focuses on developing real-time applications, educational tools, and interactive digital 
+                        experiences that push the boundaries of what's possible. I thrive at the intersection of 
+                        technology, creativity, and entrepreneurship, always looking for new ways to solve complex 
+                        problems and create impactful solutions.
                     </p>
                 </div>
             </div>
@@ -609,7 +969,41 @@
             
             <div class="experience-item">
                 <div class="item-image">
+                    <img src="yapclap_logo.png" alt="YapClap Logo">
+                    <img src="yapclap_screenshot.png" alt="YapClap Screenshot" class="hover-image">
+                </div>
+                <div class="item-content">
+                    <h3>Founder – YapClap.com</h3>
+                    <div class="item-meta">Jun 2024 – Present</div>
+                    <ul>
+                        <li>Building an innovative platform for real-time interactions and engagement</li>
+                        <li>Developing scalable backend infrastructure and intuitive user interfaces</li>
+                        <li>Implementing cutting-edge features for enhanced user experience</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://yapclap.com/" target="_blank" rel="noopener noreferrer">
+                            Visit Website
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <div class="social-wrapper">
+                            <a href="https://www.youtube.com/@YapClapSocial" class="social-btn" title="YouTube Channel">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-image">
                     <img src="kayber_logo.png" alt="KayBer Logo">
+                    <img src="kayber_screenshot.png" alt="KayBer Screenshot" class="hover-image">
                 </div>
                 <div class="item-content">
                     <h3>Founder – KayBer, Inc.</h3>
@@ -620,7 +1014,42 @@
                         <li>Accepted into the MIT Sandbox Innovation Fund Program</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://kayber.com/" target="_blank">Visit Website</a>
+                        <a href="https://kayber.com/" target="_blank">
+                            Visit Website
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://apps.apple.com/us/app/kayber/id6670231752" target="_blank">
+                            Visit App Store
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.kaybermobile" target="_blank">
+                            Visit Play Store
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <div class="social-wrapper">
+                            <a href="#" class="social-btn" title="YouTube">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-btn" title="TikTok">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -628,6 +1057,7 @@
             <div class="experience-item">
                 <div class="item-image">
                     <img src="maclea_logo.png" alt="MacLea Logo">
+                    <img src="maclea_screenshot.png" alt="MacLea Screenshot" class="hover-image">
                 </div>
                 <div class="item-content">
                     <h3>Undergraduate Research – Educational ML Tool</h3>
@@ -639,40 +1069,108 @@
                         <li>Featured in The Tech, MIT's newspaper</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://maclea.mit.edu/about/" target="_blank">Visit MacLea</a>
-                        <a href="https://thetech.com/2024/05/09/ml-education-in-schools" target="_blank">News Article</a>
+                        <a href="https://maclea.mit.edu/about/" target="_blank">
+                            Visit MacLea
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://thetech.com/2024/05/09/ml-education-in-schools" target="_blank">
+                            News Article
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="experience-item">
-                <div class="item-image">
-                    <img src="robotics_logo.png" alt="MIT Robotics">
-                </div>
-                <div class="item-content">
-                    <h3>MIT Robotics Team – Computer Science Subteam</h3>
-                    <div class="item-meta">Sep 2022 – Mar 2024</div>
-                    <ul>
-                        <li>Designing algorithms and pathfinding bot strategies for Harvard Pacbot competition</li>
-                        <li>Worked with OpenCV library for object recognition and foreground identification</li>
-                        <li>Wrote compass sensor documentation and indirect location tracking methods</li>
-                        <li>Using Python with Visual Studio Code, Github Enterprise, and Git</li>
-                    </ul>
-                </div>
-            </div>
+            <button class="show-more-btn" onclick="toggleMoreExperiences()">Show More</button>
 
-            <div class="experience-item">
-                <div class="item-image">
-                    <img src="urop_logo.png" alt="Computer Vision Research">
+            <div class="hidden-experiences" id="moreExperiences">
+                <div class="experience-item">
+                    <div class="item-image">
+                        <img src="robotics_logo.png" alt="MIT Robotics">
+                        <img src="robotics_screenshot.gif" alt="Robotics Screenshot" class="hover-image">
+                    </div>
+                    <div class="item-content">
+                        <h3>MIT Robotics Team – Computer Science Subteam</h3>
+                        <div class="item-meta">Sep 2022 – Mar 2024</div>
+                        <ul>
+                            <li>Designing algorithms and pathfinding bot strategies for Harvard Pacbot competition</li>
+                            <li>Worked with OpenCV library for object recognition and foreground identification</li>
+                            <li>Wrote compass sensor documentation and indirect location tracking methods</li>
+                            <li>Using Python with Visual Studio Code, Github Enterprise, and Git</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="item-content">
-                    <h3>Undergraduate Research – Computer Vision</h3>
-                    <div class="item-meta">Oct 2022 – May 2023</div>
-                    <ul>
-                        <li>Researching statistical efficiency of image processing algorithm designs</li>
-                        <li>Collaborating with Professor Monardo on task-oriented image reconstruction</li>
-                        <li>Developing image reconstruction scripts using Pytorch, NumPy, and OpenCV</li>
-                    </ul>
+
+                <div class="experience-item">
+                    <div class="item-image">
+                        <img src="urop_logo.png" alt="Computer Vision Research">
+                        <img src="urop_photo.png" alt="UROP Photo" class="hover-image">
+                    </div>
+                    <div class="item-content">
+                        <h3>Undergraduate Research – Computer Vision</h3>
+                        <div class="item-meta">Oct 2022 – May 2023</div>
+                        <ul>
+                            <li>Researching statistical efficiency of image processing algorithm designs</li>
+                            <li>Collaborating with Professor Monardo on task-oriented image reconstruction</li>
+                            <li>Developing image reconstruction scripts using Pytorch, NumPy, and OpenCV</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-image">
+                        <img src="boe_logo.png" alt="Board of Education">
+                        <img src="boe_screenshot.jpg" alt="BOE Screenshot" class="hover-image">
+                    </div>
+                    <div class="item-content">
+                        <h3>Technology Support Specialist – Board of Education</h3>
+                        <div class="item-meta">Jun 2021 – Aug 2022</div>
+                        <ul>
+                            <li>Provided technical support for educational technology infrastructure</li>
+                            <li>Assisted with network administration and hardware troubleshooting</li>
+                            <li>Supported teachers and staff with technology integration in classrooms</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-image">
+                        <img src="hyades_logo.png" alt="Hyades">
+                        <img src="hyades_screenshot.png" alt="Hyades Screenshot" class="hover-image">
+                    </div>
+                    <div class="item-content">
+                        <h3>Software Developer – Hyades</h3>
+                        <div class="item-meta">Jan 2021 – May 2021</div>
+                        <ul>
+                            <li>Developed software solutions for data analysis and visualization</li>
+                            <li>Collaborated with team on full-stack development projects</li>
+                            <li>Implemented features using modern web technologies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-image">
+                        <img src="it_intern_logo.png" alt="IT Intern">
+                        <img src="it_intern_screenshot.png" alt="IT Intern Screenshot" class="hover-image">
+                    </div>
+                    <div class="item-content">
+                        <h3>IT Intern</h3>
+                        <div class="item-meta">Jun 2020 – Dec 2020</div>
+                        <ul>
+                            <li>Assisted with IT infrastructure maintenance and upgrades</li>
+                            <li>Provided technical support to staff and resolved hardware/software issues</li>
+                            <li>Gained hands-on experience with enterprise IT systems</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -685,7 +1183,35 @@
             
             <div class="project-item">
                 <div class="item-image">
+                    <img src="corgi_hackathon_logo.png" alt="Corgi Hackathon">
+                    <img src="corgi_hackathon_screenshot.jpeg" alt="Corgi Hackathon Screenshot" class="hover-image">
+                </div>
+                <div class="item-content">
+                    <h3>Corgi Hackathon Project</h3>
+                    <div class="item-meta">Hackathon Winner | React, Node.js, AI/ML</div>
+                    <ul>
+                        <li>Developed innovative solution during competitive hackathon event</li>
+                        <li>Implemented real-time features and machine learning algorithms</li>
+                        <li>Collaborated with team to deliver functional prototype within 24 hours</li>
+                        <li>Won recognition for creative approach and technical implementation</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/WesleyBLDC/corgi_hackathon" target="_blank">
+                            View Source Code 
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-image">
                     <img src="mole_maker_logo.png" alt="Mole Maker Game">
+                    <img src="mole_maker_screenshot.png" alt="Mole Maker Screenshot" class="hover-image">
                 </div>
                 <div class="item-content">
                     <h3>Mole Maker – 2D Chemistry Education Game</h3>
@@ -697,7 +1223,14 @@
                         <li>Created in collaboration with MIT's Educational Game Design course</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://kbrought.itch.io/mole-maker" target="_blank">Play Game</a>
+                        <a href="https://kbrought.itch.io/mole-maker" target="_blank">
+                            Play Game
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -705,6 +1238,7 @@
             <div class="project-item">
                 <div class="item-image">
                     <img src="zenith_logo.png" alt="ZenithServer">
+                    <img src="zenith_screenshot.png" alt="ZenithServer Screenshot" class="hover-image">
                 </div>
                 <div class="item-content">
                     <h3>Minecraft Server – ZenithServer.net</h3>
@@ -716,7 +1250,32 @@
                         <li>Programmed addons using Java and Eclipse; managed server using Filezilla FTP</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://www.zenithserver.net/" target="_blank">Visit Website</a>
+                        <a href="https://www.zenithserver.net/" target="_blank">
+                            Visit Website
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <div class="social-wrapper">
+                            <a href="https://www.youtube.com/@zenithservernet" class="social-btn" title="YouTube">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.tiktok.com/@zenithserver" class="social-btn" title="TikTok">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                                </svg>
+                            </a>
+                            <a href="https://discord.gg/JnX4ytH" class="social-btn" title="Discord" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                                    <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
+                                </svg>
+                            </a>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -744,7 +1303,14 @@
                         <li>Collaborated with robotics team members on design and testing</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://www.youtube.com/watch?v=fcwOXB0jkIo" target="_blank">Watch on YouTube</a>
+                        <a href="https://www.youtube.com/watch?v=fcwOXB0jkIo" target="_blank">
+                            Watch on YouTube
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -772,60 +1338,93 @@
                         <li>Created award-winning digital video content</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://www.youtube.com/watch?v=Yk1BabtOIU8" target="_blank">Watch on YouTube</a>
+                        <a href="https://www.youtube.com/watch?v=Yk1BabtOIU8" target="_blank">
+                            Watch on YouTube
+                            <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills Section with Carousel -->
     <section class="skills">
         <div class="container">
             <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">XML</span>
+            <div class="skills-carousel">
+                <div class="skills-track">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">XML</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Frameworks & Libraries</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Angular</span>
-                        <span class="skill-tag">Express</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">OpenCV</span>
-                        <span class="skill-tag">Langchain</span>
+                    <div class="skill-category">
+                        <h3>Frameworks & Libraries</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">OpenCV</span>
+                            <span class="skill-tag">Langchain</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Technologies</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">Kubernetes</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Ansible</span>
-                        <span class="skill-tag">Pinecone</span>
-                        <span class="skill-tag">OpenAI API</span>
-                        <span class="skill-tag">Android Studio</span>
+                    <div class="skill-category">
+                        <h3>Tools & Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git/GitHub</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Ansible</span>
+                            <span class="skill-tag">Pinecone</span>
+                            <span class="skill-tag">OpenAI API</span>
+                            <span class="skill-tag">Android Studio</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Game Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Godot</span>
-                        <span class="skill-tag">Game Design</span>
-                        <span class="skill-tag">Unity</span>
-                        <span class="skill-tag">Educational Games</span>
+                    <div class="skill-category">
+                        <h3>Game Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Godot</span>
+                            <span class="skill-tag">Game Design</span>
+                            <span class="skill-tag">Unity</span>
+                            <span class="skill-tag">Educational Games</span>
+                        </div>
+                    </div>
+                    <!-- Duplicate for infinite scroll -->
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">XML</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frameworks & Libraries</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">OpenCV</span>
+                            <span class="skill-tag">Langchain</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -865,28 +1464,26 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact">
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <a href="mailto:kbrought@mit.edu">kbrought@mit.edu</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📱</div>
-                    <h3>Phone</h3>
-                    <a href="tel:+19122278149">+1 (912) 227-8149</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">💻</div>
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/128912891289" target="_blank">View Projects</a>
-                </div>
-            </div>
+            <p>&copy; 2025 Kent Brought. <a href="https://github.com/KentBrought/KentBrought.github.io" target="_blank">View Source Code</a></p>
         </div>
-    </section>
+    </footer>
+
+    <script>
+        function toggleMoreExperiences() {
+            const moreExperiences = document.getElementById('moreExperiences');
+            const button = document.querySelector('.show-more-btn');
+            
+            if (moreExperiences.classList.contains('show')) {
+                moreExperiences.classList.remove('show');
+                button.textContent = 'Show More';
+            } else {
+                moreExperiences.classList.add('show');
+                button.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
