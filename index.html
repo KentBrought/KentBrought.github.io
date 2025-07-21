@@ -722,59 +722,176 @@
             transform: scale(1.05);
         }
 
-        /* Awards Section with Confetti */
+        /* Awards Section with Enhanced Confetti */
         .awards {
             position: relative;
-            overflow: hidden;
+            overflow: visible; /* Changed from hidden to visible */
+            padding: 4rem 0;
         }
 
         .awards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .award-item {
             background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
+            padding: 2rem;
+            border-radius: 15px;
             border-left: 4px solid var(--accent);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            overflow: hidden;
+            overflow: visible; /* Changed from hidden to visible */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 217, 92, 0.1);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .award-item:hover {
-            transform: translateX(5px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 217, 92, 0.2);
         }
 
-        .award-item:hover::before {
-            content: '🎉';
+        /* Background images for specific awards */
+        .award-item.governors-honors::before {
+            content: '';
             position: absolute;
-            animation: confetti 1s ease-out;
-            font-size: 2rem;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('governors-honors-bg.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+            border-radius: 15px;
         }
 
-        @keyframes confetti {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(720deg);
-                opacity: 0;
-            }
+        .award-item.microsoft-office::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('microsoft-office-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+            border-radius: 15px;
+        }
+
+        .award-item.certificate-merit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('certificate-merit-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+            border-radius: 15px;
+        }
+
+        /* Logo images */
+        .award-logo {
+            width: 60px;
+            height: 60px;
+            padding: 3px; 
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            border-radius: 8px;
+            background: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--accent);
+        }
+
+        .award-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .logo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-align: center;
         }
 
         .award-item h3 {
             color: var(--accent);
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
         }
 
         .award-item p {
             color: var(--text-secondary);
             font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced Confetti Animation */
+        .confetti {
+            position: absolute;
+            font-size: 1.5rem;
+            pointer-events: none;
+            z-index: 1000;
+            animation: confettiFall 2s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150px) rotate(720deg) scale(0.3);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .awards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .awards-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
 
         /* Footer */
@@ -1495,27 +1612,50 @@
         <div class="container">
             <h2 class="section-title">Awards & Recognition</h2>
             <div class="awards-grid">
-                <div class="award-item">
-                    <h3>AMC 10 First Place</h3>
-                    <p>Ranked #1 at high school for American Mathematics Competitions</p>
-                </div>
-                <div class="award-item">
-                    <h3>Governor's Honors Program</h3>
-                    <p>Finalist and attendee with major in mathematics and minor in science</p>
-                </div>
-                <div class="award-item">
+                <div class="award-item certificate-merit">
+                    <div class="award-logo">
+                        <img src="certificate-merit.png" alt="GA Logo">
+                    </div>
                     <h3>Georgia Certificate of Merit Award</h3>
                     <p>Recognition for academic excellence and achievement</p>
                 </div>
+
                 <div class="award-item">
+                    <div class="award-logo">
+                        <img src="amc_logo.png" alt="AMC 10 Logo">
+                    </div>
+                    <h3>AMC 10 First Place</h3>
+                    <p>Ranked #1 at high school for American Mathematics Competitions</p>
+                </div>
+                
+                <div class="award-item governors-honors">
+                    <div class="award-logo">
+                        <img src="ghp_logo.png" alt="GHP Logo">
+                    </div>
+                    <h3>Governor's Honors Program</h3>
+                    <p>Finalist and attendee with major in mathematics and minor in science</p>
+                </div>
+                 
+                <div class="award-item">
+                    <div class="award-logo">
+                        <img src="nocti_logo.png" alt="NOCTI Logo">
+                    </div>
                     <h3>NOCTI Certification</h3>
                     <p>Workforce Competency Credential Job Certification in Computer Programming</p>
                 </div>
-                <div class="award-item">
+
+                <div class="award-item microsoft-office">
+                    <div class="award-logo">
+                        <img src="microsoft-office.png" alt="MS Logo">
+                    </div>
                     <h3>Microsoft Office Master Specialist</h3>
                     <p>Certified in Word, Excel, PowerPoint, Access, and Outlook</p>
                 </div>
+                
                 <div class="award-item">
+                    <div class="award-logo">
+                        <img src="sandbox-logo.png" alt="MIT Logo">
+                    </div>
                     <h3>MIT Sandbox Innovation Fund</h3>
                     <p>Accepted for KayBer Inc. development and entrepreneurship</p>
                 </div>
@@ -1543,6 +1683,72 @@
                 button.classList.add('hidden');
             }
         }
+    </script>
+
+    <script>
+        // Enhanced confetti effect
+        function createConfetti(element) {
+            const confettiEmojis = ['🎉', '🎊', '✨', '🌟', '💫', '⭐'];
+            const confettiCount = Math.floor(Math.random() * 5) + 3; // 3-7 confetti pieces
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                
+                // Position confetti randomly within the award item
+                const rect = element.getBoundingClientRect();
+                const startX = Math.random() * rect.width;
+                const startY = Math.random() * rect.height;
+                
+                confetti.style.left = startX + 'px';
+                confetti.style.top = startY + 'px';
+                
+                // Add random horizontal movement
+                const randomDirection = (Math.random() - 0.5) * 200; // -100px to +100px
+                confetti.style.setProperty('--random-x', randomDirection + 'px');
+                
+                // Modify the animation to include horizontal movement
+                confetti.style.animation = `confettiFall 2s ease-out forwards`;
+                confetti.style.animationDelay = (Math.random() * 0.5) + 's'; // Stagger the animations
+                
+                element.appendChild(confetti);
+                
+                // Remove confetti after animation completes
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.parentNode.removeChild(confetti);
+                    }
+                }, 2500);
+            }
+        }
+
+        // Add enhanced confetti animation with horizontal movement
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                0% {
+                    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 1;
+                    transform: translateY(-75px) translateX(calc(var(--random-x, 0px) * 0.5)) rotate(360deg) scale(0.8);
+                }
+                100% {
+                    transform: translateY(-150px) translateX(var(--random-x, 0px)) rotate(720deg) scale(0.3);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add event listeners to award items
+        document.querySelectorAll('.award-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                createConfetti(item);
+            });
+        });
     </script>
 </body>
 </html>
