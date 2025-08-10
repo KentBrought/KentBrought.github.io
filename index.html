@@ -589,8 +589,42 @@
             aspect-ratio: 16/9;
             height: auto;
         }
+        /* Zenith shorts slider */
+        .shorts-slider {
+            position: relative;
+            margin-top: 1rem;
+        }
 
+        .shorts-container {
+            overflow: hidden;
+        }
 
+        .shorts-track {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .shorts-track iframe {
+            width: 150px;
+            height: 266px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .shorts-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 217, 92, 0.2);
+            color: var(--text-primary);
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .shorts-nav.left { left: -15px; }
+        .shorts-nav.right { right: -15px; }
 
         .visual-grid {
             display: grid;
@@ -1452,7 +1486,21 @@
                                 </svg>
                             </a>
                         </div>
-                        
+                    </div>
+                    <div class="shorts-slider">
+                        <button class="shorts-nav left">&#10094;</button>
+                        <div class="shorts-container">
+                            <div class="shorts-track">
+                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Short 1" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/kxopViU98Xo" title="Short 2" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/J---aiyznGQ" title="Short 3" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" title="Short 4" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" title="Short 5" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/L_jWHffIx5E" title="Short 6" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/e-ORhEE9VVg" title="Short 7" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="shorts-nav right">&#10095;</button>
                     </div>
                 </div>
             </div>
@@ -1683,6 +1731,33 @@
                 button.classList.add('hidden');
             }
         }
+    </script>
+
+    <script>
+        (function() {
+            const container = document.querySelector('.shorts-container');
+            const track = document.querySelector('.shorts-track');
+            const leftBtn = document.querySelector('.shorts-nav.left');
+            const rightBtn = document.querySelector('.shorts-nav.right');
+            if (container && track && leftBtn && rightBtn) {
+                const slideBy = 160;
+                leftBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: -slideBy, behavior: 'smooth' });
+                });
+                rightBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: slideBy, behavior: 'smooth' });
+                });
+                let direction = 1;
+                setInterval(() => {
+                    const maxScroll = track.scrollWidth - container.clientWidth;
+                    if (maxScroll <= 0) return;
+                    container.scrollLeft += direction;
+                    if (container.scrollLeft <= 0 || container.scrollLeft >= maxScroll) {
+                        direction *= -1;
+                    }
+                }, 30);
+            }
+        })();
     </script>
 
     <script>
