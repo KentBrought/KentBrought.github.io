@@ -598,7 +598,7 @@
         /* Zenith shorts slider */
         .shorts-slider {
             position: relative;
-            margin: 1rem -2rem 0;
+            margin-top: 1rem;
         }
 
         .shorts-container {
@@ -616,8 +616,8 @@
         }
 
         .shorts-track iframe {
-            width: 150px;
-            height: 266px;
+            width: 200px;
+            height: 356px;
             border: none;
             border-radius: 10px;
         }
@@ -635,8 +635,8 @@
             display: none;
         }
 
-        .shorts-nav.left { left: -15px; }
-        .shorts-nav.right { right: -15px; }
+        .shorts-nav.left { left: 5px; }
+        .shorts-nav.right { right: 5px; }
 
         .visual-grid {
             display: grid;
@@ -1752,7 +1752,7 @@
             const leftBtn = document.querySelector('.shorts-nav.left');
             const rightBtn = document.querySelector('.shorts-nav.right');
             if (container && track && leftBtn && rightBtn) {
-                const slideBy = 160;
+                const slideBy = track.querySelector('iframe').clientWidth + (parseInt(getComputedStyle(track).gap) || 0);
                 const updateNav = () => {
                     const overflow = track.scrollWidth > container.clientWidth;
                     const display = overflow ? 'block' : 'none';
