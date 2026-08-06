@@ -1,7 +1,14 @@
 # KentBrought.github.io
 
-This repository hosts the static files for [Kent Brought's personal site](https://kentbrought.github.io/).
+This repository hosts the React source for [Kent Brought's personal site](https://kentbrought.github.io/). It is built and served with Vite.
 
-Because it's a purely static site, you can simply open `index.html` in your browser to view it locally. No build step or server is required.
+## Local development
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Create a production build with `pnpm build`, then preview it locally with `pnpm preview`.
 
 **Want to see it live?** Just visit [https://kentbrought.github.io/](https://kentbrought.github.io/).
