@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './home.css';
 
-const dustParticles = Array.from({ length: 96 }, (_, index) => ({
+const dustParticles = Array.from({ length: 56 }, (_, index) => ({
   id: index,
   x: `${(index * 37 + index * index * 13 + 11) % 100}%`,
   y: `${(index * 61 + index * index * 7 + 7) % 100}%`,
@@ -11,6 +11,45 @@ const dustParticles = Array.from({ length: 96 }, (_, index) => ({
   driftX: `${((index * 73) % 181) - 90}px`,
   driftY: `${((index * 47) % 161) - 80}px`,
 }));
+
+function ViewportVideo({ src, label }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return undefined;
+
+    const setPlayback = (shouldPlay) => {
+      if (shouldPlay && !document.hidden) video.play().catch(() => {});
+      else video.pause();
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      setPlayback(true);
+      return undefined;
+    }
+
+    let isNearViewport = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      isNearViewport = entry.isIntersecting;
+      setPlayback(isNearViewport);
+    }, { rootMargin: '240px 0px', threshold: 0.01 });
+    const handleVisibility = () => setPlayback(isNearViewport);
+
+    observer.observe(video);
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibility);
+      video.pause();
+    };
+  }, []);
+
+  return (
+    <video ref={videoRef} src={src} aria-label={label} muted loop playsInline preload="none" />
+  );
+}
 
 function TimelineMediaPair({ logo, logoAlt, screenshot, screenshotAlt, reverse = false, logoOutlined = false, logoLarge = false, logoIntense = false }) {
   const screenshotIsVideo = /\.(webm|mp4)$/i.test(screenshot);
@@ -22,7 +61,7 @@ function TimelineMediaPair({ logo, logoAlt, screenshot, screenshotAlt, reverse =
       </div>
       <div className="item-media-pair__screenshot">
         {screenshotIsVideo ? (
-          <video src={screenshot} aria-label={screenshotAlt} autoPlay muted loop playsInline preload="metadata" />
+          <ViewportVideo src={screenshot} label={screenshotAlt} />
         ) : (
           <img src={screenshot} alt={screenshotAlt} loading="lazy" decoding="async" />
         )}
@@ -35,6 +74,7 @@ export default function HomePage() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const headerNameRef = useRef(null);
   const headerGlowRef = useRef(null);
+  const heroRef = useRef(null);
 
   useEffect(() => {
     const title = headerNameRef.current;
@@ -76,6 +116,18 @@ export default function HomePage() {
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
     return () => window.removeEventListener('scroll', updateHeader);
+  }, []);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || !('IntersectionObserver' in window)) return undefined;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      hero.classList.toggle('is-offscreen', !entry.isIntersecting);
+    }, { rootMargin: '120px 0px' });
+
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -169,7 +221,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-          <section className="hero" aria-labelledby="ruffcut-title">
+          <section ref={heroRef} className="hero" aria-labelledby="ruffcut-title">
               <div className="hero-background" aria-hidden="true"></div>
               <div className="hero-haze hero-haze--one" aria-hidden="true"></div>
               <div className="hero-haze hero-haze--two" aria-hidden="true"></div>
@@ -231,7 +283,7 @@ export default function HomePage() {
 
                   <div className="experience-item">
                       <div className="item-image item-image--flat item-image--glow item-image--outlined">
-                          <img src="/timeline/samsara-logo.webp" alt="Samsara logo" />
+                          <img src="/timeline/samsara-logo.webp" alt="Samsara logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>Software Engineer at Samsara</h3>
@@ -244,7 +296,7 @@ export default function HomePage() {
 
                   <div className="project-item">
                       <div className="item-image item-image--flat item-image--glow item-image--ruffcut item-image--outlined">
-                          <img src="/ruffcut/ruffcut-logo.webp" alt="RuffCut logo" />
+                          <img src="/ruffcut/ruffcut-logo.webp" alt="RuffCut logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>RuffCut</h3>
@@ -271,7 +323,7 @@ export default function HomePage() {
 
 <div className="experience-item">
                       <div className="item-image item-image--flat item-image--glow">
-                          <img src="/timeline/titan-logo.webp" alt="Titan RT Teaching Tool logo" />
+                          <img src="/timeline/titan-logo.webp" alt="Titan RT Teaching Tool logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>The Soderblom Lab / NASA Dragonfly</h3>
@@ -310,7 +362,7 @@ export default function HomePage() {
 
 <div className="project-item">
                       <div className="item-image item-image--flat item-image--glow">
-                          <img src="/timeline/echo-of-the-dead-logo.svg" alt="Echo of the Dead logo" />
+                          <img src="/timeline/echo-of-the-dead-logo.svg" alt="Echo of the Dead logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>Echo of the Dead</h3>
@@ -364,7 +416,7 @@ export default function HomePage() {
 
 <div className="project-item recognition-item recognition-item--flat-logo recognition-item--corgi">
                       <div className="item-image item-image--flat item-image--glow">
-                          <img src="corgi_hackathon_logo.webp" alt="Corgi Hackathon" />
+                          <img src="corgi_hackathon_logo.webp" alt="Corgi Hackathon" loading="lazy" decoding="async" />
                       </div>      
                       <div className="item-content">      
                           <h3>Corgi Insurance Tenant Policy Uploader</h3>      
@@ -539,7 +591,7 @@ export default function HomePage() {
 
 <div className="experience-item experience-item--urop">
                           <div className="item-image item-image--flat item-image--glow">
-                              <img src="urop_logo.webp" alt="Computer Vision Research" />
+                              <img src="urop_logo.webp" alt="Computer Vision Research" loading="lazy" decoding="async" />
                           </div>      
                           <div className="item-content">      
                               <h3>Undergraduate Research in Computer Vision</h3>
@@ -650,7 +702,7 @@ export default function HomePage() {
 
                   <div className="project-item recognition-item recognition-item--certificate recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="certificate-merit.webp" alt="Georgia Certificate of Merit emblem" />
+                          <img src="certificate-merit.webp" alt="Georgia Certificate of Merit emblem" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>Georgia Certificate of Merit Award</h3>
@@ -660,7 +712,7 @@ export default function HomePage() {
 
                   <div className="project-item recognition-item recognition-item--nocti recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="nocti_logo.webp" alt="NOCTI logo" />
+                          <img src="nocti_logo.webp" alt="NOCTI logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>NOCTI Certification</h3>
@@ -672,7 +724,7 @@ export default function HomePage() {
 
                   <div className="project-item recognition-item recognition-item--ghp recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="ghp_logo.webp" alt="Governor's Honors Program logo" />
+                          <img src="ghp_logo.webp" alt="Governor's Honors Program logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>Governor's Honors Program</h3>
@@ -703,7 +755,7 @@ export default function HomePage() {
 
                   <div className="project-item recognition-item recognition-item--amc recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="amc_logo.webp" alt="AMC 10 logo" />
+                          <img src="amc_logo.webp" alt="AMC 10 logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>AMC 10 First Place</h3>
@@ -750,7 +802,7 @@ export default function HomePage() {
 
 <div className="project-item recognition-item recognition-item--mos recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="microsoft-office.webp" alt="Microsoft Office logo" />
+                          <img src="microsoft-office.webp" alt="Microsoft Office logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>Microsoft Office Master Specialist</h3>

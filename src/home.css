@@ -257,9 +257,14 @@
             height: var(--dust-size);
             border-radius: 50%;
             background: rgba(245, 245, 245, 0.78);
-            box-shadow: 0 0 4px rgba(235, 235, 235, 0.46);
+            box-shadow: 0 0 2px rgba(235, 235, 235, 0.36);
             opacity: 0.68;
             animation: dustFloat var(--dust-duration) ease-in-out var(--dust-delay) infinite alternate;
+        }
+
+        .hero.is-offscreen .hero-haze,
+        .hero.is-offscreen .site-dust span {
+            animation-play-state: paused;
         }
 
         .hero-layout {
@@ -920,6 +925,10 @@
             transform-origin: center center;
             box-shadow: -24px 22px 42px rgba(0, 0, 0, 0.72), -8px 5px 24px rgba(255, 255, 255, 0.08);
             transition: transform 0.72s cubic-bezier(0.2, 0.75, 0.2, 1), box-shadow 0.35s ease;
+        }
+
+        .item-image:has(.hover-image):hover,
+        .item-image:has(.hover-image):focus-visible {
             will-change: transform;
         }
 
@@ -2150,6 +2159,30 @@
             .hero-description {
                 font-size: 1.05rem;
             }
+        }
+
+        /* Static lighting atlas: preserves the pools without repainting page-height gradients. */
+        main::before {
+            display: none;
+        }
+
+        .timeline::before {
+            display: none;
+        }
+
+        .timeline::after {
+            background-color: transparent;
+            background-image:
+                url('/lighting/future-chiaroscuro.webp'),
+                url('/lighting/mit-chiaroscuro.webp'),
+                url('/lighting/origins-chiaroscuro.webp');
+            background-position: center top, center 49%, center bottom;
+            background-size: 100% 44%, 100% 54%, 100% 44%;
+            background-repeat: no-repeat;
+        }
+
+        .timeline-era::before {
+            filter: none;
         }
 
         @media (prefers-reduced-motion: reduce) {
