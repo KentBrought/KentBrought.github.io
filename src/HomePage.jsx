@@ -13,13 +13,19 @@ const dustParticles = Array.from({ length: 96 }, (_, index) => ({
 }));
 
 function TimelineMediaPair({ logo, logoAlt, screenshot, screenshotAlt, reverse = false, logoOutlined = false, logoLarge = false, logoIntense = false }) {
+  const screenshotIsVideo = /\.(webm|mp4)$/i.test(screenshot);
+
   return (
     <div className={`item-media-pair${reverse ? ' item-media-pair--reverse' : ''}`}>
       <div className={`item-media-pair__logo${logoOutlined ? ' item-media-pair__logo--outlined' : ''}${logoLarge ? ' item-media-pair__logo--large' : ''}${logoIntense ? ' item-media-pair__logo--intense' : ''}`}>
-        <img src={logo} alt={logoAlt} />
+        <img src={logo} alt={logoAlt} loading="lazy" decoding="async" />
       </div>
       <div className="item-media-pair__screenshot">
-        <img src={screenshot} alt={screenshotAlt} />
+        {screenshotIsVideo ? (
+          <video src={screenshot} aria-label={screenshotAlt} autoPlay muted loop playsInline preload="metadata" />
+        ) : (
+          <img src={screenshot} alt={screenshotAlt} loading="lazy" decoding="async" />
+        )}
       </div>
     </div>
   );
@@ -187,10 +193,10 @@ export default function HomePage() {
                   <div className="ruffcut-card" tabIndex="0" aria-label="RuffCut logo. Hover or focus to preview the video editor.">
                       <div className="ruffcut-card__inner">
                           <div className="ruffcut-card__face ruffcut-card__front">
-                              <img src="/ruffcut/ruffcut-logo.png" alt="RuffCut logo" />
+                              <img src="/ruffcut/ruffcut-logo.webp" alt="RuffCut logo" />
                           </div>
                           <div className="ruffcut-card__face ruffcut-card__back">
-                              <img src="/ruffcut/ruffcut-editor.png" alt="RuffCut AI video editor interface" />
+                              <img src="/ruffcut/ruffcut-editor.webp" alt="RuffCut AI video editor interface" />
                           </div>
                           <span className="ruffcut-card__edge ruffcut-card__edge--left" aria-hidden="true"></span>
                           <span className="ruffcut-card__edge ruffcut-card__edge--right" aria-hidden="true"></span>
@@ -225,7 +231,7 @@ export default function HomePage() {
 
                   <div className="experience-item">
                       <div className="item-image item-image--flat item-image--glow item-image--outlined">
-                          <img src="/timeline/samsara-logo.jfif" alt="Samsara logo" />
+                          <img src="/timeline/samsara-logo.webp" alt="Samsara logo" />
                       </div>
                       <div className="item-content">
                           <h3>Software Engineer at Samsara</h3>
@@ -233,15 +239,12 @@ export default function HomePage() {
                           <ul>
                               <li>Building software at Samsara.</li>
                           </ul>
-                          <div className="project-links">
-                              <a href="https://www.samsara.com/" target="_blank" rel="noopener noreferrer">Visit Samsara</a>
-                          </div>
                       </div>
                   </div>
 
                   <div className="project-item">
                       <div className="item-image item-image--flat item-image--glow item-image--ruffcut item-image--outlined">
-                          <img src="/ruffcut/ruffcut-logo.png" alt="RuffCut logo" />
+                          <img src="/ruffcut/ruffcut-logo.webp" alt="RuffCut logo" />
                       </div>
                       <div className="item-content">
                           <h3>RuffCut</h3>
@@ -268,7 +271,7 @@ export default function HomePage() {
 
 <div className="experience-item">
                       <div className="item-image item-image--flat item-image--glow">
-                          <img src="/timeline/titan-logo.png" alt="Titan RT Teaching Tool logo" />
+                          <img src="/timeline/titan-logo.webp" alt="Titan RT Teaching Tool logo" />
                       </div>
                       <div className="item-content">
                           <h3>The Soderblom Lab / NASA Dragonfly</h3>
@@ -288,7 +291,7 @@ export default function HomePage() {
                       <TimelineMediaPair
                           logo="/timeline/block-code-draw-logo.svg"
                           logoAlt="Block, Code, Draw logo"
-                          screenshot="/timeline/block-code-draw-demo.gif"
+                          screenshot="/timeline/block-code-draw-demo.webm"
                           screenshotAlt="Block, Code, Draw gameplay preview"
                       />
                       <div className="item-content">
@@ -325,9 +328,9 @@ export default function HomePage() {
 
 <div className="experience-item paired-media-item paired-media-item--right">
                       <TimelineMediaPair
-                          logo="yapclap_logo.png"
+                          logo="yapclap_logo.webp"
                           logoAlt="YapClap Logo"
-                          screenshot="yapclap_screenshot.png"
+                          screenshot="yapclap_screenshot.webp"
                           screenshotAlt="YapClap Screenshot"
                           reverse
                           logoOutlined
@@ -361,7 +364,7 @@ export default function HomePage() {
 
 <div className="project-item recognition-item recognition-item--flat-logo recognition-item--corgi">
                       <div className="item-image item-image--flat item-image--glow">
-                          <img src="corgi_hackathon_logo.png" alt="Corgi Hackathon" />      
+                          <img src="corgi_hackathon_logo.webp" alt="Corgi Hackathon" />
                       </div>      
                       <div className="item-content">      
                           <h3>Corgi Insurance Tenant Policy Uploader</h3>      
@@ -380,9 +383,9 @@ export default function HomePage() {
 
 <div className="project-item paired-media-item">
                       <TimelineMediaPair
-                          logo="mole_maker_logo.png"
+                          logo="mole_maker_logo.webp"
                           logoAlt="Mole Maker Game"
-                          screenshot="mole_maker_screenshot.png"
+                          screenshot="mole_maker_screenshot.webp"
                           screenshotAlt="Mole Maker Screenshot"
                           logoLarge
                       />
@@ -410,9 +413,9 @@ export default function HomePage() {
 
 <div className="experience-item paired-media-item paired-media-item--right">
                       <TimelineMediaPair
-                          logo="kayber_logo.png"
+                          logo="kayber_logo.webp"
                           logoAlt="KayBer Logo"
-                          screenshot="kayber_screenshot.png"
+                          screenshot="kayber_screenshot.webp"
                           screenshotAlt="KayBer Screenshot"
                           reverse
                           logoOutlined
@@ -467,9 +470,9 @@ export default function HomePage() {
 
 <div className="experience-item paired-media-item">
                       <TimelineMediaPair
-                          logo="maclea_logo.png"
+                          logo="maclea_logo.webp"
                           logoAlt="MacLea Logo"
-                          screenshot="maclea_screenshot1.png"
+                          screenshot="maclea_screenshot1.webp"
                           screenshotAlt="MacLea Screenshot"
                           logoLarge
                       />
@@ -505,9 +508,9 @@ export default function HomePage() {
 
 <div className="experience-item paired-media-item paired-media-item--right">
                           <TimelineMediaPair
-                              logo="hyades_logo.png"
+                              logo="hyades_logo.webp"
                               logoAlt="Hyades"
-                              screenshot="hyades_screenshot.png"
+                              screenshot="hyades_screenshot.webp"
                               screenshotAlt="Hyades Screenshot"
                               reverse
                           />
@@ -536,7 +539,7 @@ export default function HomePage() {
 
 <div className="experience-item experience-item--urop">
                           <div className="item-image item-image--flat item-image--glow">
-                              <img src="urop_logo.png" alt="Computer Vision Research" />      
+                              <img src="urop_logo.webp" alt="Computer Vision Research" />
                           </div>      
                           <div className="item-content">      
                               <h3>Undergraduate Research in Computer Vision</h3>
@@ -551,9 +554,9 @@ export default function HomePage() {
 
 <div className="experience-item paired-media-item">
                           <TimelineMediaPair
-                              logo="robotics_logo.png"
+                              logo="robotics_logo.webp"
                               logoAlt="MIT Robotics"
-                              screenshot="robotics_screenshot.gif"
+                              screenshot="robotics_screenshot.webm"
                               screenshotAlt="Robotics Screenshot"
                           />
                           <div className="item-content">      
@@ -579,9 +582,9 @@ export default function HomePage() {
 
 <div className="experience-item paired-media-item paired-media-item--right">
                           <TimelineMediaPair
-                              logo="boe_logo.png"
+                              logo="boe_logo.webp"
                               logoAlt="Board of Education"
-                              screenshot="boe_screenshot1.jpg"
+                              screenshot="boe_screenshot1.webp"
                               screenshotAlt="BOE Screenshot"
                               reverse
                               logoLarge
@@ -598,9 +601,9 @@ export default function HomePage() {
 
 <div className="project-item paired-media-item">
                       <TimelineMediaPair
-                          logo="zenith_logo.png"
+                          logo="zenith_logo.webp"
                           logoAlt="ZenithServer"
-                          screenshot="zenith_screenshot.png"
+                          screenshot="zenith_screenshot.webp"
                           screenshotAlt="ZenithServer Screenshot"
                       />
                       <div className="item-content">      
@@ -647,7 +650,7 @@ export default function HomePage() {
 
                   <div className="project-item recognition-item recognition-item--certificate recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="certificate-merit.png" alt="Georgia Certificate of Merit emblem" />
+                          <img src="certificate-merit.webp" alt="Georgia Certificate of Merit emblem" />
                       </div>
                       <div className="item-content">
                           <h3>Georgia Certificate of Merit Award</h3>
@@ -657,7 +660,7 @@ export default function HomePage() {
 
                   <div className="project-item recognition-item recognition-item--nocti recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="nocti_logo.png" alt="NOCTI logo" />
+                          <img src="nocti_logo.webp" alt="NOCTI logo" />
                       </div>
                       <div className="item-content">
                           <h3>NOCTI Certification</h3>
@@ -669,7 +672,7 @@ export default function HomePage() {
 
                   <div className="project-item recognition-item recognition-item--ghp recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="ghp_logo.png" alt="Governor's Honors Program logo" />
+                          <img src="ghp_logo.webp" alt="Governor's Honors Program logo" />
                       </div>
                       <div className="item-content">
                           <h3>Governor's Honors Program</h3>
@@ -679,9 +682,9 @@ export default function HomePage() {
 
 <div className="experience-item paired-media-item paired-media-item--right">
                           <TimelineMediaPair
-                              logo="it_intern_logo.png"
+                              logo="it_intern_logo.webp"
                               logoAlt="IT Intern"
-                              screenshot="it_intern_screenshot.png"
+                              screenshot="it_intern_screenshot.webp"
                               screenshotAlt="IT Intern Screenshot"
                               reverse
                               logoLarge
@@ -700,7 +703,7 @@ export default function HomePage() {
 
                   <div className="project-item recognition-item recognition-item--amc recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="amc_logo.png" alt="AMC 10 logo" />
+                          <img src="amc_logo.webp" alt="AMC 10 logo" />
                       </div>
                       <div className="item-content">
                           <h3>AMC 10 First Place</h3>
@@ -747,7 +750,7 @@ export default function HomePage() {
 
 <div className="project-item recognition-item recognition-item--mos recognition-item--flat-logo">
                       <div className="item-image">
-                          <img src="microsoft-office.png" alt="Microsoft Office logo" />
+                          <img src="microsoft-office.webp" alt="Microsoft Office logo" />
                       </div>
                       <div className="item-content">
                           <h3>Microsoft Office Master Specialist</h3>
