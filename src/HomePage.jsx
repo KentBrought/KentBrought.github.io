@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './home.css';
 
 const dustParticles = Array.from({ length: 96 }, (_, index) => ({
@@ -14,6 +14,43 @@ const dustParticles = Array.from({ length: 96 }, (_, index) => ({
 
 export default function HomePage() {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const headerNameRef = useRef(null);
+  const headerGlowRef = useRef(null);
+
+  useEffect(() => {
+    const title = headerNameRef.current;
+    const glow = headerGlowRef.current;
+    if (!title || !glow) return undefined;
+
+    const shimmerFrames = [
+      { backgroundPosition: '100% 50%', offset: 0 },
+      { backgroundPosition: '100% 50%', offset: 0.35 },
+      { backgroundPosition: '50% 50%', offset: 0.55 },
+      { backgroundPosition: '0% 50%', offset: 0.75 },
+      { backgroundPosition: '0% 50%', offset: 1 },
+    ];
+    const shimmerTiming = {
+      duration: 10000,
+      iterations: Infinity,
+      easing: 'linear',
+    };
+
+    const shimmer = title.animate(
+      shimmerFrames,
+      shimmerTiming,
+    );
+    const glowSweep = glow.animate(
+      [
+        ...shimmerFrames,
+      ],
+      shimmerTiming,
+    );
+
+    return () => {
+      shimmer.cancel();
+      glowSweep.cancel();
+    };
+  }, []);
 
   useEffect(() => {
     const updateHeader = () => setHasScrolled(window.scrollY > 16);
@@ -24,10 +61,26 @@ export default function HomePage() {
 
   useEffect(() => {
     const revealTargets = document.querySelectorAll('.timeline-era, .experience-item, .project-item');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const backdropTargets = document.querySelectorAll('.section-backdrop, .award-backdrop');
+    const firstItems = new Set(
+      [...revealTargets].filter((target) => target.previousElementSibling?.matches('.section-backdrop')),
+    );
 
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    const revealAssociatedBackdrop = (target) => {
+      const previous = target.previousElementSibling;
+      const next = target.nextElementSibling;
+
+      if (previous?.matches('.section-backdrop, .award-backdrop')) {
+        previous.classList.add('is-visible');
+      }
+      if (target.matches('.timeline-era') && next?.matches('.section-backdrop')) {
+        next.classList.add('is-visible');
+      }
+    };
+
+    if (!('IntersectionObserver' in window)) {
       revealTargets.forEach((target) => target.classList.add('is-visible'));
+      backdropTargets.forEach((target) => target.classList.add('is-visible'));
       return undefined;
     }
 
@@ -35,16 +88,30 @@ export default function HomePage() {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('is-visible');
+        revealAssociatedBackdrop(entry.target);
         observer.unobserve(entry.target);
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
 
+    const firstItemObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealAssociatedBackdrop(entry.target);
+        firstItemObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -24% 0px' });
+
     revealTargets.forEach((target, index) => {
       target.style.setProperty('--reveal-delay', `${(index % 3) * 65}ms`);
-      observer.observe(target);
+      if (firstItems.has(target)) firstItemObserver.observe(target);
+      else observer.observe(target);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      firstItemObserver.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -76,7 +143,10 @@ export default function HomePage() {
   return (
     <main>
       <header className={`site-header${hasScrolled ? ' site-header--scrolled' : ''}`}>
-        <a href="#" className="site-header__name" data-text="KENT BROUGHT">KENT BROUGHT</a>
+        <a href="#" className="site-header__name">
+          <span ref={headerNameRef} className="site-header__label">KENT BROUGHT</span>
+          <span ref={headerGlowRef} className="site-header__glow" aria-hidden="true">KENT BROUGHT</span>
+        </a>
       </header>
 
       {/* Hero Section */}
@@ -158,7 +228,8 @@ export default function HomePage() {
 
                   <div className="project-item">
                       <div className="item-image">
-                          <div className="timeline-mark timeline-mark--wide">RUFFCUT</div>
+                          <img src="/ruffcut/ruffcut-logo.png" alt="RuffCut logo" />
+                          <img src="/ruffcut/ruffcut-editor.png" alt="RuffCut AI video editor interface" className="hover-image" />
                       </div>
                       <div className="item-content">
                           <h3>RuffCut</h3>
@@ -438,10 +509,11 @@ export default function HomePage() {
                           </div>      
                       </div>
 
+                  <div className="award-backdrop award-backdrop--urop" aria-hidden="true"></div>
+
 <div className="experience-item">      
                           <div className="item-image">      
                               <img src="urop_logo.png" alt="Computer Vision Research" />      
-                              <img src="urop_photo.png" alt="UROP Photo" className="hover-image" />      
                           </div>      
                           <div className="item-content">      
                               <h3>Undergraduate Research – Computer Vision</h3>      
@@ -540,6 +612,8 @@ export default function HomePage() {
                       </div>      
                    </div>
 
+                  <div className="award-backdrop award-backdrop--certificate" aria-hidden="true"></div>
+
                   <div className="project-item recognition-item recognition-item--certificate">
                       <div className="item-image">
                           <img src="certificate-merit.png" alt="Georgia Certificate of Merit emblem" />
@@ -559,6 +633,8 @@ export default function HomePage() {
                           <p>Workforce Competency Credential in computer programming.</p>
                       </div>
                   </div>
+
+                  <div className="award-backdrop award-backdrop--ghp" aria-hidden="true"></div>
 
                   <div className="project-item recognition-item recognition-item--ghp">
                       <div className="item-image">
@@ -630,6 +706,8 @@ export default function HomePage() {
                           </div>      
                       </div>      
                   </div>
+
+                  <div className="award-backdrop award-backdrop--mos" aria-hidden="true"></div>
 
 <div className="project-item recognition-item recognition-item--mos">
                       <div className="item-image">

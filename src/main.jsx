@@ -4,9 +4,7 @@ import { createRoot } from 'react-dom/client';
 const isArtPage = window.location.pathname === '/art' || window.location.pathname.endsWith('/art.html');
 const Page = lazy(() => (isArtPage ? import('./ArtPage.jsx') : import('./HomePage.jsx')));
 
-document.title = isArtPage
-  ? 'Kent Brought - Art & Assets'
-  : 'Kent Brought - Software Developer & Entrepreneur';
+document.title = 'Kent Brought';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
