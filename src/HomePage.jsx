@@ -12,10 +12,10 @@ const dustParticles = Array.from({ length: 96 }, (_, index) => ({
   driftY: `${((index * 47) % 161) - 80}px`,
 }));
 
-function TimelineMediaPair({ logo, logoAlt, screenshot, screenshotAlt, reverse = false, logoOutlined = false, logoLarge = false, logoBright = false }) {
+function TimelineMediaPair({ logo, logoAlt, screenshot, screenshotAlt, reverse = false, logoOutlined = false, logoLarge = false, logoIntense = false }) {
   return (
     <div className={`item-media-pair${reverse ? ' item-media-pair--reverse' : ''}`}>
-      <div className={`item-media-pair__logo${logoOutlined ? ' item-media-pair__logo--outlined' : ''}${logoLarge ? ' item-media-pair__logo--large' : ''}${logoBright ? ' item-media-pair__logo--bright' : ''}`}>
+      <div className={`item-media-pair__logo${logoOutlined ? ' item-media-pair__logo--outlined' : ''}${logoLarge ? ' item-media-pair__logo--large' : ''}${logoIntense ? ' item-media-pair__logo--intense' : ''}`}>
         <img src={logo} alt={logoAlt} />
       </div>
       <div className="item-media-pair__screenshot">
@@ -585,7 +585,6 @@ export default function HomePage() {
                               screenshotAlt="BOE Screenshot"
                               reverse
                               logoLarge
-                              logoBright
                           />
                           <div className="item-content">      
                               <h3>Technology Support Specialist</h3>
@@ -686,6 +685,7 @@ export default function HomePage() {
                               screenshotAlt="IT Intern Screenshot"
                               reverse
                               logoLarge
+                              logoIntense
                           />
                           <div className="item-content">      
                               <h3>IT Intern</h3>      

@@ -760,16 +760,6 @@
             background: transparent;
         }
 
-        .item-media-pair__logo--bright::before {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            inset: -46%;
-            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.34) 0%, rgba(205, 220, 232, 0.16) 38%, transparent 72%);
-            filter: blur(10px);
-            pointer-events: none;
-        }
-
         .item-media-pair__logo--outlined {
             background: transparent;
         }
@@ -799,6 +789,12 @@
         .item-media-pair__logo--large img {
             max-width: 132px;
             max-height: 132px;
+        }
+
+        .item-media-pair__logo--intense img {
+            filter:
+                drop-shadow(0 0 9px rgba(255, 255, 255, 0.72))
+                drop-shadow(0 0 22px rgba(255, 255, 255, 0.3));
         }
 
         .item-media-pair__screenshot {
@@ -1117,7 +1113,13 @@
         }
 
         .recognition-item--corgi {
-            left: clamp(-72px, -4vw, -42px);
+            left: 0;
+            width: max-content;
+            max-width: calc(100% - 2rem);
+            grid-template-columns: 112px auto !important;
+            justify-content: center;
+            margin-right: auto;
+            margin-left: auto;
         }
 
         .recognition-item--corgi .item-content {
@@ -1434,6 +1436,7 @@
         .section-backdrop--mit,
         .section-backdrop--origins {
             transition-duration: 6s;
+            transition-delay: 300ms;
         }
 
         .section-backdrop.is-visible,
@@ -1486,6 +1489,16 @@
             color: var(--accent);
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+        }
+
+        .item-content h3,
+        .item-content .item-meta,
+        .item-content li,
+        .item-content p {
+            text-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.98),
+                0 0 10px rgba(0, 0, 0, 0.72),
+                0 0 20px rgba(0, 0, 0, 0.38);
         }
 
         .item-meta {
