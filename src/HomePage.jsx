@@ -327,7 +327,7 @@ export default function HomePage() {
                       </div>
                       <div className="item-content">
                           <h3>The Soderblom Lab / NASA Dragonfly</h3>
-                          <div className="item-meta">2025 – Present</div>
+                          <div className="item-meta">Sep 2025 – May 2026</div>
                           <ul>
                               <li>Built the Titan RT Teaching Tool for interactively exploring Titan atmospheric radiative-transfer models, spectral data, and planetary imagery.</li>
                               <li>Implemented controls for haze and methane abundance, viewing geometry, composite imagery, and spectral comparisons across locations.</li>
@@ -339,19 +339,19 @@ export default function HomePage() {
                       </div>
                   </div>
 
-<div className="project-item paired-media-item">
+<div className="project-item paired-media-item paired-media-item--right">
                       <TimelineMediaPair
                           logo="/timeline/block-code-draw-logo.svg"
                           logoAlt="Block, Code, Draw logo"
                           screenshot="/timeline/block-code-draw-demo.webm"
                           screenshotAlt="Block, Code, Draw gameplay preview"
+                          reverse
                       />
                       <div className="item-content">
                           <h3>Block, Code, Draw!</h3>
                           <div className="item-meta">Spring 2026</div>
                           <ul>
-                              <li>Co-created a block-based drawing game where learners build programs and receive on-device AI feedback about their artwork.</li>
-                              <li>Designed classic and challenge modes to teach sequencing, loops, conditionals, variables, and creative debugging.</li>
+                              <li>A block-based drawing game where learners build programs and get on-device AI feedback on their artwork.</li>
                           </ul>
                           <div className="project-links">
                               <a href="https://github.com/KentBrought/block-code-comp" target="_blank" rel="noopener noreferrer">View Source Code</a>
@@ -360,16 +360,14 @@ export default function HomePage() {
                       </div>
                   </div>
 
-<div className="project-item">
+<div className="project-item recognition-item recognition-item--flat-logo recognition-item--project recognition-item--project-left">
                       <div className="item-image item-image--flat item-image--glow">
                           <img src="/timeline/echo-of-the-dead-logo.svg" alt="Echo of the Dead logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
                           <h3>Echo of the Dead</h3>
-                          <div className="item-meta">Fall 2025</div>
                           <ul>
-                              <li>Co-developed a survival platformer built around sound-based navigation, echolocation spells, limited visibility, and strategic combat.</li>
-                              <li>Created atmospheric gameplay systems including fog of war, spell effects, damage feedback, exploration, audio, and web export support.</li>
+                              <li>A survival platformer built around sound-based navigation, echolocation spells, and limited visibility.</li>
                           </ul>
                           <div className="project-links">
                               <a href="https://github.com/sabpdo/Echo-of-the-Dead" target="_blank" rel="noopener noreferrer">View Source Code</a>
@@ -395,14 +393,14 @@ export default function HomePage() {
                               <li>Designed an on‑device Edge AI moderation pipeline (YOLOv8 + custom NSFW classifier) to block explicit content before it travels over the network</li>      
                           </ul>      
                           <div className="project-links">      
-                              <a href="https://yapclap.com/" target="_blank" rel="noopener noreferrer">      
-                                  Visit Website      
-                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
-                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                  </svg>      
-                              </a>      
+                              <a href="https://web.archive.org/web/20251212051322/https://yapclap.com/" target="_blank" rel="noopener noreferrer">
+                                  View Archive
+                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>
+                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>
+                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>
+                                  </svg>
+                              </a>
                               <div className="social-wrapper">      
                                   <a href="https://www.youtube.com/@YapClapSocial" className="social-btn" target="_blank" title="YouTube Channel">      
                                       <svg viewBox="0 0 24 24">      
@@ -441,26 +439,23 @@ export default function HomePage() {
                           screenshotAlt="Mole Maker Screenshot"
                           logoLarge
                       />
-                      <div className="item-content">      
+                      <div className="item-content">
                           <h3>Mole Maker</h3>
                           <div className="item-meta">Mar 2025 – May 2025</div>
-                          <ul>      
-                              <li>Developing a 2D educational game to teach chemistry concepts through interactive play</li>      
-                              <li>Designed game flow, level progression, and synthesis mechanics</li>      
-                              <li>Aligned with Next Generation Science Standards (NGSS) for chemistry education</li>      
-                              <li>Created in collaboration with MIT's Educational Game Design course</li>      
-                          </ul>      
-                          <div className="project-links">      
-                              <a href="https://kbrought.itch.io/mole-maker" target="_blank">      
-                                  Play Game      
-                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
-                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                  </svg>      
-                              </a>      
-                          </div>      
-                      </div>      
+                          <ul>
+                              <li>A 2D educational game that teaches chemistry concepts through interactive molecule synthesis.</li>
+                          </ul>
+                          <div className="project-links">
+                              <a href="https://kbrought.itch.io/mole-maker" target="_blank">
+                                  Play Game
+                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>
+                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>
+                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>
+                                  </svg>
+                              </a>
+                          </div>
+                      </div>
                   </div>
 
 <div className="experience-item paired-media-item paired-media-item--right">
@@ -566,25 +561,14 @@ export default function HomePage() {
                               screenshotAlt="Hyades Screenshot"
                               reverse
                           />
-                          <div className="item-content">      
+                          <div className="item-content">
                               <h3>Hyades</h3>
-                              <div className="item-meta">Jan 2023 – May 2023</div>      
-                              <ul>      
-                                  <li>Collaborating with student group members to improve computing at MIT</li>      
-                                  <li>Contributing to Hyades, a self-configuring Kubernetes cluster for managing distributed computing systems</li>      
-                                  <li>Using Kubernetes, Vagrant, and Ansible for cluster and container management</li>      
-                              </ul>      
-                          </div>      
-                          <div className="project-links">      
-                              <a href="https://maclea.mit.edu/about/" target="_blank">      
-                                  Visit Hyades      
-                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
-                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                  </svg>      
-                              </a>      
-                          </div>      
+                              <div className="item-meta">Jan 2023 – May 2023</div>
+                              <ul>
+                                  <li>Collaborating with student group members to improve computing at MIT</li>
+                                  <li>Contributing to Hyades, a self-configuring Kubernetes cluster for managing distributed computing systems</li>
+                              </ul>
+                          </div>
                       </div>
 
                   <div className="award-backdrop award-backdrop--urop" aria-hidden="true"></div>
@@ -706,7 +690,6 @@ export default function HomePage() {
                       </div>
                       <div className="item-content">
                           <h3>Georgia Certificate of Merit Award</h3>
-                          <p>Recognition for academic excellence and achievement.</p>
                       </div>
                   </div>
 
@@ -715,8 +698,7 @@ export default function HomePage() {
                           <img src="nocti_logo.webp" alt="NOCTI logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
-                          <h3>NOCTI Certification</h3>
-                          <p>Workforce Competency Credential in computer programming.</p>
+                          <h3>NOCTI Certification in Computer Programming</h3>
                       </div>
                   </div>
 
@@ -728,7 +710,7 @@ export default function HomePage() {
                       </div>
                       <div className="item-content">
                           <h3>Governor's Honors Program</h3>
-                          <p>Finalist and attendee with a major in mathematics and a minor in science.</p>
+                          <p>Major in mathematics and minor in science.</p>
                       </div>
                   </div>
 
@@ -745,10 +727,8 @@ export default function HomePage() {
                           <div className="item-content">      
                               <h3>IT Intern</h3>      
                               <div className="item-meta">Jun 2020 – Dec 2020</div>      
-                              <ul>      
-                                  <li>Assisted with IT infrastructure maintenance and upgrades</li>      
-                                  <li>Provided technical support to staff and resolved hardware/software issues</li>      
-                                  <li>Gained hands-on experience with enterprise IT systems</li>      
+                              <ul>
+                                  <li>Fixed teacher laptops and student Chromebooks.</li>
                               </ul>      
                           </div>      
                    </div>
@@ -758,8 +738,7 @@ export default function HomePage() {
                           <img src="amc_logo.webp" alt="AMC 10 logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
-                          <h3>AMC 10 First Place</h3>
-                          <p>Ranked first at my high school in the American Mathematics Competitions.</p>
+                          <h3>#1 at CCHS in the AMC 10</h3>
                       </div>
                   </div>
 

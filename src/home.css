@@ -702,6 +702,7 @@
 
         .experience-item, .project-item {
             --item-gap: clamp(5.75rem, 7vw, 7.5rem);
+            --item-x-shift: 0px;
             display: grid;
             grid-template-columns: 200px 1fr;
             gap: 2rem;
@@ -723,7 +724,7 @@
             bottom: calc(var(--item-gap) / -2);
             width: clamp(180px, 28vw, 360px);
             height: 1px;
-            transform: translateX(-50%);
+            transform: translateX(calc(-50% - var(--item-x-shift)));
             background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.14), transparent);
             pointer-events: none;
         }
@@ -791,6 +792,14 @@
 
         .paired-media-item .item-content > .project-links {
             grid-row: 4;
+        }
+
+        /* No date row: title sits beside logo; copy spans under both */
+        .paired-media-item .item-content > h3:has(+ ul),
+        .paired-media-item .item-content > h3:has(+ p) {
+            grid-row: 1 / span 2;
+            align-self: center;
+            margin-bottom: 0.5rem;
         }
 
         .paired-media-item .item-media-pair__logo {
@@ -1109,10 +1118,13 @@
             aspect-ratio: auto;
             align-self: center;
             justify-self: end;
-            background: transparent;
+            background: transparent !important;
+            background-color: transparent !important;
             box-shadow: none;
             transform: none;
             z-index: 2;
+            filter: none;
+            isolation: isolate;
         }
 
         .recognition-item--flat-logo .item-image::before,
@@ -1130,9 +1142,12 @@
             max-height: none;
             box-sizing: content-box;
             padding: 0;
-            background: transparent;
+            background: transparent !important;
+            background-color: transparent !important;
             object-fit: contain;
-            transform: none;
+            transform: none !important;
+            backface-visibility: visible;
+            -webkit-backface-visibility: visible;
             opacity: 1 !important;
             visibility: visible;
             z-index: 2;
@@ -1165,7 +1180,9 @@
             min-height: 124px !important;
             max-height: 124px !important;
             aspect-ratio: 1 / 1 !important;
-            object-fit: fill !important;
+            object-fit: contain !important;
+            background: transparent !important;
+            background-color: transparent !important;
         }
 
         .recognition-item--amc .item-image {
@@ -1173,32 +1190,34 @@
         }
 
         .recognition-item--mos .item-image {
-            width: 170px !important;
-            min-width: 170px !important;
-            max-width: 170px !important;
-            height: 170px !important;
-            min-height: 170px !important;
-            max-height: 170px !important;
+            width: 110px !important;
+            min-width: 110px !important;
+            max-width: 110px !important;
+            height: 110px !important;
+            min-height: 110px !important;
+            max-height: 110px !important;
             aspect-ratio: 1 / 1 !important;
         }
 
         .recognition-item--mos .item-image > img {
-            width: 170px !important;
-            min-width: 170px !important;
-            max-width: 170px !important;
-            height: 170px !important;
-            min-height: 170px !important;
-            max-height: 170px !important;
+            width: 110px !important;
+            min-width: 110px !important;
+            max-width: 110px !important;
+            height: 110px !important;
+            min-height: 110px !important;
+            max-height: 110px !important;
             aspect-ratio: 1 / 1 !important;
-            object-fit: fill !important;
+            object-fit: contain !important;
         }
 
         .recognition-item--ghp {
-            left: clamp(-84px, -5vw, -48px);
+            --item-x-shift: clamp(-84px, -5vw, -48px);
+            left: var(--item-x-shift);
         }
 
         .recognition-item--corgi {
             left: 0;
+            --item-x-shift: 0px;
             width: max-content;
             max-width: calc(100% - 2rem);
             grid-template-columns: 112px auto !important;
@@ -1211,11 +1230,126 @@
             align-self: center;
         }
 
+        .recognition-item--project {
+            width: 100% !important;
+            max-width: 100%;
+            left: 0;
+            --item-x-shift: 0px;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            margin-right: 0;
+            margin-left: 0;
+            column-gap: 1.25rem;
+            grid-template-columns: 112px max-content !important;
+        }
+
+        .recognition-item--project .item-content {
+            align-self: center;
+            width: max-content;
+            max-width: min(26rem, 52vw);
+        }
+
+        .recognition-item--project .item-content ul {
+            margin: 0.35rem 0 0.75rem;
+        }
+
+        .recognition-item--project .item-content li {
+            margin-bottom: 0;
+        }
+
+        .recognition-item--project-right .item-content ul {
+            display: inline-block;
+            text-align: left;
+        }
+
+        .recognition-item--project .item-meta {
+            margin-bottom: 0.55rem;
+        }
+
+        .recognition-item--project-left {
+            left: 0;
+            padding-right: clamp(40px, 5vw, 96px);
+        }
+
+        .recognition-item--project-right {
+            left: 0;
+            padding-left: clamp(20px, 2.5vw, 48px);
+            grid-template-columns: max-content 112px !important;
+        }
+
+        .recognition-item--project-right .item-image {
+            order: 2;
+            justify-self: start;
+        }
+
+        .recognition-item--project-right .item-content {
+            order: 1 !important;
+            text-align: right;
+        }
+
+        .recognition-item--project-right .project-links {
+            justify-content: flex-end;
+        }
+
+        .recognition-item--with-media {
+            grid-template-columns: 112px max-content minmax(160px, 240px) !important;
+            column-gap: 1.25rem;
+        }
+
+        .recognition-item--project-left.recognition-item--with-media {
+            padding-right: clamp(40px, 5vw, 96px);
+            padding-left: 0;
+        }
+
+        .recognition-item--project-right.recognition-item--with-media {
+            padding-left: clamp(12px, 2vw, 40px);
+            padding-right: 0;
+            grid-template-columns: minmax(160px, 240px) max-content 112px !important;
+        }
+
+        .recognition-item--project-right.recognition-item--with-media .recognition-item__media {
+            order: 1;
+        }
+
+        .recognition-item--project-right.recognition-item--with-media .item-content {
+            order: 2 !important;
+        }
+
+        .recognition-item--project-right.recognition-item--with-media .item-image {
+            order: 3;
+        }
+
+        .recognition-item__media {
+            display: grid;
+            place-items: center;
+            align-self: center;
+            width: min(240px, 32vw);
+            min-width: 0;
+            line-height: 0;
+        }
+
+        .recognition-item__media img,
+        .recognition-item__media video {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 180px;
+            object-fit: contain;
+            outline: 1px solid rgba(255, 255, 255, 0.78);
+            outline-offset: 0;
+            box-shadow:
+                0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 24px rgba(255, 255, 255, 0.08);
+        }
+
         .recognition-item--nocti,
         .recognition-item--amc,
         .recognition-item--certificate,
         .recognition-item--mos {
-            left: clamp(48px, 5vw, 84px);
+            --item-x-shift: clamp(48px, 5vw, 84px);
+            left: var(--item-x-shift);
             grid-template-columns: minmax(0, 1fr) 180px !important;
         }
 
@@ -1350,14 +1484,14 @@
         }
 
         .section-backdrop--future::before {
-            top: -16rem;
+            top: -24rem;
             height: min(900px, 110vh);
             background-image:
                 linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.98) 12%, rgba(0, 0, 0, 0.86) 25%, rgba(0, 0, 0, 0.52) 41%, rgba(0, 0, 0, 0.16) 56%, transparent 70%, rgba(0, 0, 0, 0.45) 100%),
                 linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.68) 42%, #000 84%),
                 radial-gradient(ellipse at 18% 42%, transparent 0%, rgba(0, 0, 0, 0.42) 40%, #000 80%),
                 url('/san-francisco-background.webp');
-            background-position: center, center, center, left center;
+            background-position: center, center, center, left 28%;
             background-size: cover, cover, cover, cover;
             opacity: 0.48;
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.08) 8%, rgba(0, 0, 0, 0.5) 22%, #000 38%, #000 76%, transparent 100%);
@@ -2026,6 +2160,45 @@
                 width: 100%;
                 left: 0;
                 text-align: left;
+            }
+
+            .recognition-item--project,
+            .recognition-item--with-media,
+            .recognition-item--project-right.recognition-item--with-media {
+                grid-template-columns: 76px minmax(0, 1fr) !important;
+                width: 100% !important;
+                max-width: 100%;
+                left: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .recognition-item--project-right .item-image,
+            .recognition-item--project-right.recognition-item--with-media .item-image {
+                order: initial;
+                justify-self: end;
+            }
+
+            .recognition-item--project-right .item-content,
+            .recognition-item--project-right.recognition-item--with-media .item-content {
+                order: initial !important;
+                text-align: left;
+            }
+
+            .recognition-item--project-right .project-links {
+                justify-content: flex-start;
+            }
+
+            .recognition-item__media {
+                grid-column: 1 / -1;
+                width: min(100%, 420px);
+                justify-self: center;
+                margin-top: 0.85rem;
+            }
+
+            .recognition-item__media img,
+            .recognition-item__media video {
+                max-height: 200px;
             }
 
             .recognition-item--flat-logo .item-content p {
