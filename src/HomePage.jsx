@@ -12,10 +12,10 @@ const dustParticles = Array.from({ length: 96 }, (_, index) => ({
   driftY: `${((index * 47) % 161) - 80}px`,
 }));
 
-function TimelineMediaPair({ logo, logoAlt, screenshot, screenshotAlt, reverse = false, logoOutlined = false }) {
+function TimelineMediaPair({ logo, logoAlt, screenshot, screenshotAlt, reverse = false, logoOutlined = false, logoLarge = false, logoBright = false }) {
   return (
     <div className={`item-media-pair${reverse ? ' item-media-pair--reverse' : ''}`}>
-      <div className={`item-media-pair__logo${logoOutlined ? ' item-media-pair__logo--outlined' : ''}`}>
+      <div className={`item-media-pair__logo${logoOutlined ? ' item-media-pair__logo--outlined' : ''}${logoLarge ? ' item-media-pair__logo--large' : ''}${logoBright ? ' item-media-pair__logo--bright' : ''}`}>
         <img src={logo} alt={logoAlt} />
       </div>
       <div className="item-media-pair__screenshot">
@@ -228,7 +228,7 @@ export default function HomePage() {
                           <img src="/timeline/samsara-logo.jfif" alt="Samsara logo" />
                       </div>
                       <div className="item-content">
-                          <h3>Software Engineer — Samsara</h3>
+                          <h3>Software Engineer at Samsara</h3>
                           <div className="item-meta">2026 – Present</div>
                           <ul>
                               <li>Building software at Samsara.</li>
@@ -245,7 +245,7 @@ export default function HomePage() {
                       </div>
                       <div className="item-content">
                           <h3>RuffCut</h3>
-                          <div className="item-meta">2026 – Present | AI Video Editing</div>
+                          <div className="item-meta">2026 – Present</div>
                           <ul>
                               <li>Building an AI agent that understands media and edits directly on a professional video-editing timeline.</li>
                           </ul>
@@ -271,8 +271,8 @@ export default function HomePage() {
                           <img src="/timeline/titan-logo.png" alt="Titan RT Teaching Tool logo" />
                       </div>
                       <div className="item-content">
-                          <h3>Researcher — Soderblom Lab / NASA Dragonfly</h3>
-                          <div className="item-meta">2025 – Present | React, JavaScript, Python, Plotly</div>
+                          <h3>The Soderblom Lab / NASA Dragonfly</h3>
+                          <div className="item-meta">2025 – Present</div>
                           <ul>
                               <li>Built the Titan RT Teaching Tool for interactively exploring Titan atmospheric radiative-transfer models, spectral data, and planetary imagery.</li>
                               <li>Implemented controls for haze and methane abundance, viewing geometry, composite imagery, and spectral comparisons across locations.</li>
@@ -292,8 +292,8 @@ export default function HomePage() {
                           screenshotAlt="Block, Code, Draw gameplay preview"
                       />
                       <div className="item-content">
-                          <h3>Block, Code, Draw</h3>
-                          <div className="item-meta">Spring 2026 | React, Blockly, TensorFlow.js, MediaPipe</div>
+                          <h3>Block, Code, Draw!</h3>
+                          <div className="item-meta">Spring 2026</div>
                           <ul>
                               <li>Co-created a block-based drawing game where learners build programs and receive on-device AI feedback about their artwork.</li>
                               <li>Designed classic and challenge modes to teach sequencing, loops, conditionals, variables, and creative debugging.</li>
@@ -311,7 +311,7 @@ export default function HomePage() {
                       </div>
                       <div className="item-content">
                           <h3>Echo of the Dead</h3>
-                          <div className="item-meta">Fall 2025 | Godot 4.5, GDScript, WebGL2</div>
+                          <div className="item-meta">Fall 2025</div>
                           <ul>
                               <li>Co-developed a survival platformer built around sound-based navigation, echolocation spells, limited visibility, and strategic combat.</li>
                               <li>Created atmospheric gameplay systems including fog of war, spell effects, damage feedback, exploration, audio, and web export support.</li>
@@ -359,7 +359,7 @@ export default function HomePage() {
                       </div>      
                   </div>
 
-<div className="project-item">      
+<div className="project-item recognition-item recognition-item--flat-logo recognition-item--corgi">
                       <div className="item-image item-image--flat item-image--glow">
                           <img src="corgi_hackathon_logo.png" alt="Corgi Hackathon" />      
                       </div>      
@@ -384,10 +384,11 @@ export default function HomePage() {
                           logoAlt="Mole Maker Game"
                           screenshot="mole_maker_screenshot.png"
                           screenshotAlt="Mole Maker Screenshot"
+                          logoLarge
                       />
                       <div className="item-content">      
-                          <h3>Mole Maker – 2D Chemistry Education Game</h3>      
-                          <div className="item-meta">Mar 2025 – May 2025 | Godot, Game Design</div>      
+                          <h3>Mole Maker</h3>
+                          <div className="item-meta">Mar 2025 – May 2025</div>
                           <ul>      
                               <li>Developing a 2D educational game to teach chemistry concepts through interactive play</li>      
                               <li>Designed game flow, level progression, and synthesis mechanics</li>      
@@ -417,7 +418,7 @@ export default function HomePage() {
                           logoOutlined
                       />
                       <div className="item-content">      
-                          <h3>Founder – KayBer, Inc.</h3>      
+                          <h3>KayBer</h3>
                           <div className="item-meta">May 2024 – Dec 2024</div>      
                           <ul>      
                               <li>Launched a social board (React + React Native + Supabase) with live nested threads</li>      
@@ -470,6 +471,7 @@ export default function HomePage() {
                           logoAlt="MacLea Logo"
                           screenshot="maclea_screenshot1.png"
                           screenshotAlt="MacLea Screenshot"
+                          logoLarge
                       />
                       <div className="item-content">      
                           <h3>MacLea</h3>
@@ -510,7 +512,7 @@ export default function HomePage() {
                               reverse
                           />
                           <div className="item-content">      
-                              <h3>Software Developer – Hyades</h3>      
+                              <h3>Hyades</h3>
                               <div className="item-meta">Jan 2023 – May 2023</div>      
                               <ul>      
                                   <li>Collaborating with student group members to improve computing at MIT</li>      
@@ -537,7 +539,7 @@ export default function HomePage() {
                               <img src="urop_logo.png" alt="Computer Vision Research" />      
                           </div>      
                           <div className="item-content">      
-                              <h3>Undergraduate Research – Computer Vision</h3>      
+                              <h3>Undergraduate Research in Computer Vision</h3>
                               <div className="item-meta">Oct 2022 – May 2023</div>      
                               <ul>      
                                   <li>Researching efficiency of image processing algorithm designs to optimize computer vision tasks using image reconstruction</li>      
@@ -555,7 +557,7 @@ export default function HomePage() {
                               screenshotAlt="Robotics Screenshot"
                           />
                           <div className="item-content">      
-                              <h3>MIT Robotics Team – Computer Science Subteam</h3>      
+                              <h3>MIT Robotics Team</h3>
                               <div className="item-meta">Sep 2022 – Mar 2024</div>      
                               <ul>      
                                   <li>Built OpenCV‑powered object recognition, foreground extraction, and compass‑based localization for the Harvard Pacbot competition</li>      
@@ -582,9 +584,11 @@ export default function HomePage() {
                               screenshot="boe_screenshot1.jpg"
                               screenshotAlt="BOE Screenshot"
                               reverse
+                              logoLarge
+                              logoBright
                           />
                           <div className="item-content">      
-                              <h3>Technology Support Specialist – Board of Education</h3>      
+                              <h3>Technology Support Specialist</h3>
                               <div className="item-meta">Jun 2021 – Aug 2022</div>      
                               <ul>      
                                   <li>Responsible for documenting all work in an online system, ordering and returning equipment, testing all units, imaging new laptops and desktops, activating Chromebooks, and delivering and setting them up in schools</li>      
@@ -601,8 +605,8 @@ export default function HomePage() {
                           screenshotAlt="ZenithServer Screenshot"
                       />
                       <div className="item-content">      
-                          <h3>Minecraft Server – ZenithServer.net</h3>      
-                          <div className="item-meta">Aug 2019 – Sep 2024 | Java, Server Management</div>      
+                          <h3>Zenith</h3>
+                          <div className="item-meta">Aug 2019 – Sep 2024</div>
                           <ul>      
                               <li>Worked with advertising agencies for online public listing and marketing</li>      
                               <li>Organized staff team into startup-style management structure</li>      
@@ -681,6 +685,7 @@ export default function HomePage() {
                               screenshot="it_intern_screenshot.png"
                               screenshotAlt="IT Intern Screenshot"
                               reverse
+                              logoLarge
                           />
                           <div className="item-content">      
                               <h3>IT Intern</h3>      
@@ -718,8 +723,8 @@ export default function HomePage() {
                           </iframe>      
                       </div>      
                       <div className="item-content">      
-                          <h3>Scissor Lift</h3>      
-                          <div className="item-meta">Jan 2020 – Mar 2020 | Mechanical Engineering, Robotics</div>      
+                          <h3>Robotics Scissor Lift</h3>
+                          <div className="item-meta">Jan 2020 – Mar 2020</div>
                           <ul>      
                               <li>Designed and created scissor lift compatible with pneumatics</li>      
                               <li>Built from fully recycled parts: steel auger guides and belt doctor blade</li>      
@@ -765,8 +770,8 @@ export default function HomePage() {
                           </iframe>      
                       </div>      
                       <div className="item-content">      
-                          <h3>FBLA – Digital Video Production</h3>      
-                          <div className="item-meta">Aug 2018 – Oct 2019 | Video Production, Leadership</div>      
+                          <h3>FBLA Digital Video Production</h3>
+                          <div className="item-meta">Aug 2018 – Oct 2019</div>
                           <ul>      
                               <li>Competed in Digital Video Production competition through national level</li>      
                               <li>Became Vice President after recruiting new members</li>      

@@ -749,6 +749,7 @@
         }
 
         .item-media-pair__logo {
+            position: relative;
             display: grid;
             width: 112px;
             min-width: 0;
@@ -757,6 +758,16 @@
             align-self: center;
             justify-self: center;
             background: transparent;
+        }
+
+        .item-media-pair__logo--bright::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            inset: -46%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.34) 0%, rgba(205, 220, 232, 0.16) 38%, transparent 72%);
+            filter: blur(10px);
+            pointer-events: none;
         }
 
         .item-media-pair__logo--outlined {
@@ -780,27 +791,41 @@
             outline: 1px solid rgba(255, 255, 255, 0.86);
             outline-offset: 0;
             filter: none;
+            box-shadow:
+                0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 24px rgba(255, 255, 255, 0.08);
+        }
+
+        .item-media-pair__logo--large img {
+            max-width: 132px;
+            max-height: 132px;
         }
 
         .item-media-pair__screenshot {
+            display: grid;
             width: 100%;
             min-width: 0;
-            overflow: hidden;
+            overflow: visible;
             align-self: center;
-            aspect-ratio: 4 / 3;
+            place-items: center;
             line-height: 0;
             background: transparent;
-            outline: 1px solid rgba(255, 255, 255, 0.78);
-            outline-offset: 0;
         }
 
         .item-media-pair__screenshot img {
             display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 320px;
+            object-fit: contain;
             object-position: center;
             background: transparent;
+            outline: 1px solid rgba(255, 255, 255, 0.78);
+            outline-offset: 0;
+            box-shadow:
+                0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 24px rgba(255, 255, 255, 0.08);
         }
 
         .item-image {
@@ -922,6 +947,9 @@
         .item-image.item-image--outlined {
             outline: 1px solid rgba(255, 255, 255, 0.78);
             outline-offset: 0;
+            box-shadow:
+                0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 24px rgba(255, 255, 255, 0.08);
         }
 
         .item-image.item-image--outlined > img {
@@ -983,7 +1011,7 @@
         .recognition-item--flat-logo {
             grid-template-columns: 180px minmax(0, 1fr) !important;
             align-items: center;
-            column-gap: 1.15rem;
+            column-gap: 1.85rem;
             width: min(960px, calc(100% - 5rem));
             margin-right: auto;
             margin-left: auto;
@@ -1088,6 +1116,14 @@
             left: clamp(-84px, -5vw, -48px);
         }
 
+        .recognition-item--corgi {
+            left: clamp(-72px, -4vw, -42px);
+        }
+
+        .recognition-item--corgi .item-content {
+            align-self: center;
+        }
+
         .recognition-item--nocti,
         .recognition-item--amc,
         .recognition-item--certificate,
@@ -1155,17 +1191,27 @@
         }
 
         .recognition-item--certificate::before {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.72)), url('/certificate-merit-bg.jpg');
+            background-image:
+                radial-gradient(circle at 8% 14%, rgba(0, 0, 0, 0.72) 0%, transparent 38%),
+                radial-gradient(circle at 92% 82%, rgba(0, 0, 0, 0.42) 0%, transparent 48%),
+                linear-gradient(118deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.76)),
+                url('/certificate-merit-bg.jpg');
+            -webkit-mask-image: radial-gradient(ellipse 78% 88% at 43% 56%, #000 5%, rgba(0, 0, 0, 0.9) 38%, transparent 61%);
+            mask-image: radial-gradient(ellipse 78% 88% at 43% 56%, #000 5%, rgba(0, 0, 0, 0.9) 38%, transparent 61%);
         }
 
         .recognition-item--ghp::before {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.72)), url('/governors-honors-bg.png');
+            background-image:
+                radial-gradient(circle at 88% 12%, rgba(0, 0, 0, 0.68) 0%, transparent 42%),
+                radial-gradient(circle at 14% 86%, rgba(0, 0, 0, 0.34) 0%, transparent 50%),
+                linear-gradient(72deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.16) 48%, rgba(0, 0, 0, 0.58)),
+                url('/governors-honors-bg.png');
             inset: -5rem -12vw -5rem 52%;
             opacity: 0.44;
             background-position: center;
             transition: none;
-            -webkit-mask-image: radial-gradient(ellipse 72% 84% at 54% 46%, #000 4%, rgba(0, 0, 0, 0.9) 34%, transparent 56%);
-            mask-image: radial-gradient(ellipse 72% 84% at 54% 46%, #000 4%, rgba(0, 0, 0, 0.9) 34%, transparent 56%);
+            -webkit-mask-image: radial-gradient(ellipse 76% 82% at 58% 43%, #000 4%, rgba(0, 0, 0, 0.9) 33%, transparent 59%);
+            mask-image: radial-gradient(ellipse 76% 82% at 58% 43%, #000 4%, rgba(0, 0, 0, 0.9) 33%, transparent 59%);
         }
 
         .recognition-item--mos::before {
@@ -1289,10 +1335,12 @@
             height: auto;
             aspect-ratio: 1290 / 1692;
             background-image:
+                radial-gradient(circle at 10% 10%, rgba(0, 0, 0, 0.7) 0%, transparent 34%),
+                radial-gradient(circle at 88% 84%, rgba(0, 0, 0, 0.3) 0%, transparent 42%),
                 linear-gradient(112deg, rgba(0, 0, 0, 0.1) 4%, transparent 36%, rgba(0, 0, 0, 0.62) 100%),
                 radial-gradient(ellipse at 41% 47%, transparent 10%, rgba(0, 0, 0, 0.24) 46%, #000 96%),
                 url('/certificate-merit-bg.jpg');
-            background-size: cover, cover, cover;
+            background-size: cover, cover, cover, cover, cover;
             opacity: 0.56;
             -webkit-mask-image:
                 radial-gradient(ellipse 70% 82% at 36% 51%, #000 2%, rgba(0, 0, 0, 0.9) 27%, transparent 50%),
@@ -1311,14 +1359,20 @@
             aspect-ratio: auto;
             transform: translateX(-50%);
             background-image:
+                radial-gradient(circle at 92% 8%, rgba(0, 0, 0, 0.72) 0%, transparent 35%),
+                radial-gradient(circle at 8% 88%, rgba(0, 0, 0, 0.38) 0%, transparent 46%),
                 linear-gradient(to right, rgba(0, 0, 0, 0.66) 0%, rgba(0, 0, 0, 0.28) 38%, rgba(0, 0, 0, 0.72) 88%, #000 100%),
                 radial-gradient(ellipse at 38% 48%, transparent 0%, rgba(0, 0, 0, 0.34) 38%, #000 82%),
                 url('/governors-honors-bg.png');
-            background-position: center, center, center 44%;
-            background-size: cover, cover, cover;
+            background-position: center, center, center, center, center 44%;
+            background-size: cover, cover, cover, cover, cover;
             opacity: 0.5;
-            -webkit-mask-image: radial-gradient(ellipse 88% 92% at center, #000 3%, rgba(0, 0, 0, 0.96) 38%, transparent 54%);
-            mask-image: radial-gradient(ellipse 88% 92% at center, #000 3%, rgba(0, 0, 0, 0.96) 38%, transparent 54%);
+            -webkit-mask-image:
+                radial-gradient(ellipse 76% 88% at 42% 54%, #000 3%, rgba(0, 0, 0, 0.96) 36%, transparent 57%),
+                radial-gradient(ellipse 46% 58% at 69% 38%, rgba(0, 0, 0, 0.76) 2%, transparent 50%);
+            mask-image:
+                radial-gradient(ellipse 76% 88% at 42% 54%, #000 3%, rgba(0, 0, 0, 0.96) 36%, transparent 57%),
+                radial-gradient(ellipse 46% 58% at 69% 38%, rgba(0, 0, 0, 0.76) 2%, transparent 50%);
         }
 
         .award-backdrop--certificate::before,
@@ -1408,7 +1462,9 @@
         .project-item.video2 .item-image {
             aspect-ratio: 16 / 9;
             transform: none;
-            box-shadow: none;
+            box-shadow:
+                0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 24px rgba(255, 255, 255, 0.08);
             outline: 1px solid rgba(255, 255, 255, 0.78);
             outline-offset: 0;
         }
@@ -1831,6 +1887,11 @@
                 max-height: 76px;
             }
 
+            .item-media-pair__logo--large img {
+                max-width: 96px;
+                max-height: 96px;
+            }
+
             .paired-media-item .item-media-pair__screenshot,
             .paired-media-item--right .item-media-pair__screenshot {
                 grid-column: 1 / 3;
@@ -1843,7 +1904,7 @@
 
             .recognition-item--flat-logo {
                 grid-template-columns: 88px minmax(0, 1fr) !important;
-                column-gap: 0.8rem;
+                column-gap: 1.2rem;
                 width: 100%;
                 left: 0;
                 text-align: left;
