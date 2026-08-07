@@ -668,6 +668,141 @@
             order: -1;
         }
 
+        .paired-media-item {
+            grid-template-columns: 112px minmax(0, 1fr) minmax(260px, 33.333%) !important;
+            align-items: center;
+            column-gap: clamp(1.25rem, 2.5vw, 2.75rem);
+            row-gap: 0;
+        }
+
+        .paired-media-item--right {
+            grid-template-columns: minmax(260px, 33.333%) minmax(0, 1fr) 112px !important;
+        }
+
+        .paired-media-item .item-content {
+            display: contents;
+            order: initial !important;
+        }
+
+        .paired-media-item .item-content > h3 {
+            grid-column: 2;
+            grid-row: 1;
+            align-self: end;
+            margin-bottom: 0.12rem;
+        }
+
+        .paired-media-item .item-content > .item-meta {
+            grid-column: 2;
+            grid-row: 2;
+            align-self: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .paired-media-item .item-content > ul,
+        .paired-media-item .item-content > p,
+        .paired-media-item .item-content > .project-links {
+            grid-column: 1 / 3;
+        }
+
+        .paired-media-item .item-content > ul,
+        .paired-media-item .item-content > p {
+            grid-row: 3;
+        }
+
+        .paired-media-item .item-content > .project-links {
+            grid-row: 4;
+        }
+
+        .paired-media-item .item-media-pair__logo {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+        }
+
+        .paired-media-item .item-media-pair__screenshot {
+            grid-column: 3;
+            grid-row: 1 / span 4;
+        }
+
+        .paired-media-item--right .item-content > h3,
+        .paired-media-item--right .item-content > .item-meta {
+            grid-column: 2;
+        }
+
+        .paired-media-item--right .item-content > ul,
+        .paired-media-item--right .item-content > p,
+        .paired-media-item--right .item-content > .project-links {
+            grid-column: 2 / 4;
+        }
+
+        .paired-media-item--right .item-media-pair__logo {
+            grid-column: 3;
+            grid-row: 1 / span 2;
+        }
+
+        .paired-media-item--right .item-media-pair__screenshot {
+            grid-column: 1;
+            grid-row: 1 / span 4;
+        }
+
+        .item-media-pair {
+            display: contents;
+        }
+
+        .item-media-pair__logo {
+            display: grid;
+            width: 112px;
+            min-width: 0;
+            height: 112px;
+            place-items: center;
+            align-self: center;
+            justify-self: center;
+            background: transparent;
+        }
+
+        .item-media-pair__logo--outlined {
+            background: transparent;
+        }
+
+        .item-media-pair__logo img {
+            display: block;
+            width: auto;
+            max-width: 92px;
+            height: auto;
+            max-height: 104px;
+            object-fit: contain;
+            background: transparent;
+            filter:
+                drop-shadow(0 0 9px rgba(255, 255, 255, 0.42))
+                drop-shadow(0 0 22px rgba(255, 255, 255, 0.18));
+        }
+
+        .item-media-pair__logo--outlined img {
+            outline: 1px solid rgba(255, 255, 255, 0.86);
+            outline-offset: 0;
+            filter: none;
+        }
+
+        .item-media-pair__screenshot {
+            width: 100%;
+            min-width: 0;
+            overflow: hidden;
+            align-self: center;
+            aspect-ratio: 4 / 3;
+            line-height: 0;
+            background: transparent;
+            outline: 1px solid rgba(255, 255, 255, 0.78);
+            outline-offset: 0;
+        }
+
+        .item-media-pair__screenshot img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            background: transparent;
+        }
+
         .item-image {
             --preview-depth: 40px;
             width: 100%;
@@ -784,6 +919,15 @@
                 drop-shadow(0 0 20px rgba(255, 255, 255, 0.14));
         }
 
+        .item-image.item-image--outlined {
+            outline: 1px solid rgba(255, 255, 255, 0.78);
+            outline-offset: 0;
+        }
+
+        .item-image.item-image--outlined > img {
+            filter: none;
+        }
+
         .timeline-mark {
             display: grid;
             width: 100%;
@@ -893,57 +1037,77 @@
         }
 
         .recognition-item--certificate .item-image {
-            width: 150px;
-            height: 150px;
+            width: 124px !important;
+            min-width: 124px !important;
+            max-width: 124px !important;
+            height: 124px !important;
+            min-height: 124px !important;
+            max-height: 124px !important;
             display: grid;
             place-items: center;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 1 !important;
         }
 
         .recognition-item--certificate .item-image > img {
-            width: auto;
-            height: 100%;
-            aspect-ratio: auto;
-            object-fit: contain !important;
+            width: 124px !important;
+            min-width: 124px !important;
+            max-width: 124px !important;
+            height: 124px !important;
+            min-height: 124px !important;
+            max-height: 124px !important;
+            aspect-ratio: 1 / 1 !important;
+            object-fit: fill !important;
         }
 
         .recognition-item--amc .item-image {
-            width: 148px;
+            width: 180px !important;
         }
 
         .recognition-item--mos .item-image {
-            width: 168px;
-            height: 168px;
-            aspect-ratio: 1 / 1;
+            width: 170px !important;
+            min-width: 170px !important;
+            max-width: 170px !important;
+            height: 170px !important;
+            min-height: 170px !important;
+            max-height: 170px !important;
+            aspect-ratio: 1 / 1 !important;
         }
 
         .recognition-item--mos .item-image > img {
-            width: 100%;
-            height: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: contain !important;
+            width: 170px !important;
+            min-width: 170px !important;
+            max-width: 170px !important;
+            height: 170px !important;
+            min-height: 170px !important;
+            max-height: 170px !important;
+            aspect-ratio: 1 / 1 !important;
+            object-fit: fill !important;
         }
 
-        .recognition-item--certificate,
-        .recognition-item--ghp,
-        .recognition-item--mos {
+        .recognition-item--ghp {
             left: clamp(-84px, -5vw, -48px);
         }
 
         .recognition-item--nocti,
-        .recognition-item--amc {
+        .recognition-item--amc,
+        .recognition-item--certificate,
+        .recognition-item--mos {
             left: clamp(48px, 5vw, 84px);
             grid-template-columns: minmax(0, 1fr) 180px !important;
         }
 
         .recognition-item--nocti .item-image,
-        .recognition-item--amc .item-image {
+        .recognition-item--amc .item-image,
+        .recognition-item--certificate .item-image,
+        .recognition-item--mos .item-image {
             order: 2;
             justify-self: start;
         }
 
         .recognition-item--nocti .item-content,
-        .recognition-item--amc .item-content {
+        .recognition-item--amc .item-content,
+        .recognition-item--certificate .item-content,
+        .recognition-item--mos .item-content {
             order: 1 !important;
             text-align: right;
         }
@@ -954,6 +1118,22 @@
 
         .recognition-item--flat-logo .item-content p {
             white-space: nowrap;
+        }
+
+        .experience-item--urop {
+            grid-template-columns: minmax(0, 1fr) 200px !important;
+        }
+
+        .experience-item--urop .item-image {
+            grid-column: 2;
+            order: 2;
+            justify-self: end;
+        }
+
+        .experience-item--urop .item-content {
+            grid-column: 1;
+            order: 1 !important;
+            padding-left: clamp(4rem, 10vw, 9rem);
         }
 
         .recognition-item::before {
@@ -1228,10 +1408,9 @@
         .project-item.video2 .item-image {
             aspect-ratio: 16 / 9;
             transform: none;
-            box-shadow:
-                0 0 0 1px rgba(255, 255, 255, 0.16),
-                0 0 14px rgba(255, 255, 255, 0.16),
-                0 0 32px rgba(255, 255, 255, 0.07);
+            box-shadow: none;
+            outline: 1px solid rgba(255, 255, 255, 0.78);
+            outline-offset: 0;
         }
 
         .project-item.video1 .item-image::before,
@@ -1243,6 +1422,7 @@
 
         .project-item.video1 .item-image > iframe,
         .project-item.video2 .item-image > iframe {
+            border-radius: 0 !important;
             transform: none;
         }
 
@@ -1580,6 +1760,87 @@
                 order: 0;
             }
 
+            .paired-media-item,
+            .paired-media-item--right {
+                grid-template-columns: 80px minmax(0, 1fr) !important;
+                row-gap: 0;
+            }
+
+            .paired-media-item .item-media-pair,
+            .paired-media-item--right .item-media-pair {
+                order: 0;
+            }
+
+            .paired-media-item .item-content,
+            .paired-media-item--right .item-content {
+                display: contents;
+                order: 1 !important;
+            }
+
+            .paired-media-item .item-content > h3,
+            .paired-media-item--right .item-content > h3 {
+                grid-column: 2;
+                grid-row: 1;
+                align-self: end;
+                text-align: left;
+            }
+
+            .paired-media-item .item-content > .item-meta,
+            .paired-media-item--right .item-content > .item-meta {
+                grid-column: 2;
+                grid-row: 2;
+                text-align: left;
+            }
+
+            .paired-media-item .item-content > ul,
+            .paired-media-item .item-content > p,
+            .paired-media-item .item-content > .project-links,
+            .paired-media-item--right .item-content > ul,
+            .paired-media-item--right .item-content > p,
+            .paired-media-item--right .item-content > .project-links {
+                grid-column: 1 / 3;
+                text-align: left;
+            }
+
+            .paired-media-item .item-content > ul,
+            .paired-media-item .item-content > p,
+            .paired-media-item--right .item-content > ul,
+            .paired-media-item--right .item-content > p {
+                grid-row: 3;
+            }
+
+            .paired-media-item .item-content > .project-links,
+            .paired-media-item--right .item-content > .project-links {
+                grid-row: 4;
+            }
+
+            .paired-media-item .item-media-pair__logo,
+            .paired-media-item--right .item-media-pair__logo {
+                grid-column: 1;
+                grid-row: 1 / span 2;
+                order: 0;
+            }
+
+            .item-media-pair__logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .item-media-pair__logo img {
+                max-width: 72px;
+                max-height: 76px;
+            }
+
+            .paired-media-item .item-media-pair__screenshot,
+            .paired-media-item--right .item-media-pair__screenshot {
+                grid-column: 1 / 3;
+                grid-row: 5;
+                order: 2;
+                justify-self: center;
+                width: min(100%, 520px);
+                margin-top: 1.25rem;
+            }
+
             .recognition-item--flat-logo {
                 grid-template-columns: 88px minmax(0, 1fr) !important;
                 column-gap: 0.8rem;
@@ -1598,7 +1859,22 @@
 
             .recognition-item--certificate .item-image,
             .recognition-item--mos .item-image {
-                height: 76px;
+                width: 76px !important;
+                min-width: 76px !important;
+                max-width: 76px !important;
+                height: 76px !important;
+                min-height: 76px !important;
+                max-height: 76px !important;
+            }
+
+            .recognition-item--certificate .item-image > img,
+            .recognition-item--mos .item-image > img {
+                width: 76px !important;
+                min-width: 76px !important;
+                max-width: 76px !important;
+                height: 76px !important;
+                min-height: 76px !important;
+                max-height: 76px !important;
             }
 
             .recognition-item--nocti .item-image {
@@ -1606,19 +1882,41 @@
             }
 
             .recognition-item--amc .item-image {
-                width: 80px;
+                width: 92px !important;
             }
 
             .recognition-item--nocti .item-image,
-            .recognition-item--amc .item-image {
+            .recognition-item--amc .item-image,
+            .recognition-item--certificate .item-image,
+            .recognition-item--mos .item-image {
                 order: initial;
                 justify-self: end;
             }
 
             .recognition-item--nocti .item-content,
-            .recognition-item--amc .item-content {
+            .recognition-item--amc .item-content,
+            .recognition-item--certificate .item-content,
+            .recognition-item--mos .item-content {
                 order: initial !important;
                 text-align: left;
+            }
+
+            .experience-item--urop {
+                grid-template-columns: 1fr !important;
+            }
+
+            .experience-item--urop .item-image,
+            .experience-item--urop .item-content {
+                grid-column: 1;
+                order: initial !important;
+            }
+
+            .experience-item--urop .item-image {
+                justify-self: center;
+            }
+
+            .experience-item--urop .item-content {
+                padding-left: 0;
             }
 
             .hero {

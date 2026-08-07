@@ -12,6 +12,19 @@ const dustParticles = Array.from({ length: 96 }, (_, index) => ({
   driftY: `${((index * 47) % 161) - 80}px`,
 }));
 
+function TimelineMediaPair({ logo, logoAlt, screenshot, screenshotAlt, reverse = false, logoOutlined = false }) {
+  return (
+    <div className={`item-media-pair${reverse ? ' item-media-pair--reverse' : ''}`}>
+      <div className={`item-media-pair__logo${logoOutlined ? ' item-media-pair__logo--outlined' : ''}`}>
+        <img src={logo} alt={logoAlt} />
+      </div>
+      <div className="item-media-pair__screenshot">
+        <img src={screenshot} alt={screenshotAlt} />
+      </div>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const headerNameRef = useRef(null);
@@ -211,7 +224,7 @@ export default function HomePage() {
                   <div className="section-backdrop section-backdrop--future" aria-hidden="true"></div>
 
                   <div className="experience-item">
-                      <div className="item-image item-image--flat item-image--glow">
+                      <div className="item-image item-image--flat item-image--glow item-image--outlined">
                           <img src="/timeline/samsara-logo.jfif" alt="Samsara logo" />
                       </div>
                       <div className="item-content">
@@ -227,7 +240,7 @@ export default function HomePage() {
                   </div>
 
                   <div className="project-item">
-                      <div className="item-image item-image--flat item-image--glow item-image--ruffcut">
+                      <div className="item-image item-image--flat item-image--glow item-image--ruffcut item-image--outlined">
                           <img src="/ruffcut/ruffcut-logo.png" alt="RuffCut logo" />
                       </div>
                       <div className="item-content">
@@ -271,11 +284,13 @@ export default function HomePage() {
                       </div>
                   </div>
 
-<div className="project-item">
-                      <div className="item-image">
-                          <img src="/timeline/block-code-draw-logo.png" alt="Block, Code, Draw logo" />
-                          <img src="/timeline/block-code-draw-demo.gif" alt="Block, Code, Draw gameplay preview" className="hover-image" />
-                      </div>
+<div className="project-item paired-media-item">
+                      <TimelineMediaPair
+                          logo="/timeline/block-code-draw-logo.svg"
+                          logoAlt="Block, Code, Draw logo"
+                          screenshot="/timeline/block-code-draw-demo.gif"
+                          screenshotAlt="Block, Code, Draw gameplay preview"
+                      />
                       <div className="item-content">
                           <h3>Block, Code, Draw</h3>
                           <div className="item-meta">Spring 2026 | React, Blockly, TensorFlow.js, MediaPipe</div>
@@ -308,13 +323,17 @@ export default function HomePage() {
                       </div>
                   </div>
 
-<div className="experience-item">      
-                      <div className="item-image">      
-                          <img src="yapclap_logo.png" alt="YapClap Logo" />      
-                          <img src="yapclap_screenshot.png" alt="YapClap Screenshot" className="hover-image" />      
-                      </div>      
+<div className="experience-item paired-media-item paired-media-item--right">
+                      <TimelineMediaPair
+                          logo="yapclap_logo.png"
+                          logoAlt="YapClap Logo"
+                          screenshot="yapclap_screenshot.png"
+                          screenshotAlt="YapClap Screenshot"
+                          reverse
+                          logoOutlined
+                      />
                       <div className="item-content">      
-                          <h3>Founder – YapClap.com</h3>      
+                          <h3>YapClap</h3>
                           <div className="item-meta">Jun 2025 – Dec 2025</div>      
                           <ul>      
                               <li>Architected and shipped a WebRTC + React / React‑Native video‑chat platform that pairs strangers quickly using Socket.IO signaling and TURN/STUN fallback</li>      
@@ -359,11 +378,13 @@ export default function HomePage() {
                       </div>      
                   </div>
 
-<div className="project-item">      
-                      <div className="item-image">      
-                          <img src="mole_maker_logo.png" alt="Mole Maker Game" />      
-                          <img src="mole_maker_screenshot.png" alt="Mole Maker Screenshot" className="hover-image" />      
-                      </div>      
+<div className="project-item paired-media-item">
+                      <TimelineMediaPair
+                          logo="mole_maker_logo.png"
+                          logoAlt="Mole Maker Game"
+                          screenshot="mole_maker_screenshot.png"
+                          screenshotAlt="Mole Maker Screenshot"
+                      />
                       <div className="item-content">      
                           <h3>Mole Maker – 2D Chemistry Education Game</h3>      
                           <div className="item-meta">Mar 2025 – May 2025 | Godot, Game Design</div>      
@@ -386,11 +407,15 @@ export default function HomePage() {
                       </div>      
                   </div>
 
-<div className="experience-item">      
-                      <div className="item-image">      
-                          <img src="kayber_logo.png" alt="KayBer Logo" />      
-                          <img src="kayber_screenshot.png" alt="KayBer Screenshot" className="hover-image" />      
-                      </div>      
+<div className="experience-item paired-media-item paired-media-item--right">
+                      <TimelineMediaPair
+                          logo="kayber_logo.png"
+                          logoAlt="KayBer Logo"
+                          screenshot="kayber_screenshot.png"
+                          screenshotAlt="KayBer Screenshot"
+                          reverse
+                          logoOutlined
+                      />
                       <div className="item-content">      
                           <h3>Founder – KayBer, Inc.</h3>      
                           <div className="item-meta">May 2024 – Dec 2024</div>      
@@ -439,13 +464,15 @@ export default function HomePage() {
                       </div>      
                    </div>
 
-<div className="experience-item">      
-                      <div className="item-image">      
-                          <img src="maclea_logo.png" alt="MacLea Logo" />      
-                          <img src="maclea_screenshot1.png" alt="MacLea Screenshot" className="hover-image" />      
-                      </div>      
+<div className="experience-item paired-media-item">
+                      <TimelineMediaPair
+                          logo="maclea_logo.png"
+                          logoAlt="MacLea Logo"
+                          screenshot="maclea_screenshot1.png"
+                          screenshotAlt="MacLea Screenshot"
+                      />
                       <div className="item-content">      
-                          <h3>Undergraduate Research – Educational ML Tool</h3>      
+                          <h3>MacLea</h3>
                           <div className="item-meta">May 2023 – May 2024</div>      
                           <ul>      
                               <li>Created MacLea – an educational tool designed to teach students in elementary and middle school about machine learning</li>      
@@ -474,11 +501,14 @@ export default function HomePage() {
                       </div>      
                   </div>
 
-<div className="experience-item">      
-                          <div className="item-image">      
-                              <img src="hyades_logo.png" alt="Hyades" />      
-                              <img src="hyades_screenshot.png" alt="Hyades Screenshot" className="hover-image" />      
-                          </div>      
+<div className="experience-item paired-media-item paired-media-item--right">
+                          <TimelineMediaPair
+                              logo="hyades_logo.png"
+                              logoAlt="Hyades"
+                              screenshot="hyades_screenshot.png"
+                              screenshotAlt="Hyades Screenshot"
+                              reverse
+                          />
                           <div className="item-content">      
                               <h3>Software Developer – Hyades</h3>      
                               <div className="item-meta">Jan 2023 – May 2023</div>      
@@ -502,7 +532,7 @@ export default function HomePage() {
 
                   <div className="award-backdrop award-backdrop--urop" aria-hidden="true"></div>
 
-<div className="experience-item">      
+<div className="experience-item experience-item--urop">
                           <div className="item-image item-image--flat item-image--glow">
                               <img src="urop_logo.png" alt="Computer Vision Research" />      
                           </div>      
@@ -517,11 +547,13 @@ export default function HomePage() {
                           </div>      
                       </div>
 
-<div className="experience-item">      
-                          <div className="item-image">      
-                              <img src="robotics_logo.png" alt="MIT Robotics" />      
-                              <img src="robotics_screenshot.gif" alt="Robotics Screenshot" className="hover-image" />      
-                          </div>      
+<div className="experience-item paired-media-item">
+                          <TimelineMediaPair
+                              logo="robotics_logo.png"
+                              logoAlt="MIT Robotics"
+                              screenshot="robotics_screenshot.gif"
+                              screenshotAlt="Robotics Screenshot"
+                          />
                           <div className="item-content">      
                               <h3>MIT Robotics Team – Computer Science Subteam</h3>      
                               <div className="item-meta">Sep 2022 – Mar 2024</div>      
@@ -543,11 +575,14 @@ export default function HomePage() {
 
                   <div className="section-backdrop section-backdrop--origins" aria-hidden="true"></div>
 
-<div className="experience-item">      
-                          <div className="item-image">      
-                              <img src="boe_logo.png" alt="Board of Education" />      
-                              <img src="boe_screenshot1.jpg" alt="BOE Screenshot" className="hover-image" />      
-                          </div>      
+<div className="experience-item paired-media-item paired-media-item--right">
+                          <TimelineMediaPair
+                              logo="boe_logo.png"
+                              logoAlt="Board of Education"
+                              screenshot="boe_screenshot1.jpg"
+                              screenshotAlt="BOE Screenshot"
+                              reverse
+                          />
                           <div className="item-content">      
                               <h3>Technology Support Specialist – Board of Education</h3>      
                               <div className="item-meta">Jun 2021 – Aug 2022</div>      
@@ -558,11 +593,13 @@ export default function HomePage() {
                           </div>      
                       </div>
 
-<div className="project-item">      
-                      <div className="item-image">      
-                          <img src="zenith_logo.png" alt="ZenithServer" />      
-                          <img src="zenith_screenshot.png" alt="ZenithServer Screenshot" className="hover-image" />      
-                      </div>      
+<div className="project-item paired-media-item">
+                      <TimelineMediaPair
+                          logo="zenith_logo.png"
+                          logoAlt="ZenithServer"
+                          screenshot="zenith_screenshot.png"
+                          screenshotAlt="ZenithServer Screenshot"
+                      />
                       <div className="item-content">      
                           <h3>Minecraft Server – ZenithServer.net</h3>      
                           <div className="item-meta">Aug 2019 – Sep 2024 | Java, Server Management</div>      
@@ -637,11 +674,14 @@ export default function HomePage() {
                       </div>
                   </div>
 
-<div className="experience-item">      
-                          <div className="item-image">      
-                              <img src="it_intern_logo.png" alt="IT Intern" />      
-                              <img src="it_intern_screenshot.png" alt="IT Intern Screenshot" className="hover-image" />      
-                          </div>      
+<div className="experience-item paired-media-item paired-media-item--right">
+                          <TimelineMediaPair
+                              logo="it_intern_logo.png"
+                              logoAlt="IT Intern"
+                              screenshot="it_intern_screenshot.png"
+                              screenshotAlt="IT Intern Screenshot"
+                              reverse
+                          />
                           <div className="item-content">      
                               <h3>IT Intern</h3>      
                               <div className="item-meta">Jun 2020 – Dec 2020</div>      
