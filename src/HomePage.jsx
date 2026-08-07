@@ -211,7 +211,7 @@ export default function HomePage() {
                   <div className="section-backdrop section-backdrop--future" aria-hidden="true"></div>
 
                   <div className="experience-item">
-                      <div className="item-image">
+                      <div className="item-image item-image--flat item-image--glow">
                           <img src="/timeline/samsara-logo.jfif" alt="Samsara logo" />
                       </div>
                       <div className="item-content">
@@ -227,9 +227,8 @@ export default function HomePage() {
                   </div>
 
                   <div className="project-item">
-                      <div className="item-image">
+                      <div className="item-image item-image--flat item-image--glow item-image--ruffcut">
                           <img src="/ruffcut/ruffcut-logo.png" alt="RuffCut logo" />
-                          <img src="/ruffcut/ruffcut-editor.png" alt="RuffCut AI video editor interface" className="hover-image" />
                       </div>
                       <div className="item-content">
                           <h3>RuffCut</h3>
@@ -255,9 +254,8 @@ export default function HomePage() {
                   <div className="section-backdrop section-backdrop--mit" aria-hidden="true"></div>
 
 <div className="experience-item">
-                      <div className="item-image">
+                      <div className="item-image item-image--flat item-image--glow">
                           <img src="/timeline/titan-logo.png" alt="Titan RT Teaching Tool logo" />
-                          <img src="/timeline/titan-background.png" alt="Titan RT Teaching Tool preview" className="hover-image" />
                       </div>
                       <div className="item-content">
                           <h3>Researcher — Soderblom Lab / NASA Dragonfly</h3>
@@ -293,7 +291,7 @@ export default function HomePage() {
                   </div>
 
 <div className="project-item">
-                      <div className="item-image">
+                      <div className="item-image item-image--flat item-image--glow">
                           <img src="/timeline/echo-of-the-dead-logo.svg" alt="Echo of the Dead logo" />
                       </div>
                       <div className="item-content">
@@ -343,18 +341,11 @@ export default function HomePage() {
                   </div>
 
 <div className="project-item">      
-                      <div className="item-image">      
+                      <div className="item-image item-image--flat item-image--glow">
                           <img src="corgi_hackathon_logo.png" alt="Corgi Hackathon" />      
-                          <img src="corgi_hackathon_screenshot.jpeg" alt="Corgi Hackathon Screenshot" className="hover-image" />      
                       </div>      
                       <div className="item-content">      
                           <h3>Corgi Insurance Tenant Policy Uploader</h3>      
-                          <div className="item-meta">Jun 2025 | React, Tesseract.js, Gemini API, AI/ML</div>      
-                          <ul>      
-                              <li>Co‑built (two‑person team) a React app that OCRs PDF/image uploads (Tesseract.js + pdfjs‑dist), regex‑validates insurance fields, and routes qualified docs to Gemini LLM for PII checks — entirely client‑side</li>      
-                              <li>Designed a drag‑and‑drop and camera capture UI to score documents in real time, significantly improving intake review speed and accuracy</li>      
-                              <li>Stack: React, Tesseract.js, pdfjs‑dist, Gemini API, JavaScript, CSS</li>      
-                          </ul>      
                           <div className="project-links">      
                               <a href="https://github.com/WesleyBLDC/corgi_hackathon" target="_blank">      
                                   View Source Code       
@@ -512,7 +503,7 @@ export default function HomePage() {
                   <div className="award-backdrop award-backdrop--urop" aria-hidden="true"></div>
 
 <div className="experience-item">      
-                          <div className="item-image">      
+                          <div className="item-image item-image--flat item-image--glow">
                               <img src="urop_logo.png" alt="Computer Vision Research" />      
                           </div>      
                           <div className="item-content">      
@@ -614,7 +605,7 @@ export default function HomePage() {
 
                   <div className="award-backdrop award-backdrop--certificate" aria-hidden="true"></div>
 
-                  <div className="project-item recognition-item recognition-item--certificate">
+                  <div className="project-item recognition-item recognition-item--certificate recognition-item--flat-logo">
                       <div className="item-image">
                           <img src="certificate-merit.png" alt="Georgia Certificate of Merit emblem" />
                       </div>
@@ -624,7 +615,7 @@ export default function HomePage() {
                       </div>
                   </div>
 
-                  <div className="project-item recognition-item">
+                  <div className="project-item recognition-item recognition-item--nocti recognition-item--flat-logo">
                       <div className="item-image">
                           <img src="nocti_logo.png" alt="NOCTI logo" />
                       </div>
@@ -636,7 +627,7 @@ export default function HomePage() {
 
                   <div className="award-backdrop award-backdrop--ghp" aria-hidden="true"></div>
 
-                  <div className="project-item recognition-item recognition-item--ghp">
+                  <div className="project-item recognition-item recognition-item--ghp recognition-item--flat-logo">
                       <div className="item-image">
                           <img src="ghp_logo.png" alt="Governor's Honors Program logo" />
                       </div>
@@ -662,7 +653,7 @@ export default function HomePage() {
                           </div>      
                    </div>
 
-                  <div className="project-item recognition-item">
+                  <div className="project-item recognition-item recognition-item--amc recognition-item--flat-logo">
                       <div className="item-image">
                           <img src="amc_logo.png" alt="AMC 10 logo" />
                       </div>
@@ -709,7 +700,7 @@ export default function HomePage() {
 
                   <div className="award-backdrop award-backdrop--mos" aria-hidden="true"></div>
 
-<div className="project-item recognition-item recognition-item--mos">
+<div className="project-item recognition-item recognition-item--mos recognition-item--flat-logo">
                       <div className="item-image">
                           <img src="microsoft-office.png" alt="Microsoft Office logo" />
                       </div>
