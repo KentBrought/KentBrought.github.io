@@ -342,6 +342,21 @@ export default function HomePage() {
                       </div>
                   </div>
 
+<div className="experience-item experience-item--massgov">
+                      <div className="item-image item-image--flat item-image--glow item-image--massgov">
+                          <img src="massgov_logo.webp" alt="Commonwealth of Massachusetts seal" loading="lazy" decoding="async" />
+                      </div>
+                      <div className="item-content">
+                          <h3>Commonwealth of Massachusetts</h3>
+                          <ul>
+                              <li>Worked across EOED IT, the Division of Banks, and the Division of Standards on internal government software</li>
+                              <li>Integrated with and analyzed a Snowflake monitoring platform for Division of Banks data workflows</li>
+                              <li>Prototyped new compliance-officer scheduling and licensing systems for the Division of Standards</li>
+                              <li>Researched and scoped an AWS Bedrock chatbot for the Massachusetts Business Front Door</li>
+                          </ul>
+                      </div>
+                  </div>
+
 <div className="project-item paired-media-item paired-media-item--right">
                       <TimelineMediaPair
                           logo="/timeline/block-code-draw-logo.svg"
@@ -363,7 +378,20 @@ export default function HomePage() {
                       </div>
                   </div>
 
-<div className="project-item recognition-item recognition-item--flat-logo recognition-item--project recognition-item--project-left">
+<div className="experience-item experience-item--outbounder">
+                      <div className="item-image item-image--flat item-image--glow">
+                          <img src="outbounder_logo.webp" alt="Outbounder AI logo" loading="lazy" decoding="async" />
+                      </div>
+                      <div className="item-content">
+                          <h3>Outbounder AI</h3>
+                          <div className="item-meta">Sep 2025 – Feb 2026</div>
+                          <ul>
+                              <li>Built internal and customer-facing outbounding software, AI enrichment agents, and multi-tenant data infrastructure.</li>
+                          </ul>
+                      </div>
+                  </div>
+
+<div className="project-item project-item--echo">
                       <div className="item-image item-image--flat item-image--glow">
                           <img src="/timeline/echo-of-the-dead-logo.svg" alt="Echo of the Dead logo" loading="lazy" decoding="async" />
                       </div>
@@ -415,23 +443,26 @@ export default function HomePage() {
                       </div>      
                   </div>
 
-<div className="project-item recognition-item recognition-item--flat-logo recognition-item--corgi">
+<div className="project-item project-item--corgi">
                       <div className="item-image item-image--flat item-image--glow">
                           <img src="corgi_hackathon_logo.webp" alt="Corgi Hackathon" loading="lazy" decoding="async" />
-                      </div>      
-                      <div className="item-content">      
-                          <h3>Corgi<span className="mobile-hide"> Insurance</span> Tenant Policy Uploader</h3>      
-                          <div className="project-links">      
-                              <a href="https://github.com/WesleyBLDC/corgi_hackathon" target="_blank">      
-                                  View Source Code       
-                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
-                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                  </svg>      
-                              </a>      
-                          </div>      
-                      </div>      
+                      </div>
+                      <div className="item-content">
+                          <h3>Corgi<span className="mobile-hide"> Insurance</span> Tenant Policy Uploader</h3>
+                          <ul>
+                              <li>Co-built a client-side insurance policy uploader that OCRs PDFs/images, validates key policy fields, and uses Gemini for final PII checks.</li>
+                          </ul>
+                          <div className="project-links">
+                              <a href="https://github.com/WesleyBLDC/corgi_hackathon" target="_blank" rel="noopener noreferrer">
+                                  View Source Code
+                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>
+                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>
+                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>
+                                  </svg>
+                              </a>
+                          </div>
+                      </div>
                   </div>
 
 <div className="project-item paired-media-item">

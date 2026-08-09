@@ -1393,6 +1393,51 @@
             padding-left: clamp(4rem, 10vw, 9rem);
         }
 
+        .item-image.item-image--massgov {
+            border-radius: 50%;
+            overflow: hidden;
+            aspect-ratio: 1 / 1 !important;
+        }
+
+        .item-image.item-image--massgov > img {
+            object-fit: cover;
+            filter: none;
+        }
+
+        .experience-item--dragonfly .item-image {
+            align-self: center;
+        }
+
+        .experience-item--outbounder .item-image {
+            width: 120px;
+            max-width: 120px;
+            justify-self: end;
+            align-self: center;
+            aspect-ratio: 1 / 1 !important;
+        }
+
+        .experience-item--outbounder .item-image > img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .project-item--echo .item-image,
+        .project-item--corgi .item-image {
+            width: 160px;
+            max-width: 160px;
+            justify-self: start;
+            align-self: center;
+            aspect-ratio: 1 / 1 !important;
+        }
+
+        .project-item--echo .item-image > img,
+        .project-item--corgi .item-image > img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         .recognition-item::before {
             content: '';
             position: absolute;
@@ -2371,6 +2416,101 @@
                 margin-top: 0;
             }
 
+            .experience-item--massgov {
+                grid-template-columns: 72px minmax(0, 1fr) !important;
+                align-items: start;
+                text-align: left;
+                column-gap: 0.85rem;
+                row-gap: 0.2rem;
+                gap: 0.2rem 0.85rem;
+            }
+
+            .experience-item--outbounder {
+                grid-template-columns: 56px minmax(0, 1fr) !important;
+                align-items: start;
+                text-align: left;
+                column-gap: 0.85rem;
+                row-gap: 0.2rem;
+                gap: 0.2rem 0.85rem;
+            }
+
+            .experience-item--massgov .item-image {
+                width: 72px;
+                max-width: 72px;
+                aspect-ratio: 1 / 1 !important;
+                justify-self: start;
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .experience-item--outbounder .item-image {
+                width: 56px;
+                max-width: 56px;
+                aspect-ratio: 1 / 1 !important;
+                justify-self: start;
+                grid-column: 1;
+                grid-row: 1 / span 2;
+            }
+
+            .experience-item--massgov .item-image > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .experience-item--outbounder .item-image > img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .experience-item--massgov .item-content,
+            .experience-item--outbounder .item-content {
+                display: contents;
+            }
+
+            .experience-item--massgov .item-content > h3 {
+                grid-column: 2;
+                grid-row: 1;
+                align-self: center;
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .experience-item--outbounder .item-content > h3 {
+                grid-column: 2;
+                grid-row: 1;
+                align-self: end;
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .experience-item--outbounder .item-content > .item-meta {
+                grid-column: 2;
+                grid-row: 2;
+                align-self: start;
+                margin-bottom: 0;
+                text-align: left;
+            }
+
+            .experience-item--massgov .item-content > ul {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                margin: 0.85rem 0 0.5rem;
+                text-align: left;
+            }
+
+            .experience-item--outbounder .item-content > ul {
+                grid-column: 1 / -1;
+                grid-row: 3;
+                margin: 0.85rem 0 0.5rem;
+                text-align: left;
+            }
+
+            .experience-item--dragonfly .item-image {
+                align-self: center;
+            }
+
             .recognition-item--project {
                 justify-content: start;
                 justify-items: stretch;
@@ -2473,13 +2613,20 @@
             }
 
             .experience-item--samsara,
-            .project-item--ruffcut {
+            .project-item--ruffcut,
+            .project-item--echo,
+            .project-item--corgi {
                 grid-template-columns: 88px minmax(0, 1fr) !important;
                 align-items: start;
                 text-align: left;
                 column-gap: 0.85rem;
                 row-gap: 0.25rem;
                 gap: 0.25rem 0.85rem;
+            }
+
+            .project-item--echo,
+            .project-item--corgi {
+                grid-template-columns: 72px minmax(0, 1fr) !important;
             }
 
             .experience-item--samsara .item-image,
@@ -2492,15 +2639,29 @@
                 grid-row: 1 / span 2;
             }
 
+            .project-item--echo .item-image,
+            .project-item--corgi .item-image {
+                width: 72px;
+                max-width: 72px;
+                justify-self: start;
+                aspect-ratio: 1 / 1 !important;
+                grid-column: 1;
+                grid-row: 1;
+            }
+
             .experience-item--samsara .item-image > img,
-            .project-item--ruffcut .item-image > img {
+            .project-item--ruffcut .item-image > img,
+            .project-item--echo .item-image > img,
+            .project-item--corgi .item-image > img {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
             }
 
             .experience-item--samsara .item-content,
-            .project-item--ruffcut .item-content {
+            .project-item--ruffcut .item-content,
+            .project-item--echo .item-content,
+            .project-item--corgi .item-content {
                 display: contents;
                 text-align: left;
             }
@@ -2510,6 +2671,15 @@
                 grid-column: 2;
                 grid-row: 1;
                 align-self: end;
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .project-item--echo .item-content > h3,
+            .project-item--corgi .item-content > h3 {
+                grid-column: 2;
+                grid-row: 1;
+                align-self: center;
                 text-align: left;
                 margin-bottom: 0;
             }
@@ -2531,11 +2701,26 @@
                 text-align: left;
             }
 
-            .project-item--ruffcut .item-content > .project-links {
+            .project-item--echo .item-content > ul,
+            .project-item--corgi .item-content > ul {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                margin: 0.85rem 0 0.5rem;
+                text-align: left;
+            }
+
+            .project-item--ruffcut .item-content > .project-links,
+            .project-item--echo .item-content > .project-links,
+            .project-item--corgi .item-content > .project-links {
                 grid-column: 1 / -1;
                 grid-row: 4;
                 justify-content: flex-start;
                 margin-top: 0;
+            }
+
+            .project-item--echo .item-content > .project-links,
+            .project-item--corgi .item-content > .project-links {
+                grid-row: 3;
             }
 
             .store-link,
