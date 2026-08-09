@@ -174,7 +174,10 @@ export default function HomePage() {
     }, { threshold: 0.2, rootMargin: '0px 0px -24% 0px' });
 
     revealTargets.forEach((target, index) => {
-      target.style.setProperty('--reveal-delay', `${(index % 3) * 65}ms`);
+      let revealDelay = `${(index % 3) * 65}ms`;
+      if (target.classList.contains('experience-item--samsara')) revealDelay = '200ms';
+      else if (target.classList.contains('project-item--ruffcut')) revealDelay = '100ms';
+      target.style.setProperty('--reveal-delay', revealDelay);
       if (firstItems.has(target)) firstItemObserver.observe(target);
       else observer.observe(target);
     });
@@ -281,7 +284,7 @@ export default function HomePage() {
 
                   <div className="section-backdrop section-backdrop--future" aria-hidden="true"></div>
 
-                  <div className="experience-item">
+                  <div className="experience-item experience-item--samsara">
                       <div className="item-image item-image--flat item-image--glow item-image--outlined">
                           <img src="/timeline/samsara-logo.webp" alt="Samsara logo" loading="lazy" decoding="async" />
                       </div>
@@ -294,7 +297,7 @@ export default function HomePage() {
                       </div>
                   </div>
 
-                  <div className="project-item">
+                  <div className="project-item project-item--ruffcut">
                       <div className="item-image item-image--flat item-image--glow item-image--ruffcut item-image--outlined">
                           <img src="/ruffcut/ruffcut-logo.webp" alt="RuffCut logo" loading="lazy" decoding="async" />
                       </div>
@@ -321,12 +324,12 @@ export default function HomePage() {
 
                   <div className="section-backdrop section-backdrop--mit" aria-hidden="true"></div>
 
-<div className="experience-item">
+<div className="experience-item experience-item--dragonfly">
                       <div className="item-image item-image--flat item-image--glow">
                           <img src="/timeline/titan-logo.webp" alt="Titan RT Teaching Tool logo" loading="lazy" decoding="async" />
                       </div>
                       <div className="item-content">
-                          <h3>The Soderblom Lab / NASA Dragonfly</h3>
+                          <h3>The Soderblom Lab<span className="mobile-hide"> / NASA Dragonfly</span></h3>
                           <div className="item-meta">Sep 2025 – May 2026</div>
                           <ul>
                               <li>Built the Titan RT Teaching Tool for interactively exploring Titan atmospheric radiative-transfer models, spectral data, and planetary imagery.</li>
@@ -370,7 +373,7 @@ export default function HomePage() {
                               <li>A survival platformer built around sound-based navigation, echolocation spells, and limited visibility.</li>
                           </ul>
                           <div className="project-links">
-                              <a href="https://github.com/sabpdo/Echo-of-the-Dead" target="_blank" rel="noopener noreferrer">View Source Code</a>
+                              <a href="https://github.com/sabpdo/Echo-of-the-Dead" target="_blank" rel="noopener noreferrer" className="echo-source-link">View Source Code</a>
                               <a href="https://kbrought.itch.io/echo-of-the-dead" target="_blank" rel="noopener noreferrer">Play on Itch.io</a>
                           </div>
                       </div>
@@ -417,7 +420,7 @@ export default function HomePage() {
                           <img src="corgi_hackathon_logo.webp" alt="Corgi Hackathon" loading="lazy" decoding="async" />
                       </div>      
                       <div className="item-content">      
-                          <h3>Corgi Insurance Tenant Policy Uploader</h3>      
+                          <h3>Corgi<span className="mobile-hide"> Insurance</span> Tenant Policy Uploader</h3>      
                           <div className="project-links">      
                               <a href="https://github.com/WesleyBLDC/corgi_hackathon" target="_blank">      
                                   View Source Code       
@@ -483,7 +486,7 @@ export default function HomePage() {
                                       <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
                                   </svg>      
                               </a>      
-                              <a href="https://apps.apple.com/us/app/kayber/id6670231752" target="_blank">      
+                              <a href="https://apps.apple.com/us/app/kayber/id6670231752" target="_blank" className="store-link">      
                                   Visit App Store      
                                   <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
                                       <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
@@ -491,7 +494,7 @@ export default function HomePage() {
                                       <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
                                   </svg>      
                               </a>      
-                              <a href="https://play.google.com/store/apps/details?id=com.kaybermobile" target="_blank">      
+                              <a href="https://play.google.com/store/apps/details?id=com.kaybermobile" target="_blank" className="store-link">      
                                   Visit Play Store      
                                   <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
                                       <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
