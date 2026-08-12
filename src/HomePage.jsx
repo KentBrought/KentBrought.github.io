@@ -407,6 +407,19 @@ export default function HomePage() {
                       </div>
                   </div>
 
+<div className="experience-item experience-item--handshake">
+                      <div className="item-image item-image--flat item-image--glow">
+                          <img src="handshake_logo.webp" alt="Handshake AI logo" loading="lazy" decoding="async" />
+                      </div>
+                      <div className="item-content">
+                          <h3>Handshake AI</h3>
+                          <ul>
+                              <li>Analyzed model outputs for factual correctness, clarity, depth, and overall response quality</li>
+                              <li>Evaluated challenging prompts to assess LLM reasoning, accuracy, and instruction-following</li>
+                          </ul>
+                      </div>
+                  </div>
+
 <div className="experience-item paired-media-item paired-media-item--right">
                       <TimelineMediaPair
                           logo="yapclap_logo.webp"
@@ -503,7 +516,7 @@ export default function HomePage() {
                       />
                       <div className="item-content">      
                           <h3>KayBer</h3>
-                          <div className="item-meta">May 2024 – Dec 2024</div>      
+                          <div className="item-meta">May 2024 – Mar 2026</div>      
                           <ul>      
                               <li>Launched a social board (React + React Native + Supabase) with live nested threads</li>      
                               <li>Implemented friction‑free anonymous auto‑sign‑in to reduce new‑user drop‑off and boost first‑session engagement</li>      

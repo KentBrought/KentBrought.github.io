@@ -1422,11 +1422,32 @@
             object-fit: contain;
         }
 
-        .project-item--echo .item-image,
-        .project-item--corgi .item-image {
+        .experience-item--handshake .item-image {
+            width: 140px;
+            max-width: 140px;
+            justify-self: end;
+            align-self: center;
+            aspect-ratio: 1 / 1 !important;
+        }
+
+        .experience-item--handshake .item-image > img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .project-item--echo .item-image {
             width: 160px;
             max-width: 160px;
             justify-self: start;
+            align-self: center;
+            aspect-ratio: 1 / 1 !important;
+        }
+
+        .project-item--corgi .item-image {
+            width: 160px;
+            max-width: 160px;
+            justify-self: end;
             align-self: center;
             aspect-ratio: 1 / 1 !important;
         }
@@ -2425,6 +2446,15 @@
                 gap: 0.2rem 0.85rem;
             }
 
+            .experience-item--handshake {
+                grid-template-columns: 72px minmax(0, 1fr) !important;
+                align-items: start;
+                text-align: left;
+                column-gap: 0.85rem;
+                row-gap: 0.2rem;
+                gap: 0.2rem 0.85rem;
+            }
+
             .experience-item--outbounder {
                 grid-template-columns: 56px minmax(0, 1fr) !important;
                 align-items: start;
@@ -2434,7 +2464,8 @@
                 gap: 0.2rem 0.85rem;
             }
 
-            .experience-item--massgov .item-image {
+            .experience-item--massgov .item-image,
+            .experience-item--handshake .item-image {
                 width: 72px;
                 max-width: 72px;
                 aspect-ratio: 1 / 1 !important;
@@ -2458,6 +2489,7 @@
                 object-fit: cover;
             }
 
+            .experience-item--handshake .item-image > img,
             .experience-item--outbounder .item-image > img {
                 width: 100%;
                 height: 100%;
@@ -2465,11 +2497,13 @@
             }
 
             .experience-item--massgov .item-content,
+            .experience-item--handshake .item-content,
             .experience-item--outbounder .item-content {
                 display: contents;
             }
 
-            .experience-item--massgov .item-content > h3 {
+            .experience-item--massgov .item-content > h3,
+            .experience-item--handshake .item-content > h3 {
                 grid-column: 2;
                 grid-row: 1;
                 align-self: center;
@@ -2493,7 +2527,8 @@
                 text-align: left;
             }
 
-            .experience-item--massgov .item-content > ul {
+            .experience-item--massgov .item-content > ul,
+            .experience-item--handshake .item-content > ul {
                 grid-column: 1 / -1;
                 grid-row: 2;
                 margin: 0.85rem 0 0.5rem;
