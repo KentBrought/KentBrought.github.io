@@ -369,7 +369,7 @@ export default function HomePage() {
                           <h3>Block, Code, Draw!</h3>
                           <div className="item-meta">Spring 2026</div>
                           <ul>
-                              <li>A block-based drawing game where learners build programs and get on-device AI feedback on their artwork.</li>
+                              <li>A block-based drawing game where learners built programs and got on-device AI feedback on their artwork.</li>
                           </ul>
                           <div className="project-links">
                               <a href="https://github.com/KentBrought/block-code-comp" target="_blank" rel="noopener noreferrer">View Source Code</a>
@@ -435,8 +435,8 @@ export default function HomePage() {
                           <h3>YapClap</h3>
                           <div className="item-meta">Jun 2025 – Dec 2025</div>      
                           <ul>      
-                              <li>Architected and shipped a WebRTC + React / React‑Native video‑chat platform that pairs strangers quickly using Socket.IO signaling and TURN/STUN fallback</li>      
-                              <li>Designed an on‑device Edge AI moderation pipeline (YOLOv8 + custom NSFW classifier) to block explicit content before it travels over the network</li>      
+                              <li>Architected and shipped a WebRTC + React / React‑Native video‑chat platform that paired strangers quickly using Socket.IO signaling and TURN/STUN fallback</li>      
+                              <li>Designed an on‑device Edge AI moderation pipeline (YOLOv8 + custom NSFW classifier) to block explicit content before it traveled over the network</li>      
                           </ul>      
                           <div className="project-links">      
                               <a href="https://web.archive.org/web/20251212051322/https://yapclap.com/" target="_blank" rel="noopener noreferrer">
@@ -577,8 +577,8 @@ export default function HomePage() {
                           <div className="item-meta">May 2023 – May 2024</div>      
                           <ul>      
                               <li>Created MacLea – an educational tool designed to teach students in elementary and middle school about machine learning</li>      
-                              <li>Managing the MacLea Development Team with Professor Vincent Monardo; focusing on leading design and development</li>      
-                              <li>Primarily used TensorFlow, React, OpenAI’s API, Pinecone, LangChain, Express, and Angular for ongoing development of an AI-powered tool that converts user input into structured visual blocks</li>      
+                              <li>Managed the MacLea Development Team with Professor Vincent Monardo; focused on leading design and development</li>      
+                              <li>Primarily used TensorFlow, React, OpenAI’s API, Pinecone, LangChain, Express, and Angular for ongoing development of an AI-powered tool that converted user input into structured visual blocks</li>      
                               <li>Featured in The Tech, MIT's newspaper</li>      
                           </ul>      
                           <div className="project-links">      
@@ -614,8 +614,8 @@ export default function HomePage() {
                               <h3>Hyades</h3>
                               <div className="item-meta">Jan 2023 – May 2023</div>
                               <ul>
-                                  <li>Collaborating with student group members to improve computing at MIT</li>
-                                  <li>Contributing to Hyades, a self-configuring Kubernetes cluster for managing distributed computing systems</li>
+                                  <li>Collaborated with student group members to improve computing at MIT</li>
+                                  <li>Contributed to Hyades, a self-configuring Kubernetes cluster for managing distributed computing systems</li>
                               </ul>
                           </div>
                       </div>
@@ -630,9 +630,9 @@ export default function HomePage() {
                               <h3>Undergraduate Research in Computer Vision</h3>
                               <div className="item-meta">Oct 2022 – May 2023</div>      
                               <ul>      
-                                  <li>Researching efficiency of image processing algorithm designs to optimize computer vision tasks using image reconstruction</li>      
-                                  <li>Collaborating with Professor Monardo to design multiple algorithms applying task-oriented image reconstruction to computer vision</li>      
-                                  <li>Developing image reconstruction scripts using PyTorch, NumPy, and OpenCV</li>      
+                                  <li>Researched efficiency of image processing algorithm designs to optimize computer vision tasks using image reconstruction</li>      
+                                  <li>Collaborated with Professor Monardo to design multiple algorithms applying task-oriented image reconstruction to computer vision</li>      
+                                  <li>Developed image reconstruction scripts using PyTorch, NumPy, and OpenCV</li>      
                               </ul>      
                           </div>      
                       </div>
@@ -678,7 +678,7 @@ export default function HomePage() {
                               <h3>Technology Support Specialist</h3>
                               <div className="item-meta">Jun 2021 – Aug 2022</div>      
                               <ul>      
-                                  <li>Responsible for documenting all work in an online system, ordering and returning equipment, testing all units, imaging new laptops and desktops, activating Chromebooks, and delivering and setting them up in schools</li>      
+                                  <li>Was responsible for documenting all work in an online system, ordering and returning equipment, testing all units, imaging new laptops and desktops, activating Chromebooks, and delivering and setting them up in schools</li>      
                                   <li>Promoted from working at the high school to covering all schools in the county</li>      
                               </ul>      
                           </div>      
