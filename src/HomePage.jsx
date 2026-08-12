@@ -419,6 +419,8 @@ export default function HomePage() {
                           </ul>
                       </div>
                   </div>
+                  {/* Keeps nth-child even/odd sides stable for items below */}
+                  <div className="timeline-parity-spacer" aria-hidden="true"></div>
 
 <div className="experience-item paired-media-item paired-media-item--right">
                       <TimelineMediaPair

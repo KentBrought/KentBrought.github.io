@@ -1436,18 +1436,15 @@
             object-fit: contain;
         }
 
-        .project-item--echo .item-image {
-            width: 160px;
-            max-width: 160px;
-            justify-self: start;
-            align-self: center;
-            aspect-ratio: 1 / 1 !important;
+        .timeline-parity-spacer {
+            display: none;
         }
 
+        .project-item--echo .item-image,
         .project-item--corgi .item-image {
             width: 160px;
             max-width: 160px;
-            justify-self: end;
+            justify-self: start;
             align-self: center;
             aspect-ratio: 1 / 1 !important;
         }
