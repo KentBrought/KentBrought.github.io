@@ -880,7 +880,7 @@ export default function HomePage() {
                   <div className="footer-social-links" aria-label="Social media links">
                       <a href="https://www.linkedin.com/in/kent-brought/" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
                       <a href="https://github.com/KentBrought" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
-                      <a href="https://www.instagram.com/kent88.88/" target="_blank" rel="noopener noreferrer" className="social-link">Instagram</a>
+                      <a href="https://www.instagram.com/kent.brought/" target="_blank" rel="noopener noreferrer" className="social-link">Instagram</a>
                   </div>
                   <p>&copy; 2025–2026 Kent Brought. <a href="https://github.com/KentBrought/KentBrought.github.io" target="_blank">View Source Code</a></p>      
               </div>      
