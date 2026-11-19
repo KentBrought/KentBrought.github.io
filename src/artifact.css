@@ -157,9 +157,11 @@
   inset: 0;
   display: grid;
   place-items: center;
-  color: #756f60;
+  color: #181914;
   font: 400 calc(var(--edge) * .5)/1 Georgia, serif;
-  text-shadow: 0 -1px 1px #050504, 0 1px 0 #aba38b80;
+  /* The cut catches overhead light on its lower lip. */
+  text-shadow: 0 -1.5px 1px #050604, -1px -1px 0 #0b0c09,
+    0 1px 0 #c6bba685, 0 2px 1px #77736880;
 }
 .artifact-caption {
   position: relative;

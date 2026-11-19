@@ -35,7 +35,7 @@ export default function ArtifactFeature() {
   return (
     <section className="artifact-feature" ref={feature} aria-labelledby="artifact-title">
       <div className="artifact-register">NOW / 2026—</div>
-      <div className="artifact-stage" role="img" aria-label="A floating gunmetal cube with a question mark engraved on its face. A golden spotlight casts its shadow onto the floor.">
+      <div className="artifact-stage" role="img" aria-label="A floating gunmetal cube with a recessed question mark on each side. A golden spotlight casts its shadow onto the floor.">
         <div className="artifact-air" />
         <div className="artifact-floor" />
         <div className="artifact-shadow" />
@@ -44,8 +44,12 @@ export default function ArtifactFeature() {
             <div className="artifact-turn">
               {['front', 'side', 'back', 'left', 'lid', 'base'].map(face => (
                 <div key={face} className={`artifact-panel artifact-panel--${face}`}>
-                  {face === 'front' && <span aria-hidden="true" className="artifact-mark">?</span>}
-                  {face !== 'lid' && face !== 'base' && <i className="artifact-seam" />}
+                  {face !== 'lid' && face !== 'base' && (
+                    <>
+                      <span aria-hidden="true" className="artifact-mark">?</span>
+                      <i className="artifact-seam" />
+                    </>
+                  )}
                 </div>
               ))}
             </div>
@@ -54,7 +58,7 @@ export default function ArtifactFeature() {
       </div>
       <div className="artifact-caption">
         <p className="artifact-status">CURRENTLY IN DEVELOPMENT</p>
-        <h1 id="artifact-title">Something’s taking shape.</h1>
+        <h1 id="artifact-title">Something’s taking shape…</h1>
       </div>
     </section>
   );
