@@ -1242,7 +1242,7 @@
                 url('/san-francisco-background.webp');
             background-position: center, center, center, left 28%;
             background-size: cover, cover, cover, cover;
-            opacity: 0.48;
+            opacity: 0.7;
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.08) 8%, rgba(0, 0, 0, 0.5) 22%, #000 38%, #000 76%, transparent 100%);
             mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.08) 8%, rgba(0, 0, 0, 0.5) 22%, #000 38%, #000 76%, transparent 100%);
         }
@@ -1256,7 +1256,7 @@
                 url('/education-background.webp');
             background-position: center, center, right center;
             background-size: cover, cover, cover;
-            opacity: 0.42;
+            opacity: 0.64;
             -webkit-mask-image: radial-gradient(ellipse 88% 92% at center, #000 3%, rgba(0, 0, 0, 0.96) 38%, transparent 54%);
             mask-image: radial-gradient(ellipse 88% 92% at center, #000 3%, rgba(0, 0, 0, 0.96) 38%, transparent 54%);
         }
@@ -1270,7 +1270,7 @@
                 url('/camden-background.webp');
             background-position: center, center, left center;
             background-size: cover, cover, cover;
-            opacity: 0.5;
+            opacity: 0.72;
             -webkit-mask-image: radial-gradient(ellipse 88% 92% at center, #000 3%, rgba(0, 0, 0, 0.96) 38%, transparent 54%);
             mask-image: radial-gradient(ellipse 88% 92% at center, #000 3%, rgba(0, 0, 0, 0.96) 38%, transparent 54%);
         }
@@ -1312,7 +1312,7 @@
                 radial-gradient(ellipse at 41% 47%, transparent 10%, rgba(0, 0, 0, 0.24) 46%, #000 96%),
                 url('/certificate-merit-bg.webp');
             background-size: cover, cover, cover, cover, cover;
-            opacity: 0.56;
+            opacity: 0.78;
             -webkit-mask-image:
                 radial-gradient(ellipse 70% 82% at 36% 51%, #000 2%, rgba(0, 0, 0, 0.9) 27%, transparent 50%),
                 radial-gradient(ellipse 48% 58% at 64% 36%, rgba(0, 0, 0, 0.72) 2%, transparent 46%);
@@ -1337,7 +1337,7 @@
                 url('/governors-honors-bg.webp');
             background-position: center, center, center, center, center 44%;
             background-size: cover, cover, cover, cover, cover;
-            opacity: 0.5;
+            opacity: 0.72;
             -webkit-mask-image:
                 radial-gradient(ellipse 76% 88% at 42% 54%, #000 3%, rgba(0, 0, 0, 0.96) 36%, transparent 57%),
                 radial-gradient(ellipse 46% 58% at 69% 38%, rgba(0, 0, 0, 0.76) 2%, transparent 50%);
@@ -1365,7 +1365,7 @@
                 url('/microsoft-office-bg.webp');
             background-position: left center;
             background-size: cover, cover, cover;
-            opacity: 0.62;
+            opacity: 0.84;
             -webkit-mask-image:
                 radial-gradient(ellipse 72% 78% at 38% 61%, #000 2%, rgba(0, 0, 0, 0.9) 25%, transparent 48%),
                 radial-gradient(ellipse 50% 56% at 68% 33%, rgba(0, 0, 0, 0.68) 2%, transparent 43%);
@@ -1386,7 +1386,7 @@
         url('/urop_photo.webp');
     background-position: left center;
     background-size: 100% 100%;
-    opacity: 0.58;
+    opacity: 0.8;
     -webkit-mask-image:
         radial-gradient(ellipse 66% 80% at 34% 42%, #000 2%, rgba(0, 0, 0, 0.9) 27%, transparent 48%),
         radial-gradient(ellipse 42% 56% at 16% 58%, rgba(0, 0, 0, 0.66) 2%, transparent 36%);
@@ -1398,14 +1398,13 @@
         .section-backdrop,
         .award-backdrop {
             opacity: 0;
-            transition: opacity 3s cubic-bezier(0.22, 0.7, 0.24, 1);
+            transition: opacity .28s ease-out;
         }
 
-        .section-backdrop--future,
-        .section-backdrop--mit,
-        .section-backdrop--origins {
-            transition-duration: 6s;
-            transition-delay: 450ms;
+        @media (prefers-reduced-motion: reduce) {
+            .section-backdrop, .award-backdrop, .project-item.zenith-archive {
+                transition: none;
+            }
         }
 
         .section-backdrop.is-visible,

@@ -1,5 +1,7 @@
 .artifact-feature {
   --edge: min(19vw, 26svh, 234px);
+  --turn-period: 52s;
+  --bob-half-period: 3.5s;
   --half: calc(var(--edge) / 2);
   position: relative;
   isolation: isolate;
@@ -27,18 +29,7 @@
   font: 500 10px/1.4 ui-monospace, monospace;
   letter-spacing: .17em;
 }
-.artifact-register {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  color: #b8b6af;
-}
-.artifact-register::after {
-  content: '';
-  height: 1px;
-  flex: 1;
-  background: linear-gradient(90deg, #61605877, #77756b33);
-}
+.artifact-register { color: #b8b6af; }
 .artifact-stage {
   position: relative;
   display: grid;
@@ -79,25 +70,32 @@
 .artifact-shadow {
   width: var(--edge);
   height: var(--edge);
+  transform: translate(-50%, -50%) scaleY(.27) rotate(calc(34deg - var(--yaw, 0deg)));
+  transition: transform .65s cubic-bezier(.2,.65,.3,1);
+  animation: exhibit-shadow var(--bob-half-period) ease-in-out infinite alternate;
+}
+.artifact-shadow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   border-radius: 3%;
   background: #020201;
   box-shadow: 0 0 18px 8px #02020199;
   filter: blur(5px);
-  transform: translate(-50%, -50%) scaleY(.27) rotate(calc(34deg - var(--yaw, 0deg)));
-  transition: transform .65s cubic-bezier(.2,.65,.3,1);
-  animation: exhibit-shadow 8s ease-in-out infinite alternate;
+  animation: exhibit-footprint var(--turn-period) linear infinite;
 }
-.artifact-float, .artifact-cube {
+.artifact-float, .artifact-cube, .artifact-turn {
   width: var(--edge);
   height: var(--edge);
   transform-style: preserve-3d;
 }
-.artifact-float { animation: exhibit-float 8s ease-in-out infinite alternate; }
+.artifact-float { animation: exhibit-float var(--bob-half-period) ease-in-out infinite alternate; }
 .artifact-cube {
   position: relative;
   transform: rotateX(calc(-17deg + var(--pitch, 0deg))) rotateY(calc(-34deg + var(--yaw, 0deg)));
   transition: transform .65s cubic-bezier(.2,.65,.3,1);
 }
+.artifact-turn { animation: exhibit-turn var(--turn-period) linear infinite; }
 .artifact-panel {
   position: absolute;
   inset: 0;
@@ -108,12 +106,12 @@
   background-image: url('./assets/brushed.webp'), var(--finish);
   box-shadow: inset 1px 1px 0 #ffffff20, inset -2px -2px 1px #000b;
 }
-.artifact-panel--front {
+.artifact-panel--front, .artifact-panel--back {
   --finish: linear-gradient(122deg, #454642 -10%, #30312f 28%, #222321 58%, #151614 100%);
   border-color: #777970 #3d3e39 #292a27 #585a54;
   transform: translateZ(var(--half));
 }
-.artifact-panel--side {
+.artifact-panel--side, .artifact-panel--left {
   --finish: linear-gradient(120deg, #292a27, #111210 56%, #20211e);
   border-color: #55574e #383931 #22231e #43443d;
   transform: rotateY(90deg) translateZ(var(--half));
@@ -122,6 +120,13 @@
   --finish: linear-gradient(137deg, #454740, #93886c 47%, #636050 72%, #3d3f38);
   border-color: #b8a778 #827a62 #787a70 #6a6c63;
   transform: rotateX(90deg) translateZ(var(--half));
+}
+.artifact-panel--back { transform: rotateY(180deg) translateZ(var(--half)); }
+.artifact-panel--left { transform: rotateY(-90deg) translateZ(var(--half)); }
+.artifact-panel--base {
+  --finish: linear-gradient(#151613, #222320);
+  border-color: #393933;
+  transform: rotateX(-90deg) translateZ(var(--half));
 }
 .artifact-seam {
   position: absolute;
@@ -140,18 +145,20 @@
   opacity: .79;
   transition: opacity .6s;
 }
-.artifact-panel--side .artifact-seam::after {
+.artifact-panel--side .artifact-seam::after, .artifact-panel--left .artifact-seam::after {
   background: linear-gradient(90deg,#ffcd87, #bf833c66 24%, transparent 63%);
 }
 @media (hover: hover) {
   .artifact-stage:hover .artifact-seam::after { opacity: 1; }
 }
 .artifact-mark {
+  transform: translateY(14%);
   position: absolute;
-  right: 11%;
-  bottom: 8%;
-  color: #4e4c40;
-  font: 400 calc(var(--edge) * .18)/1 Georgia, serif;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #756f60;
+  font: 400 calc(var(--edge) * .5)/1 Georgia, serif;
   text-shadow: 0 -1px 1px #050504, 0 1px 0 #aba38b80;
 }
 .artifact-caption {
@@ -165,7 +172,9 @@
   letter-spacing: -.055em;
   text-wrap: balance;
 }
-@keyframes exhibit-float { from { transform: translateY(-3px); } to { transform: translateY(4px); } }
+@keyframes exhibit-turn { from { transform: rotateY(0turn); } to { transform: rotateY(1turn); } }
+@keyframes exhibit-footprint { from { transform: rotate(0turn); } to { transform: rotate(-1turn); } }
+@keyframes exhibit-float { from { transform: translateY(-6%); } to { transform: translateY(1%); } }
 @keyframes exhibit-shadow { from { opacity: .76; } to { opacity: .91; } }
 @keyframes exhibit-light { to { opacity: .72; } }
 @keyframes exhibit-dust { to { transform: translate(8px,-9px); opacity: .6; } }

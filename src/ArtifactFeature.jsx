@@ -41,12 +41,14 @@ export default function ArtifactFeature() {
         <div className="artifact-shadow" />
         <div className="artifact-float">
           <div className="artifact-cube">
-            {['front', 'side', 'lid'].map(face => (
-              <div key={face} className={`artifact-panel artifact-panel--${face}`}>
-                {face === 'front' && <span aria-hidden="true" className="artifact-mark">?</span>}
-                {face !== 'lid' && <i className="artifact-seam" />}
-              </div>
-            ))}
+            <div className="artifact-turn">
+              {['front', 'side', 'back', 'left', 'lid', 'base'].map(face => (
+                <div key={face} className={`artifact-panel artifact-panel--${face}`}>
+                  {face === 'front' && <span aria-hidden="true" className="artifact-mark">?</span>}
+                  {face !== 'lid' && face !== 'base' && <i className="artifact-seam" />}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

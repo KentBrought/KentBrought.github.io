@@ -1,0 +1,58 @@
+.project-item.zenith-archive {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 60px);
+  align-items: center;
+}
+.zenith-heading { display: flex; align-items: center; gap: 1.4rem; }
+.zenith-archive .zenith-heading .item-content { order: initial; }
+.zenith-heading .item-meta { margin-bottom: 0; }
+.project-item.zenith-archive {
+  isolation: isolate;
+  transition: opacity .28s ease;
+}
+.zenith-archive::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: -3rem min(-2vw, -10px);
+  background:
+    linear-gradient(90deg, #080908a8, #08090836 62%, #08090859),
+    url('/zenith/town.webp') center 46% / cover;
+  opacity: .78;
+  filter: saturate(.65);
+  /* Fade each axis to zero before the panorama ends, including at edge midpoints. */
+  mask-image:
+    linear-gradient(to bottom, transparent 1%, #0005 9%, black 24%, black 76%, #0005 91%, transparent 99%),
+    linear-gradient(to right, transparent 1%, black 15%, black 85%, transparent 99%);
+  mask-composite: intersect;
+}
+.zenith-impact { display: flex; gap: 2rem; margin: .8rem 0; }
+.zenith-impact div { display: flex; flex-direction: column-reverse; }
+.zenith-impact dd { font: 400 1.65rem/1.2 'Prata',Georgia,serif; color: var(--text-primary); }
+.zenith-impact dt, .zenith-films h4 { font: inherit; font-size: .85rem; color: var(--text-secondary); }
+.zenith-description { color: var(--text-secondary); line-height: 1.6; }
+.zenith-links.project-links { flex-wrap: wrap; margin-top: .75rem; }
+.zenith-player a { color: var(--text-secondary); font-size: .82rem; text-underline-offset: 4px; padding-block: 5px; }
+.zenith-films h4 { margin-bottom: .65rem; }
+.zenith-reel { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+.zenith-reel button { position: relative; isolation: isolate; overflow: hidden; width: 100%; aspect-ratio: 9/16; background: #181815; border: 1px solid #ffffff32; cursor: pointer; color: white; text-align: left; }
+.zenith-reel img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.6); transition: transform .45s ease, filter .45s ease; }
+.zenith-reel button::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg,#070807f5,transparent 55%); }
+.zenith-play, .zenith-film-title { position: absolute; z-index: 1; }
+.zenith-play { top: 8px; right: 8px; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #080909aa; border: 1px solid #ffffff88; font: 10px sans-serif; }
+.zenith-play::before { content: ''; margin-left: 2px; border-block: 4px solid transparent; border-left: 6px solid white; }
+.zenith-film-title { bottom: 10px; inset-inline: 9px; font: 500 clamp(13px,1.3vw,20px)/1.15 Georgia,serif; text-wrap: balance; }
+.zenith-reel button:focus-visible, .zenith-player :focus-visible { outline: 2px solid #f2f2f2; outline-offset: 3px; }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) { .zenith-reel button:hover img { transform: scale(1.04); filter: saturate(1); } }
+.zenith-player { margin: auto; padding: 14px; width: min(92vw,calc(40svh + 28px),460px); max-height: 96svh; border: 1px solid #666056; background: #151514; color: #f4f1eb; }
+.zenith-player::backdrop { background: #050504df; }
+.zenith-player header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+.zenith-player button { cursor: pointer; padding: 6px 9px; color: inherit; background: transparent; border: 1px solid #857f74; }
+.zenith-player iframe { display: block; width: 100%; aspect-ratio: 9/16; border: 0; background: #000; }
+.zenith-player a { display: inline-block; margin-top: 5px; }
+@media (max-width: 768px) {
+  .project-item.zenith-archive { grid-template-columns: minmax(0,1fr); }
+  .zenith-reel { max-width: 490px; }
+}

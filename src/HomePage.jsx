@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './home.css';
+import ZenithArchive from './ZenithArchive';
 import ArtifactFeature from './ArtifactFeature';
 
 function ViewportVideo({ src, label }) {
@@ -626,52 +627,7 @@ export default function HomePage() {
                           </div>      
                       </div>
 
-<div className="project-item paired-media-item">
-                      <TimelineMediaPair
-                          logo="zenith_logo.webp"
-                          logoAlt="ZenithServer"
-                          screenshot="zenith_screenshot.webp"
-                          screenshotAlt="ZenithServer Screenshot"
-                      />
-                      <div className="item-content">      
-                          <h3>Zenith</h3>
-                          <div className="item-meta">Aug 2019 – Sep 2024</div>
-                          <ul>      
-                              <li>Worked with advertising agencies for online public listing and marketing</li>      
-                              <li>Organized staff team into startup-style management structure</li>      
-                              <li>Led website creation and game level design</li>      
-                              <li>Programmed addons using Java and Eclipse; managed server using Filezilla FTP</li>      
-                          </ul>      
-                          <div className="project-links">      
-                              <a href="https://www.zenithserver.net/" target="_blank">      
-                                  Visit Website      
-                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
-                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                  </svg>      
-                              </a>      
-                              <div className="social-wrapper">      
-                                  <a href="https://www.youtube.com/@zenithservernet" target="_blank" className="social-btn" title="YouTube">      
-                                      <svg viewBox="0 0 24 24">      
-                                          <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>      
-                                      </svg>      
-                                  </a>      
-                                  <a href="https://www.tiktok.com/@zenithserver" target="_blank" className="social-btn" title="TikTok">      
-                                      <svg viewBox="0 0 24 24">      
-                                          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>      
-                                      </svg>      
-                                  </a>      
-                                  <a href="https://discord.gg/JnX4ytH" className="social-btn" title="Discord" target="_blank" rel="noopener noreferrer">      
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-discord" viewBox="0 0 16 16">      
-                                          <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>      
-                                      </svg>      
-                                  </a>      
-                              </div>      
-                                    
-                          </div>      
-                      </div>      
-                   </div>
+                  <ZenithArchive />
 
                   <div className="award-backdrop award-backdrop--certificate" aria-hidden="true"></div>
 
