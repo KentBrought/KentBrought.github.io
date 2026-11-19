@@ -35,7 +35,6 @@ export default function ArtifactFeature() {
 
   return (
     <section className="artifact-feature" ref={feature} aria-labelledby="artifact-title">
-      <div className="artifact-register">NOW / 2026—</div>
       <div className="artifact-stage" role="img" aria-label="A floating gunmetal cube with a recessed question mark on each side. A golden spotlight casts its shadow onto the floor.">
         <div className="artifact-air" />
         <div className="artifact-floor" />
@@ -58,8 +57,7 @@ export default function ArtifactFeature() {
         </div>
       </div>
       <div className="artifact-caption">
-        <p className="artifact-status">CURRENTLY IN DEVELOPMENT</p>
-        <h1 id="artifact-title">Something’s taking shape…</h1>
+        <h1 id="artifact-title">Something big is coming soon.</h1>
       </div>
     </section>
   );

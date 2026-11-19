@@ -7,7 +7,7 @@
   isolation: isolate;
   overflow: hidden;
   display: grid;
-  grid-template-rows: auto minmax(310px, 1fr) auto;
+  grid-template-rows: minmax(310px, 1fr) auto;
   min-height: 630px;
   height: 94svh;
   max-height: 1040px;
@@ -24,12 +24,6 @@
   mix-blend-mode: soft-light;
   opacity: .28;
 }
-.artifact-register, .artifact-status {
-  position: relative;
-  font: 500 10px/1.4 ui-monospace, monospace;
-  letter-spacing: .17em;
-}
-.artifact-register { color: #b8b6af; }
 .artifact-stage {
   position: relative;
   display: grid;
@@ -165,7 +159,6 @@
   padding-bottom: 18px;
   border-bottom: 1px solid #77756b44;
 }
-.artifact-status { color: #c6b89e; margin-bottom: 10px; }
 .artifact-caption h1 {
   font: 400 clamp(48px, 7.2vw, 112px)/1.06 'Prata', Georgia, serif;
   letter-spacing: -.055em;
@@ -184,7 +177,7 @@
     height: 93svh;
     min-height: 610px;
     padding: 76px 6vw 22px;
-    grid-template-rows: auto minmax(255px,1fr) auto;
+    grid-template-rows: minmax(255px,1fr) auto;
   }
   .artifact-caption h1 { font-size: clamp(42px, 10.8vw, 72px); }
 }
