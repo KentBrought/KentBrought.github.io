@@ -174,8 +174,8 @@
   letter-spacing: -.055em;
   text-wrap: balance;
 }
-@keyframes exhibit-turn { from { transform: rotateY(0turn); } to { transform: rotateY(1turn); } }
-@keyframes exhibit-footprint { from { transform: rotate(0turn); } to { transform: rotate(-1turn); } }
+@keyframes exhibit-turn { from { transform: rotateY(0turn); } to { transform: rotateY(-1turn); } }
+@keyframes exhibit-footprint { from { transform: rotate(0turn); } to { transform: rotate(1turn); } }
 @keyframes exhibit-float { from { transform: translateY(-6%); } to { transform: translateY(1%); } }
 @keyframes exhibit-shadow { from { opacity: .76; } to { opacity: .91; } }
 @keyframes exhibit-light { to { opacity: .72; } }
