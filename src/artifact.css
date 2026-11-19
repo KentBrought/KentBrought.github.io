@@ -160,12 +160,10 @@
   color: transparent;
   background-color: #abb0b4;
   background-image: url('./assets/brushed.webp'),
-    linear-gradient(152deg, #74797d 14%, #e0e3e4 35%, #aaaeb1 47%, #797f84 57%, #c5c9cb 78%);
+    linear-gradient(152deg, #62686b 14%, #b9bec1 35%, #949a9d 47%, #666c70 57%, #aeb4b7 78%);
   background-blend-mode: soft-light;
   -webkit-background-clip: text;
   background-clip: text;
-  /* Shadow above and a narrow highlight below define the recessed rim. */
-  filter: drop-shadow(0 -1px 0 #060707) drop-shadow(0 1px 0 #bbbdbf80);
 }
 .artifact-caption {
   position: relative;

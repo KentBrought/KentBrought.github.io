@@ -36,6 +36,18 @@ export default function ArtifactFeature() {
     <section className="artifact-feature" ref={feature} aria-labelledby="artifact-title">
       <div className="artifact-register">NOW / 2026—</div>
       <div className="artifact-stage" role="img" aria-label="A floating gunmetal cube with a recessed question mark on each side. A golden spotlight casts its shadow onto the floor.">
+        <svg width="0" height="0" aria-hidden="true" style={{ position: 'absolute' }}>
+          <defs>
+            <filter id="engraved-silver" colorInterpolationFilters="sRGB">
+              <feOffset in="SourceAlpha" dx="0.8" dy="2" />
+              <feGaussianBlur stdDeviation="0.65" />
+              <feComposite in="SourceAlpha" operator="out" result="innerWall" />
+              <feFlood floodColor="#080a0b" floodOpacity="0.94" />
+              <feComposite in2="innerWall" operator="in" />
+              <feComposite in2="SourceGraphic" operator="over" />
+            </filter>
+          </defs>
+        </svg>
         <div className="artifact-air" />
         <div className="artifact-floor" />
         <div className="artifact-shadow" />
@@ -46,7 +58,7 @@ export default function ArtifactFeature() {
                 <div key={face} className={`artifact-panel artifact-panel--${face}`}>
                   {face !== 'lid' && face !== 'base' && (
                     <>
-                      <span aria-hidden="true" className="artifact-mark">?</span>
+                      <span aria-hidden="true" className="artifact-mark" style={{ filter: 'url(#engraved-silver) drop-shadow(0 1px 0 #d1d3d080)' }}>?</span>
                       <i className="artifact-seam" />
                     </>
                   )}
