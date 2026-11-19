@@ -156,14 +156,9 @@
   top: 64%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font: 400 calc(var(--edge) * .5)/1 Georgia, serif;
-  color: transparent;
-  background-color: #abb0b4;
-  background-image: url('./assets/brushed.webp'),
-    linear-gradient(152deg, #62686b 14%, #b9bec1 35%, #949a9d 47%, #666c70 57%, #aeb4b7 78%);
-  background-blend-mode: soft-light;
-  -webkit-background-clip: text;
-  background-clip: text;
+  height: calc(var(--edge) * .42);
+  width: auto;
+  pointer-events: none;
 }
 .artifact-caption {
   position: relative;

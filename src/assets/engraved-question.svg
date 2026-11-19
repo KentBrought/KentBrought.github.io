@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 100">
+  <defs>
+    <path id="cut" d="M6 25C6 11 17 4 32 4c16 0 26 9 26 22 0 14-9 20-17 27-7 6-10 10-10 18h-8c-1-13 2-20 11-30 6-7 9-12 9-19 0-8-4-13-12-13-7 0-12 3-14 9 5 0 8 3 8 8 0 5-4 9-9 9-6 0-10-4-10-10ZM37 85a9 9 0 1 1-18 0 9 9 0 1 1 18 0Z"/>
+    <clipPath id="opening"><use xlink:href="#cut"/></clipPath>
+    <linearGradient id="silver" x2=".35" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#55595b"/><stop offset=".3" stop-color="#aeb2b3"/>
+      <stop offset=".48" stop-color="#84898b"/><stop offset=".7" stop-color="#62676a"/>
+      <stop offset="1" stop-color="#b6b9b9"/>
+    </linearGradient>
+  </defs>
+  <!-- The face catches light along the lower lip of the opening. -->
+  <use xlink:href="#cut" y="1.2" fill="#8c9090"/>
+  <use xlink:href="#cut" fill="#090a0b"/>
+  <g clip-path="url(#opening)">
+    <use xlink:href="#cut" x="1.6" y="3" fill="#242729"/>
+    <use xlink:href="#cut" x="3" y="6.5" fill="url(#silver)"/>
+  </g>
+</svg>
