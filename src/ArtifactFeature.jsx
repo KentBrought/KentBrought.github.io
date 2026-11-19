@@ -57,7 +57,7 @@ export default function ArtifactFeature() {
         </div>
       </div>
       <div className="artifact-caption">
-        <h1 id="artifact-title">Something big is coming soon.</h1>
+        <h1 id="artifact-title">Something big is coming soon…</h1>
       </div>
     </section>
   );
