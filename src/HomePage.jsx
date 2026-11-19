@@ -1,16 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './home.css';
-
-const dustParticles = Array.from({ length: 56 }, (_, index) => ({
-  id: index,
-  x: `${(index * 37 + index * index * 13 + 11) % 100}%`,
-  y: `${(index * 61 + index * index * 7 + 7) % 100}%`,
-  size: `${1.15 + (index % 4) * 0.35}px`,
-  delay: `${-(index % 23)}s`,
-  duration: `${16 + (index % 13)}s`,
-  driftX: `${((index * 73) % 181) - 90}px`,
-  driftY: `${((index * 47) % 161) - 80}px`,
-}));
+import ArtifactFeature from './ArtifactFeature';
 
 function ViewportVideo({ src, label }) {
   const videoRef = useRef(null);
@@ -74,7 +64,6 @@ export default function HomePage() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const headerNameRef = useRef(null);
   const headerGlowRef = useRef(null);
-  const heroRef = useRef(null);
 
   useEffect(() => {
     const title = headerNameRef.current;
@@ -105,7 +94,17 @@ export default function HomePage() {
       shimmerTiming,
     );
 
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncMotion = () => {
+      for (const animation of [shimmer, glowSweep]) {
+        if (motion.matches) animation.pause();
+        else animation.play();
+      }
+    };
+    syncMotion();
+    motion.addEventListener('change', syncMotion);
     return () => {
+      motion.removeEventListener('change', syncMotion);
       shimmer.cancel();
       glowSweep.cancel();
     };
@@ -116,18 +115,6 @@ export default function HomePage() {
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
     return () => window.removeEventListener('scroll', updateHeader);
-  }, []);
-
-  useEffect(() => {
-    const hero = heroRef.current;
-    if (!hero || !('IntersectionObserver' in window)) return undefined;
-
-    const observer = new IntersectionObserver(([entry]) => {
-      hero.classList.toggle('is-offscreen', !entry.isIntersecting);
-    }, { rootMargin: '120px 0px' });
-
-    observer.observe(hero);
-    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -223,53 +210,8 @@ export default function HomePage() {
         </a>
       </header>
 
-      {/* Hero Section */}
-          <section ref={heroRef} className="hero" aria-labelledby="ruffcut-title">
-              <div className="hero-background" aria-hidden="true"></div>
-              <div className="hero-haze hero-haze--one" aria-hidden="true"></div>
-              <div className="hero-haze hero-haze--two" aria-hidden="true"></div>
-              <div className="site-dust" aria-hidden="true">
-                  {dustParticles.map((particle) => (
-                      <span
-                          key={particle.id}
-                          style={{
-                            '--dust-x': particle.x,
-                            '--dust-y': particle.y,
-                            '--dust-size': particle.size,
-                            '--dust-delay': particle.delay,
-                            '--dust-duration': particle.duration,
-                            '--dust-drift-x': particle.driftX,
-                            '--dust-drift-y': particle.driftY,
-                          }}
-                      />
-                  ))}
-              </div>
-              <div className="hero-layout">
-                  <div className="ruffcut-card" tabIndex="0" aria-label="RuffCut logo. Hover or focus to preview the video editor.">
-                      <div className="ruffcut-card__inner">
-                          <div className="ruffcut-card__face ruffcut-card__front">
-                              <img src="/ruffcut/ruffcut-logo.webp" alt="RuffCut logo" />
-                          </div>
-                          <div className="ruffcut-card__face ruffcut-card__back">
-                              <img src="/ruffcut/ruffcut-editor.webp" alt="RuffCut AI video editor interface" />
-                          </div>
-                          <span className="ruffcut-card__edge ruffcut-card__edge--left" aria-hidden="true"></span>
-                          <span className="ruffcut-card__edge ruffcut-card__edge--right" aria-hidden="true"></span>
-                          <span className="ruffcut-card__edge ruffcut-card__edge--top" aria-hidden="true"></span>
-                          <span className="ruffcut-card__edge ruffcut-card__edge--bottom" aria-hidden="true"></span>
-                      </div>
-                  </div>
-                  <div className="hero-content">
-                      <h1 id="ruffcut-title" className="hero-title">RuffCut</h1>
-                      <p className="hero-description">The ultimate AI agent that understands your media and edits directly on your video editing timeline.</p>
-                      <a href="https://useruffcut.com/?utm_content=kent" target="_blank" rel="noopener noreferrer" className="hero-cta">Use RuffCut</a>
-                  </div>
-              </div>
-          </section>
+      <ArtifactFeature />
 
-                
-            
-          
           {/* Experience and Projects Timeline */}
           <section className="timeline">
               <div className="container">
@@ -303,9 +245,9 @@ export default function HomePage() {
                       </div>
                       <div className="item-content">
                           <h3>RuffCut</h3>
-                          <div className="item-meta">2026 – Present</div>
+                          <div className="item-meta">2026</div>
                           <ul>
-                              <li>Building an AI agent that understands media and edits directly on a professional video-editing timeline.</li>
+                              <li>Built an AI agent that understands media and edits directly on a professional video-editing timeline.</li>
                           </ul>
                           <div className="project-links">
                               <a href="https://useruffcut.com/?utm_content=kent" target="_blank" rel="noopener noreferrer">Use RuffCut</a>

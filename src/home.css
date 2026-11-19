@@ -82,7 +82,7 @@
                 linear-gradient(103deg, #000 0%, #070707 31%, #020202 67%, #000 100%);
         }
 
-        .hero,
+        .artifact-feature,
         .timeline,
         footer {
             z-index: 1;
@@ -163,309 +163,6 @@
             pointer-events: none;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 660px;
-            height: 100svh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            isolation: isolate;
-            background: transparent;
-            overflow: visible;
-        }
-
-        .hero-background {
-            position: absolute;
-            inset: 0 0 -260px;
-            background:
-                radial-gradient(ellipse 38% 72% at 84% 43%, rgba(225, 225, 225, 0.27) 0%, rgba(160, 160, 160, 0.15) 30%, rgba(75, 75, 75, 0.06) 53%, transparent 74%),
-                radial-gradient(ellipse 48% 35% at 82% 83%, rgba(110, 110, 110, 0.13), transparent 72%),
-                #000;
-            z-index: -4;
-            -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 67%, rgba(0, 0, 0, 0.88) 77%, rgba(0, 0, 0, 0.4) 91%, transparent 100%);
-            mask-image: linear-gradient(to bottom, #000 0%, #000 67%, rgba(0, 0, 0, 0.88) 77%, rgba(0, 0, 0, 0.4) 91%, transparent 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0 0 -260px;
-            z-index: 3;
-            pointer-events: none;
-            background:
-                linear-gradient(to bottom, transparent 54%, rgba(0, 0, 0, 0.14) 69%, rgba(0, 0, 0, 0.5) 85%, rgba(0, 0, 0, 0.94) 100%),
-                radial-gradient(ellipse at 80% 46%, transparent 20%, rgba(0, 0, 0, 0.22) 58%, rgba(0, 0, 0, 0.88) 115%);
-            box-shadow: inset 0 0 150px 30px rgba(0, 0, 0, 0.68);
-            -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0, 0, 0, 0.82) 77%, rgba(0, 0, 0, 0.34) 90%, transparent 100%);
-            mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0, 0, 0, 0.82) 77%, rgba(0, 0, 0, 0.34) 90%, transparent 100%);
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            left: 15%;
-            right: 15%;
-            bottom: -24%;
-            height: 48%;
-            border-radius: 50%;
-            background: rgba(155, 155, 155, 0.09);
-            filter: blur(70px);
-        }
-
-        .hero-haze {
-            position: absolute;
-            z-index: -2;
-            width: 55vw;
-            height: 18vw;
-            min-height: 120px;
-            border-radius: 50%;
-            background: rgba(185, 185, 185, 0.055);
-            filter: blur(58px);
-            animation: hazeDrift 16s ease-in-out infinite alternate;
-        }
-
-        .hero-haze--one {
-            left: -12%;
-            top: 32%;
-            transform: rotate(8deg);
-        }
-
-        .hero-haze--two {
-            right: -16%;
-            bottom: 18%;
-            opacity: 0.65;
-            animation-delay: -8s;
-            transform: rotate(-11deg);
-        }
-
-        .site-dust {
-            position: absolute;
-            inset: 0;
-            z-index: 4;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .site-dust span {
-            position: absolute;
-            left: var(--dust-x);
-            top: var(--dust-y);
-            width: var(--dust-size);
-            height: var(--dust-size);
-            border-radius: 50%;
-            background: rgba(245, 245, 245, 0.78);
-            box-shadow: 0 0 2px rgba(235, 235, 235, 0.36);
-            opacity: 0.68;
-            animation: dustFloat var(--dust-duration) ease-in-out var(--dust-delay) infinite alternate;
-        }
-
-        .hero.is-offscreen .hero-haze,
-        .hero.is-offscreen .site-dust span {
-            animation-play-state: paused;
-        }
-
-        .hero-layout {
-            position: relative;
-            z-index: 5;
-            display: grid;
-            grid-template-columns: minmax(360px, 1.08fr) minmax(320px, 0.92fr);
-            align-items: center;
-            gap: clamp(2.5rem, 6vw, 6rem);
-            width: min(930px, 66vw);
-            margin-right: clamp(0.25rem, 1vw, 1rem);
-            margin-left: auto;
-            animation: heroFadeIn 1.2s ease-out both;
-        }
-
-        .ruffcut-card {
-            position: relative;
-            z-index: 0;
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            perspective: 1400px;
-            border-radius: 0;
-            outline: none;
-            transform-style: preserve-3d;
-        }
-
-        .ruffcut-card__inner {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            border: 1px solid rgba(235, 235, 235, 0.18);
-            border-radius: 0;
-            box-shadow: 0 35px 90px rgba(0, 0, 0, 0.62), 0 0 45px rgba(180, 180, 180, 0.08);
-            transform-style: preserve-3d;
-            transform: rotateX(4deg) rotateY(-16deg) translateZ(0);
-            transform-origin: center center;
-            transition: transform 0.8s cubic-bezier(0.2, 0.75, 0.2, 1), box-shadow 0.4s ease;
-            will-change: transform;
-        }
-
-        .ruffcut-card:hover .ruffcut-card__inner,
-        .ruffcut-card:focus-visible .ruffcut-card__inner {
-            transform: rotateX(4deg) rotateY(-196deg) translateZ(10px);
-            box-shadow: 0 42px 105px rgba(0, 0, 0, 0.7), 0 0 55px rgba(210, 210, 210, 0.14);
-        }
-
-        .ruffcut-card:focus-visible .ruffcut-card__inner {
-            outline: 2px solid rgba(255, 255, 255, 0.9);
-            outline-offset: 5px;
-        }
-
-        .ruffcut-card__face {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            border-radius: 0;
-            background: #050505;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-
-        .ruffcut-card__front {
-            transform: translateZ(32px);
-            background: #020e1f;
-        }
-
-        .ruffcut-card__face img {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .ruffcut-card__front img {
-            object-fit: contain;
-        }
-
-        .ruffcut-card__back {
-            transform: rotateY(180deg) translateZ(32px);
-            background: #0e0e0e;
-        }
-
-        .ruffcut-card__edge {
-            position: absolute;
-            display: block;
-            background: linear-gradient(135deg, #666, #242424 52%, #090909);
-            border: 1px solid rgba(235, 235, 235, 0.13);
-            backface-visibility: visible;
-        }
-
-        .ruffcut-card__edge--left,
-        .ruffcut-card__edge--right {
-            top: 0;
-            width: 64px;
-            height: 100%;
-        }
-
-        .ruffcut-card__edge--left {
-            left: -32px;
-            transform: rotateY(90deg);
-        }
-
-        .ruffcut-card__edge--right {
-            right: -32px;
-            transform: rotateY(90deg);
-        }
-
-        .ruffcut-card__edge--top,
-        .ruffcut-card__edge--bottom {
-            left: 0;
-            width: 100%;
-            height: 64px;
-        }
-
-        .ruffcut-card__edge--top {
-            top: -32px;
-            transform: rotateX(90deg);
-        }
-
-        .ruffcut-card__edge--bottom {
-            bottom: -32px;
-            transform: rotateX(90deg);
-        }
-
-        .ruffcut-card__back img {
-            object-fit: contain;
-            object-position: center;
-        }
-
-        .hero-content {
-            max-width: 540px;
-            text-align: left;
-            font-family: 'Marcellus SC', serif;
-        }
-
-        .hero-title {
-            color: #fff;
-            font-size: clamp(3rem, 5vw, 4.5rem);
-            font-weight: 700;
-            line-height: 0.95;
-            letter-spacing: 0.1em;
-            text-shadow: 0 5px 45px rgba(220, 220, 220, 0.16), 0 20px 80px rgba(0, 0, 0, 0.9);
-        }
-
-        .hero-description {
-            max-width: 540px;
-            margin: 1.5rem 0 0;
-            color: rgba(240, 240, 240, 0.78);
-            font-size: clamp(1.15rem, 1.8vw, 1.5rem);
-            line-height: 1.6;
-            text-wrap: balance;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 2.25rem;
-            padding: 0.9rem 1.8rem;
-            border: 1px solid rgba(235, 235, 235, 0.52);
-            border-radius: 0;
-            background: rgba(7, 7, 7, 0.72);
-            color: #f2f2f2;
-            font: inherit;
-            font-weight: 400;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 35px rgba(225, 225, 225, 0.08);
-            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-3px);
-            background: rgba(237, 237, 237, 0.12);
-            color: #fff;
-            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.52), 0 0 40px rgba(235, 235, 235, 0.18);
-        }
-
-        .hero-cta:focus-visible {
-            outline: 2px solid #fff;
-            outline-offset: 4px;
-        }
-
-        @keyframes hazeDrift {
-            from { translate: -4% -2%; scale: 0.92; }
-            to { translate: 8% 5%; scale: 1.08; }
-        }
-
-        @keyframes dustFloat {
-            from {
-                transform: translate3d(0, 0, 0);
-                opacity: 0.48;
-            }
-            to {
-                transform: translate3d(var(--dust-drift-x), var(--dust-drift-y), 0);
-                opacity: 0.8;
-            }
-        }
-
         /* Social Media Icons */
         .footer-social-links {
             display: flex;
@@ -513,17 +210,6 @@
             border-radius: 999px;
             font-size: 0.9rem;
             font-weight: 600;
-        }
-
-        @keyframes heroFadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         /* Container */
@@ -2786,34 +2472,6 @@
                 height: 100%;
             }
 
-            .hero {
-                height: auto;
-                min-height: 860px;
-                padding: 5rem 0;
-            }
-
-            .hero-layout {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-                width: min(560px, calc(100% - 2rem));
-                margin: 0 auto;
-            }
-
-            .ruffcut-card {
-                width: min(100%, 500px);
-                margin: 0 auto;
-            }
-
-            .hero-content {
-                max-width: 520px;
-                margin: 0 auto;
-                text-align: center;
-            }
-
-            .hero-description {
-                margin-inline: auto;
-            }
-
             .footer-social-links {
                 gap: 1rem;
             }
@@ -2826,11 +2484,6 @@
         }
 
         @media (max-width: 480px) {
-            .hero {
-                min-height: 760px;
-                height: auto;
-                padding: 4rem 0;
-            }
 
             section {
                 padding: 3rem 0;
@@ -2840,13 +2493,7 @@
                 font-size: 2rem;
             }
 
-            .hero-title {
-                font-size: clamp(2.75rem, 15vw, 4.5rem);
-            }
 
-            .hero-description {
-                font-size: 1.05rem;
-            }
         }
 
         /* Static lighting atlas: preserves the pools without repainting page-height gradients. */
@@ -2873,12 +2520,7 @@
             filter: none;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .hero-layout,
-            .hero-haze {
-                animation: none;
-            }
-        }
+
 
 @keyframes confettiFall {
   0% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); opacity: 1; }
