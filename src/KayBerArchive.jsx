@@ -7,28 +7,31 @@ const kayberClips = [
 ];
 
 const links = [
-  ['Visit Website', 'https://kayber.com/'],
-  ['Visit App Store', 'https://apps.apple.com/us/app/kayber/id6670231752'],
-  ['Visit Play Store', 'https://play.google.com/store/apps/details?id=com.kaybermobile'],
-  ['YouTube', 'https://www.youtube.com/@KayBerOfficial'],
-  ['TikTok', 'https://www.tiktok.com/@kayberofficial'],
+  ['Website', 'https://kayber.com/'],
+  ['App Store', 'https://apps.apple.com/us/app/kayber/id6670231752'],
+  ['Google Play', 'https://play.google.com/store/apps/details?id=com.kaybermobile'],
 ];
 
 export default function KayBerArchive() {
   return (
     <article className="project-item kayber-archive" id="kayber" aria-labelledby="kayber-heading">
-      <header className="archive-heading">
-        <img className="kayber-logo" src="/kayber_logo.webp" alt="" loading="lazy" />
-        <div><h3 id="kayber-heading">KayBer</h3><div className="item-meta">May 2024 – Mar 2026</div></div>
-      </header>
-      <p className="kayber-description">I launched a social board with live, nested conversations using React, React Native, and Supabase. Anonymous sign-in let people join a thread as soon as they opened the app.</p>
-      <div className="kayber-media">
+      <div className="kayber-story">
+        <header className="archive-heading">
+          <img className="kayber-logo" src="/kayber_logo.webp" alt="" loading="lazy" />
+          <div><div className="item-meta">May 2024 – Mar 2026</div><h3 id="kayber-heading">KayBer</h3></div>
+        </header>
+        <p className="kayber-description">I built a social board where anyone could open a thread and join the conversation anonymously. The web and mobile apps shared live replies through Supabase.</p>
+        <nav className="project-links kayber-links" aria-label="KayBer links">
+          {links.map(([label, href]) => <a key={href} href={href} target="_blank" rel="noreferrer">{label}</a>)}
+        </nav>
         <img className="kayber-screen" src="/kayber_screenshot.webp" alt="KayBer’s discussion feed on the web" loading="lazy" />
-        <ShortsGallery heading="KayBer Shorts" project="kayber" clips={kayberClips} />
       </div>
-      <nav className="project-links" aria-label="KayBer links">
-        {links.map(([label, href]) => <a key={href} href={href} target="_blank" rel="noreferrer">{label}</a>)}
-      </nav>
+      <ShortsGallery project="kayber" clips={kayberClips} links={
+        <nav className="project-links kayber-links" aria-label="KayBer channels">
+          <a href="https://www.youtube.com/@KayBerOfficial" target="_blank" rel="noreferrer">YouTube</a>
+          <a href="https://www.tiktok.com/@kayberofficial" target="_blank" rel="noreferrer">TikTok</a>
+        </nav>
+      } />
     </article>
   );
 }

@@ -1,6 +1,6 @@
 .artifact-feature {
   --edge: min(16vw, 21svh, 188px);
-  --turn-period: 32s;
+  --turn-period: 26s;
   --bob-half-period: 3.5s;
   --half: calc(var(--edge) / 2);
   position: relative;
@@ -9,8 +9,8 @@
   display: grid;
   grid-template-rows: minmax(248px, 1fr) auto;
   min-height: 525px;
-  height: 83svh;
-  max-height: 1040px;
+  height: 100vh;
+  height: 100dvh;
   padding: 84px max(6vw, calc((100vw - 1400px) / 2)) 38px;
   color: #ede9df;
   background: radial-gradient(ellipse 36% 85% at 55% 8%, #353122 0%, #151510 49%, transparent 95%), #050605;
@@ -160,28 +160,27 @@
   border-bottom: 1px solid #77756b44;
 }
 .artifact-caption h1 {
-  font: 400 clamp(40px, 4.8vw, 76px)/1.06 'Prata', Georgia, serif;
+  font: 400 clamp(32px, 3.8vw, 60px)/1.06 'Prata', Georgia, serif;
   letter-spacing: -.055em;
   text-wrap: balance;
 }
 @keyframes exhibit-turn { from { transform: rotateY(0turn); } to { transform: rotateY(-1turn); } }
 @keyframes exhibit-footprint { from { transform: rotate(0turn); } to { transform: rotate(1turn); } }
-@keyframes exhibit-float { from { transform: translateY(-6%); } to { transform: translateY(1%); } }
+@keyframes exhibit-float { from { transform: translateY(-9%); } to { transform: translateY(1%); } }
 @keyframes exhibit-shadow { from { opacity: .76; } to { opacity: .91; } }
 @keyframes exhibit-light { to { opacity: .72; } }
 @keyframes exhibit-dust { to { transform: translate(8px,-9px); opacity: .6; } }
 @media (max-width: 680px) {
   .artifact-feature {
     --edge: clamp(124px, 39vw, 206px);
-    height: 93svh;
-    min-height: 610px;
+    min-height: 480px;
     padding: 76px 6vw 22px;
     grid-template-rows: minmax(255px,1fr) auto;
   }
-  .artifact-caption h1 { font-size: clamp(42px, 10.8vw, 72px); }
+  .artifact-caption h1 { font-size: clamp(31px, 8.1vw, 48px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .artifact-feature { --turn-period: 120s; }
+  .artifact-turn, .artifact-shadow::before { animation: none; }
   .artifact-float, .artifact-air, .artifact-stage::before, .artifact-shadow { animation: none; }
   .artifact-cube, .artifact-shadow, .artifact-seam::after { transition: none; }
 }

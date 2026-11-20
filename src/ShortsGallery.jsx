@@ -1,7 +1,7 @@
 import { useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-export default function ShortsGallery({ heading, project, clips }) {
+export default function ShortsGallery({ project, clips, links }) {
   const titleId = useId();
   const dialog = useRef(null);
   const [selected, select] = useState(null);
@@ -14,7 +14,6 @@ export default function ShortsGallery({ heading, project, clips }) {
   return (
     <>
       <div className="zenith-films">
-        <h4>{heading}</h4>
         <div className="zenith-reel">
           {clips.map(clip => (
             <button key={clip.id} type="button" onClick={() => open(clip)} aria-label={`Play ${clip.title}`} aria-haspopup="dialog">
@@ -24,6 +23,7 @@ export default function ShortsGallery({ heading, project, clips }) {
             </button>
           ))}
         </div>
+        {links}
       </div>
       {createPortal(
         <dialog className="zenith-player" ref={dialog} aria-labelledby={titleId} onClose={() => select(null)}>

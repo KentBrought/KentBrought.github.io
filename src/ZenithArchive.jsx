@@ -30,7 +30,7 @@ export default function ZenithArchive() {
           {links.map(([name, url]) => <a key={name} href={url} target="_blank" rel="noreferrer">{name}</a>)}
         </nav>
       </div>
-      <ShortsGallery heading="Scenes from Zenith" project="zenith" clips={clips} />
+      <ShortsGallery project="zenith" clips={clips} />
     </article>
   );
 }
