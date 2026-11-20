@@ -1,11 +1,11 @@
 import ShortsGallery from './ShortsGallery';
 
 const kayberClips = [
-  { id: 'FD-8FkM10nE', title: 'Reading Funny KayBer Replies (Part 3)' },
-  { id: 'hIzHM4TTSVQ', title: 'These Icebreakers Make New Friends Fast' },
-  { id: 'TXSIQ2WkQCk', title: 'Funniest KayBer Posts' },
-  { id: 'aDT5daF7EFk', title: 'Keeping KayBer Conversations Clean' },
-  { id: 'g2l7gVKx7aM', title: 'Getting Started With KayBer' },
+  { id: 'FD-8FkM10nE', title: 'Reading Funny KayBer Replies (Part 3)', views: 4383 },
+  { id: 'hIzHM4TTSVQ', title: 'These Icebreakers Make New Friends Fast', views: 2583 },
+  { id: 'TXSIQ2WkQCk', title: 'Funniest KayBer Posts', views: 2477 },
+  { id: 'aDT5daF7EFk', title: 'Keeping KayBer Conversations Clean', views: 2058 },
+  { id: 'g2l7gVKx7aM', title: 'Getting Started With KayBer', views: 868 },
 ];
 
 const links = [

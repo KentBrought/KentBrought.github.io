@@ -1,7 +1,8 @@
 .artifact-feature {
   --edge: min(16vw, 21svh, 188px);
   --turn-period: 26s;
-  --bob-half-period: 3.5s;
+  --bob-half-period: 2.8s;
+  --lift: -13%;
   --half: calc(var(--edge) / 2);
   position: relative;
   isolation: isolate;
@@ -85,7 +86,7 @@
   height: var(--edge);
   transform-style: preserve-3d;
 }
-.artifact-float { animation: exhibit-float var(--bob-half-period) ease-in-out infinite alternate; }
+.artifact-float { animation: exhibit-float var(--bob-half-period) ease-in-out -1s infinite alternate; }
 .artifact-cube {
   position: relative;
   transform: rotateX(calc(-17deg + var(--pitch, 0deg))) rotateY(calc(-34deg + var(--yaw, 0deg)));
@@ -168,7 +169,7 @@
 }
 @keyframes exhibit-turn { from { transform: rotateY(0turn); } to { transform: rotateY(-1turn); } }
 @keyframes exhibit-footprint { from { transform: rotate(0turn); } to { transform: rotate(1turn); } }
-@keyframes exhibit-float { from { transform: translateY(-9%); } to { transform: translateY(1%); } }
+@keyframes exhibit-float { from { transform: translateY(var(--lift)); } to { transform: translateY(1%); } }
 @keyframes exhibit-shadow { from { opacity: .76; } to { opacity: .91; } }
 @keyframes exhibit-light { to { opacity: .72; } }
 @keyframes exhibit-dust { to { transform: translate(8px,-9px); opacity: .6; } }
@@ -182,7 +183,7 @@
   .artifact-caption h1 { font-size: clamp(31px, 8.1vw, 48px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .artifact-feature { --turn-period: 120s; }
-  .artifact-float, .artifact-air, .artifact-stage::before, .artifact-shadow { animation: none; }
+  .artifact-feature { --turn-period: 120s; --lift: -2px; --bob-half-period: 5s; }
+  .artifact-air, .artifact-stage::before, .artifact-shadow { animation: none; }
   .artifact-cube, .artifact-shadow, .artifact-seam::after { transition: none; }
 }

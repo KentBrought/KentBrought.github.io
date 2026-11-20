@@ -37,6 +37,7 @@
 .zenith-reel button::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg,#070807f5,transparent 55%); }
 .zenith-play, .zenith-film-title { position: absolute; z-index: 1; }
 .zenith-play { top: 8px; right: 8px; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #080909aa; border: 1px solid #ffffff88; font: 10px sans-serif; }
+.clip-views { display: block; margin-top: .45em; color: #dedbd4; font: 500 clamp(10px,.85vw,12px)/1.2 system-ui,sans-serif; }
 .zenith-play::before { content: ''; margin-left: 2px; border-block: 4px solid transparent; border-left: 6px solid white; }
 .zenith-film-title { bottom: 10px; inset-inline: 9px; font: 500 clamp(13px,1.3vw,20px)/1.15 Georgia,serif; text-wrap: balance; }
 .zenith-reel button:focus-visible, .zenith-player :focus-visible { outline: 2px solid #f2f2f2; outline-offset: 3px; }
@@ -65,9 +66,9 @@
 .timeline .project-item.kayber-archive {
   display: grid;
   grid-template-columns: minmax(0,1.08fr) minmax(0,1fr);
-  gap: clamp(20px,3vw,44px) clamp(24px,5vw,80px);
+  gap: clamp(40px,5vw,76px) clamp(24px,5vw,80px);
   align-items: center;
-  padding-block: clamp(32px,4vw,64px);
+  padding-block: clamp(44px,6vw,88px);
   text-align: left;
 }
 .kayber-archive .archive-heading { gap: 1rem; }
@@ -81,7 +82,7 @@
 .kayber-archive .zenith-reel button:nth-child(even) { margin-block-start: clamp(42px,7vw,104px); }
 .kayber-archive .zenith-films .kayber-links { margin-top: 1rem; }
 @media (max-width: 768px) {
-  .timeline .project-item.kayber-archive { grid-template-columns: minmax(0,1fr); gap: 1.75rem; }
+  .timeline .project-item.kayber-archive { grid-template-columns: minmax(0,1fr); gap: 2.4rem; }
 }
 
 @media (max-width: 650px) {

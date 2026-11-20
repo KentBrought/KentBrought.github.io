@@ -2,9 +2,9 @@ import ShortsGallery from './ShortsGallery';
 import './zenith.css';
 
 const clips = [
-  { id: 'witCKqtsUkU', title: 'How to Make a Ship' },
-  { id: 'vtUkHbDr5QM', title: 'I Assassinated a King' },
-  { id: '4R_0s9jwj3w', title: 'Flying My Airship' },
+  { id: 'witCKqtsUkU', title: 'How to Make a Ship', views: 39926 },
+  { id: 'vtUkHbDr5QM', title: 'I Assassinated a King', views: 7541 },
+  { id: '4R_0s9jwj3w', title: 'Flying My Airship', views: 5730 },
 ];
 const links = [
   ['Original website', 'https://www.zenithserver.net/'],

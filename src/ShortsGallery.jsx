@@ -16,10 +16,10 @@ export default function ShortsGallery({ project, clips, links }) {
       <div className="zenith-films">
         <div className="zenith-reel">
           {clips.map(clip => (
-            <button key={clip.id} type="button" onClick={() => open(clip)} aria-label={`Play ${clip.title}`} aria-haspopup="dialog">
+            <button key={clip.id} type="button" onClick={() => open(clip)} aria-label={`Play ${clip.title}, ${clip.views.toLocaleString("en-US")} views`} aria-haspopup="dialog">
               <img src={`/${project}/${clip.id}.webp`} alt="" loading="lazy" width="360" height="640" />
               <span className="zenith-play" aria-hidden="true" />
-              <span className="zenith-film-title">{clip.title}</span>
+              <span className="zenith-film-title">{clip.title}<small className="clip-views" title="YouTube views as of November 19, 2026">{clip.views.toLocaleString("en-US")} views</small></span>
             </button>
           ))}
         </div>
