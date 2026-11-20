@@ -4,6 +4,8 @@ const kayberClips = [
   { id: 'FD-8FkM10nE', title: 'Reading Funny KayBer Replies (Part 3)' },
   { id: 'hIzHM4TTSVQ', title: 'These Icebreakers Make New Friends Fast' },
   { id: 'TXSIQ2WkQCk', title: 'Funniest KayBer Posts' },
+  { id: 'aDT5daF7EFk', title: 'Keeping KayBer Conversations Clean' },
+  { id: 'g2l7gVKx7aM', title: 'Getting Started With KayBer' },
 ];
 
 const links = [
@@ -24,8 +26,8 @@ export default function KayBerArchive() {
         <nav className="project-links kayber-links" aria-label="KayBer links">
           {links.map(([label, href]) => <a key={href} href={href} target="_blank" rel="noreferrer">{label}</a>)}
         </nav>
-        <img className="kayber-screen" src="/kayber_screenshot.webp" alt="KayBer’s discussion feed on the web" loading="lazy" />
       </div>
+      <img className="kayber-screen" src="/kayber_screenshot.webp" alt="KayBer’s discussion feed on the web" loading="lazy" />
       <ShortsGallery project="kayber" clips={kayberClips} links={
         <nav className="project-links kayber-links" aria-label="KayBer channels">
           <a href="https://www.youtube.com/@KayBerOfficial" target="_blank" rel="noreferrer">YouTube</a>

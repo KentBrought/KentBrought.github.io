@@ -13,16 +13,17 @@
   height: 100dvh;
   padding: 84px max(6vw, calc((100vw - 1400px) / 2)) 38px;
   color: #ede9df;
-  background: radial-gradient(ellipse 36% 85% at 55% 8%, #353122 0%, #151510 49%, transparent 95%), #050605;
 }
+
+/* Fade the lighting into the page itself, keeping the caption fully opaque. */
 .artifact-feature::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: url('./assets/brushed.webp');
-  mix-blend-mode: soft-light;
-  opacity: .28;
+  z-index: -1;
+  background: radial-gradient(ellipse 36% 85% at 55% 8%, #353122, #151510 49%, transparent 95%), #050605;
+  mask-image: linear-gradient(to bottom, black 54%, #000c 68%, #0005 84%, transparent 98%);
 }
 .artifact-stage {
   position: relative;
@@ -37,6 +38,7 @@
   top: -19%;
   background: conic-gradient(from 156deg at 63% -26%, transparent, #f5d07214 12deg, #ffdb762b 21deg, #eed49318 27deg, transparent 47deg);
   filter: blur(14px);
+  mask-image: linear-gradient(to bottom, black 42%, #000d 58%, #0005 72%, transparent 87%);
   animation: exhibit-light 11s ease-in-out infinite alternate;
 }
 .artifact-stage::before {
@@ -157,7 +159,7 @@
 .artifact-caption {
   position: relative;
   padding-bottom: 18px;
-  border-bottom: 1px solid #77756b44;
+
 }
 .artifact-caption h1 {
   font: 400 clamp(32px, 3.8vw, 60px)/1.06 'Prata', Georgia, serif;
@@ -180,7 +182,7 @@
   .artifact-caption h1 { font-size: clamp(31px, 8.1vw, 48px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .artifact-turn, .artifact-shadow::before { animation: none; }
+  .artifact-feature { --turn-period: 120s; }
   .artifact-float, .artifact-air, .artifact-stage::before, .artifact-shadow { animation: none; }
   .artifact-cube, .artifact-shadow, .artifact-seam::after { transition: none; }
 }

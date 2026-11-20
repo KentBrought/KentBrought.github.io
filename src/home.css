@@ -1244,7 +1244,9 @@
         }
 
         .section-backdrop--future::before {
-            top: -24rem;
+            top: clamp(-16rem, -18vh, -6rem);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 38%), var(--scenery-mask);
+            mask-composite: intersect;
             height: min(900px, 110vh);
             background-image:
                 linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.98) 12%, rgba(0, 0, 0, 0.86) 25%, rgba(0, 0, 0, 0.52) 41%, rgba(0, 0, 0, 0.16) 56%, transparent 70%, rgba(0, 0, 0, 0.45) 100%),
