@@ -1,8 +1,8 @@
 .artifact-feature {
   --edge: min(16vw, 21svh, 188px);
   --turn-period: 18s;
-  --bob-half-period: 1.9s;
-  --lift: -13%;
+  --bob-half-period: 1.35s;
+  --lift: -21%;
   --half: calc(var(--edge) / 2);
   position: relative;
   isolation: isolate;
