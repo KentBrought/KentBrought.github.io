@@ -66,23 +66,23 @@
 .timeline .project-item.kayber-archive {
   display: grid;
   grid-template-columns: minmax(0,1.08fr) minmax(0,1fr);
-  gap: clamp(40px,5vw,76px) clamp(24px,5vw,80px);
+  gap: clamp(54px,7vw,104px) clamp(32px,6vw,96px);
   align-items: center;
-  padding-block: clamp(44px,6vw,88px);
+  padding-block: clamp(56px,7.5vw,112px);
   text-align: left;
 }
 .kayber-archive .archive-heading { gap: 1rem; }
 .kayber-archive .archive-heading h3 { line-height: 1.14; margin: .22em 0 0; }
 .kayber-logo { width: clamp(40px,4vw,58px); border-radius: 20%; }
-.kayber-description { margin: 1.1rem 0; max-width: 46ch; line-height: 1.65; color: var(--text-secondary); }
+.kayber-description { margin: 1.65rem 0; max-width: 46ch; line-height: 1.65; color: var(--text-secondary); }
 .project-links.kayber-links { flex-wrap: wrap; margin: 0; }
 .kayber-screen { display: block; width: 100%; height: auto; }
 .kayber-archive .zenith-films { grid-column: 1 / -1; }
-.kayber-archive .zenith-reel { align-items: start; grid-template-columns: repeat(5,minmax(0,1fr)); max-width: none; gap: clamp(20px,3vw,44px); }
+.kayber-archive .zenith-reel { align-items: start; grid-template-columns: repeat(5,minmax(0,1fr)); max-width: none; gap: clamp(24px,3.6vw,54px); }
 .kayber-archive .zenith-reel button:nth-child(even) { margin-block-start: clamp(42px,7vw,104px); }
-.kayber-archive .zenith-films .kayber-links { margin-top: 1rem; }
+.kayber-archive .zenith-films .kayber-links { margin-top: 1.75rem; }
 @media (max-width: 768px) {
-  .timeline .project-item.kayber-archive { grid-template-columns: minmax(0,1fr); gap: 2.4rem; }
+  .timeline .project-item.kayber-archive { grid-template-columns: minmax(0,1fr); gap: 3.25rem; }
 }
 
 @media (max-width: 650px) {
