@@ -1,11 +1,13 @@
 .project-item.zenith-archive {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
-  gap: clamp(20px, 4vw, 60px);
+  gap: clamp(24px, 3vw, 46px) clamp(32px, 5vw, 76px);
+  padding-block: clamp(48px, 7vw, 110px);
   align-items: center;
 }
-.zenith-heading { display: flex; align-items: center; gap: 1.4rem; }
+.zenith-heading { grid-column: 1 / -1; display: flex; align-items: center; gap: 1.4rem; }
 .zenith-archive .zenith-heading .item-content { order: initial; }
+.zenith-archive .zenith-heading h3 { font-size: clamp(2.2rem, 4vw, 3.8rem); }
 .zenith-heading .item-meta { margin-bottom: 0; }
 .project-item.zenith-archive {
   isolation: isolate;
@@ -56,3 +58,5 @@
   .project-item.zenith-archive { grid-template-columns: minmax(0,1fr); }
   .zenith-reel { max-width: 490px; }
 }
+
+.kayber-clips { max-width: 26rem; margin-top: 1.5rem; }

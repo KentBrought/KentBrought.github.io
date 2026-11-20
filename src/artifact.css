@@ -1,15 +1,15 @@
 .artifact-feature {
-  --edge: min(19vw, 26svh, 234px);
-  --turn-period: 52s;
+  --edge: min(16vw, 21svh, 188px);
+  --turn-period: 32s;
   --bob-half-period: 3.5s;
   --half: calc(var(--edge) / 2);
   position: relative;
   isolation: isolate;
   overflow: hidden;
   display: grid;
-  grid-template-rows: minmax(310px, 1fr) auto;
-  min-height: 630px;
-  height: 94svh;
+  grid-template-rows: minmax(248px, 1fr) auto;
+  min-height: 525px;
+  height: 83svh;
   max-height: 1040px;
   padding: 84px max(6vw, calc((100vw - 1400px) / 2)) 38px;
   color: #ede9df;
@@ -160,7 +160,7 @@
   border-bottom: 1px solid #77756b44;
 }
 .artifact-caption h1 {
-  font: 400 clamp(48px, 7.2vw, 112px)/1.06 'Prata', Georgia, serif;
+  font: 400 clamp(40px, 4.8vw, 76px)/1.06 'Prata', Georgia, serif;
   letter-spacing: -.055em;
   text-wrap: balance;
 }
@@ -170,7 +170,7 @@
 @keyframes exhibit-shadow { from { opacity: .76; } to { opacity: .91; } }
 @keyframes exhibit-light { to { opacity: .72; } }
 @keyframes exhibit-dust { to { transform: translate(8px,-9px); opacity: .6; } }
-.artifact-feature.is-offscreen *, .artifact-feature.is-offscreen *::before { animation-play-state: paused; }
+.artifact-motion-control { display: none; }
 @media (max-width: 680px) {
   .artifact-feature {
     --edge: clamp(124px, 39vw, 206px);
@@ -183,4 +183,20 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .artifact-feature *, .artifact-feature *::before, .artifact-feature *::after { animation: none; transition: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artifact-motion-control {
+    display: inline-block;
+    margin-bottom: .75rem;
+    padding: .4rem .7rem;
+    color: #d4cdbd;
+    background: #141412;
+    border: 1px solid #686354;
+    font: inherit;
+    cursor: pointer;
+  }
+  .artifact-motion-control[aria-pressed="true"] { border-color: #d4cdbd; }
+  .artifact-feature[data-rotate="true"] .artifact-turn { animation: exhibit-turn var(--turn-period) linear infinite; }
+  .artifact-feature[data-rotate="true"] .artifact-shadow::before { animation: exhibit-footprint var(--turn-period) linear infinite; }
 }

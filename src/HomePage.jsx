@@ -3,6 +3,14 @@ import './home.css';
 import ZenithArchive from './ZenithArchive';
 import ArtifactFeature from './ArtifactFeature';
 
+import ShortsGallery from './ShortsGallery';
+
+const kayberClips = [
+  { id: 'FD-8FkM10nE', title: 'Reading Funny KayBer Replies (Part 3)' },
+  { id: 'hIzHM4TTSVQ', title: 'These Icebreakers Make New Friends Fast' },
+  { id: 'TXSIQ2WkQCk', title: 'Funniest KayBer Posts' },
+];
+
 function ViewportVideo({ src, label }) {
   const videoRef = useRef(null);
 
@@ -504,6 +512,9 @@ export default function HomePage() {
                                   </a>      
                               </div>      
                           </div>      
+                          <div className="kayber-clips">
+                              <ShortsGallery heading="KayBer Shorts" project="kayber" clips={kayberClips} />
+                          </div>
                       </div>      
                    </div>
 
