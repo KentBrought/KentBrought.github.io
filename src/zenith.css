@@ -2,13 +2,12 @@
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
   gap: clamp(24px, 3vw, 46px) clamp(32px, 5vw, 76px);
-  padding-block: clamp(48px, 7vw, 110px);
+  padding-block: clamp(24px, 3.5vw, 54px);
   align-items: center;
 }
-.zenith-heading { grid-column: 1 / -1; display: flex; align-items: center; gap: 1.4rem; }
-.zenith-archive .zenith-heading .item-content { order: initial; }
-.zenith-archive .zenith-heading h3 { font-size: clamp(2.2rem, 4vw, 3.8rem); }
-.zenith-heading .item-meta { margin-bottom: 0; }
+.archive-heading { display: flex; align-items: center; gap: 1.4rem; }
+.archive-heading h3 { font-size: clamp(2.2rem, 4vw, 3.8rem); }
+.archive-heading .item-meta { margin-bottom: 0; }
 .project-item.zenith-archive {
   isolation: isolate;
   transition: opacity .28s ease;
@@ -24,11 +23,6 @@
     url('/zenith/town.webp') center 46% / cover;
   opacity: .78;
   filter: saturate(.65);
-  /* Fade each axis to zero before the panorama ends, including at edge midpoints. */
-  mask-image:
-    linear-gradient(to bottom, transparent 1%, #0005 9%, black 24%, black 76%, #0005 91%, transparent 99%),
-    linear-gradient(to right, transparent 1%, black 15%, black 85%, transparent 99%);
-  mask-composite: intersect;
 }
 .zenith-impact { display: flex; gap: 2rem; margin: .8rem 0; }
 .zenith-impact div { display: flex; flex-direction: column-reverse; }
@@ -59,4 +53,27 @@
   .zenith-reel { max-width: 490px; }
 }
 
-.kayber-clips { max-width: 26rem; margin-top: 1.5rem; }
+@media (min-width: 769px) {
+  .zenith-archive .zenith-reel { padding-bottom: 1rem; }
+  .zenith-archive .zenith-reel button:nth-child(2) { transform: translateY(1rem); }
+}
+
+.timeline .project-item.kayber-archive {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: clamp(24px, 3vw, 48px);
+  text-align: left;
+}
+.kayber-logo { width: clamp(50px, 5vw, 72px); height: auto; }
+.kayber-description { max-width: 78ch; line-height: 1.6; color: var(--text-secondary); }
+.kayber-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 40px);
+  align-items: end;
+}
+.kayber-screen { display: block; width: 100%; height: auto; border: 1px solid #ffffff30; }
+.kayber-archive .project-links { margin: 0; flex-wrap: wrap; }
+@media (max-width: 700px) {
+  .kayber-media { grid-template-columns: minmax(0, 1fr); }
+}

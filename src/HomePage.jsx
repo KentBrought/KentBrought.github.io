@@ -3,13 +3,7 @@ import './home.css';
 import ZenithArchive from './ZenithArchive';
 import ArtifactFeature from './ArtifactFeature';
 
-import ShortsGallery from './ShortsGallery';
-
-const kayberClips = [
-  { id: 'FD-8FkM10nE', title: 'Reading Funny KayBer Replies (Part 3)' },
-  { id: 'hIzHM4TTSVQ', title: 'These Icebreakers Make New Friends Fast' },
-  { id: 'TXSIQ2WkQCk', title: 'Funniest KayBer Posts' },
-];
+import KayBerArchive from './KayBerArchive';
 
 function ViewportVideo({ src, label }) {
   const videoRef = useRef(null);
@@ -458,65 +452,7 @@ export default function HomePage() {
                       </div>
                   </div>
 
-<div className="experience-item paired-media-item paired-media-item--right">
-                      <TimelineMediaPair
-                          logo="kayber_logo.webp"
-                          logoAlt="KayBer Logo"
-                          screenshot="kayber_screenshot.webp"
-                          screenshotAlt="KayBer Screenshot"
-                          reverse
-                          logoOutlined
-                      />
-                      <div className="item-content">      
-                          <h3>KayBer</h3>
-                          <div className="item-meta">May 2024 – Mar 2026</div>      
-                          <ul>      
-                              <li>Launched a social board (React + React Native + Supabase) with live nested threads</li>      
-                              <li>Implemented friction‑free anonymous auto‑sign‑in to reduce new‑user drop‑off and boost first‑session engagement</li>      
-                          </ul>      
-                          <div className="project-links">      
-                              <a href="https://kayber.com/" target="_blank">      
-                                  Visit Website      
-                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
-                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                  </svg>      
-                              </a>      
-                              <a href="https://apps.apple.com/us/app/kayber/id6670231752" target="_blank" className="store-link">      
-                                  Visit App Store      
-                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
-                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                  </svg>      
-                              </a>      
-                              <a href="https://play.google.com/store/apps/details?id=com.kaybermobile" target="_blank" className="store-link">      
-                                  Visit Play Store      
-                                  <svg className="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">      
-                                      <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <polyline points="15 3 21 3 21 9" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                      <line x1="10" y1="14" x2="21" y2="3" fill="none" stroke="currentColor" strokeWidth="2"/>      
-                                  </svg>      
-                              </a>      
-                              <div className="social-wrapper">      
-                                  <a href="https://www.youtube.com/@KayBerOfficial" target="_blank" className="social-btn" title="YouTube">      
-                                      <svg viewBox="0 0 24 24">      
-                                          <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>      
-                                      </svg>      
-                                  </a>      
-                                  <a href="https://www.tiktok.com/@kayberofficial" target="_blank" className="social-btn" title="TikTok">      
-                                      <svg viewBox="0 0 24 24">      
-                                          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>      
-                                      </svg>      
-                                  </a>      
-                              </div>      
-                          </div>      
-                          <div className="kayber-clips">
-                              <ShortsGallery heading="KayBer Shorts" project="kayber" clips={kayberClips} />
-                          </div>
-                      </div>      
-                   </div>
+                  <KayBerArchive />
 
 <div className="experience-item paired-media-item">
                       <TimelineMediaPair

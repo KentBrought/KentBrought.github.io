@@ -170,7 +170,6 @@
 @keyframes exhibit-shadow { from { opacity: .76; } to { opacity: .91; } }
 @keyframes exhibit-light { to { opacity: .72; } }
 @keyframes exhibit-dust { to { transform: translate(8px,-9px); opacity: .6; } }
-.artifact-motion-control { display: none; }
 @media (max-width: 680px) {
   .artifact-feature {
     --edge: clamp(124px, 39vw, 206px);
@@ -182,21 +181,7 @@
   .artifact-caption h1 { font-size: clamp(42px, 10.8vw, 72px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .artifact-feature *, .artifact-feature *::before, .artifact-feature *::after { animation: none; transition: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .artifact-motion-control {
-    display: inline-block;
-    margin-bottom: .75rem;
-    padding: .4rem .7rem;
-    color: #d4cdbd;
-    background: #141412;
-    border: 1px solid #686354;
-    font: inherit;
-    cursor: pointer;
-  }
-  .artifact-motion-control[aria-pressed="true"] { border-color: #d4cdbd; }
-  .artifact-feature[data-rotate="true"] .artifact-turn { animation: exhibit-turn var(--turn-period) linear infinite; }
-  .artifact-feature[data-rotate="true"] .artifact-shadow::before { animation: exhibit-footprint var(--turn-period) linear infinite; }
+  .artifact-feature { --turn-period: 120s; }
+  .artifact-float, .artifact-air, .artifact-stage::before, .artifact-shadow { animation: none; }
+  .artifact-cube, .artifact-shadow, .artifact-seam::after { transition: none; }
 }

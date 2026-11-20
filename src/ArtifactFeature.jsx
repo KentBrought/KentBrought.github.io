@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import engraving from './assets/engraved-question.svg';
 import './artifact.css';
 
 export default function ArtifactFeature() {
-  const [rotateOnRequest, setRotateOnRequest] = useState(false);
   const feature = useRef(null);
 
   useEffect(() => {
@@ -30,7 +29,7 @@ export default function ArtifactFeature() {
   }, []);
 
   return (
-    <section className="artifact-feature" data-rotate={rotateOnRequest} ref={feature} aria-labelledby="artifact-title">
+    <section className="artifact-feature" ref={feature} aria-labelledby="artifact-title">
       <div className="artifact-stage" role="img" aria-label="A floating gunmetal cube with a recessed question mark on each side. A golden spotlight casts its shadow onto the floor.">
         <div className="artifact-air" />
         <div className="artifact-floor" />
@@ -53,8 +52,6 @@ export default function ArtifactFeature() {
         </div>
       </div>
       <div className="artifact-caption">
-        <button type="button" className="artifact-motion-control" aria-pressed={rotateOnRequest}
-          onClick={() => setRotateOnRequest(active => !active)}>Rotate cube</button>
         <h1 id="artifact-title">Something big is coming soon…</h1>
       </div>
     </section>

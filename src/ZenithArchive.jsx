@@ -16,11 +16,11 @@ const links = [
 export default function ZenithArchive() {
   return (
     <article className="project-item zenith-archive" id="zenith" aria-labelledby="zenith-heading">
-      <header className="zenith-heading">
-          <div className="item-media-pair__logo"><img src="/zenith_logo.webp" alt="" loading="lazy" /></div>
-          <div className="item-content"><h3 id="zenith-heading">Zenith</h3><div className="item-meta">Aug 2019 – Sep 2024</div></div>
-      </header>
       <div className="zenith-story">
+        <header className="archive-heading">
+          <div className="item-media-pair__logo"><img src="/zenith_logo.webp" alt="" loading="lazy" /></div>
+          <div><h3 id="zenith-heading">Zenith</h3><div className="item-meta">Aug 2019 – Sep 2024</div></div>
+        </header>
         <dl className="zenith-impact">
           <div><dt>Unique players</dt><dd>1,000+</dd></div>
           <div><dt>Volunteer staff</dt><dd>12</dd></div>
